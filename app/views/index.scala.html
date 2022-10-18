@@ -1,5 +1,23 @@
 @()
 
 @main("Welcome to Play") {
-  <h1>Welcome to Play!</h1>
+<head>
+  <style>
+div {text-align: center;}
+</style>
+
+  <title>Page Title</title>
+</head>
+<body>
+
+
+<div class="vertical-center">
+  <h1><p style="font-family:verdana">Welcome to Checkers</p></h1><br>
+  <button onclick=window.location.href='@routes.Assets.versioned("html/instructions.html")';"> Start Game </button><br>
+  <br>
+  <button onclick="window.location.href='@routes.Assets.versioned("html/instructions.html")';"> Instructions </button>
+  <br>
+</div>
+</body>
 }
+
