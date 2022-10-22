@@ -9,7 +9,10 @@ GET     /new8Grid                   controllers.HomeController.new8Grid
 GET     /new10Grid                  controllers.HomeController.new10Grid
 GET     /instructions               controllers.HomeController.instructions
 GET     /test                       controllers.HomeController.test
-GET     _                           controllers.Default.notFound
+GET     /move/:start/:dest          controllers.HomeController.move(start:String,dest:String)
+
+
+#controllers.Default.notFound
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)

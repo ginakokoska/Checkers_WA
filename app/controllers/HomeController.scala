@@ -50,4 +50,9 @@ class HomeController @Inject()(val controllerComponents: ControllerComponents) e
     gameController.createGameBoard(10)
     Ok(views.html.checkers_game(gameController))
   }
+
+  def move(start:String, dest:String)= Action {
+    gameController.move(start, dest)
+    Ok(views.html.checkers_game(gameController))
+  }
 }
