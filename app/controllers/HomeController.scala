@@ -1,6 +1,7 @@
 package controllers
 
-import controller.controllerComponent.ControllerInterface
+import checkers.Checkers
+import checkers.controller.controllerComponent.ControllerInterface
 
 import javax.inject._
 import play.api._
@@ -26,13 +27,27 @@ class HomeController @Inject()(val controllerComponents: ControllerComponents) e
   }
 
   def checkersAsText: String = gameController.gameBoardToString
+
+
+  def instructions = Action {
+    Ok(views.html.instructions())
+  }
+
+  def test = Action {
+    Ok(views.html.test())
+  }
+
+  def notFound = NotFound(<h1>Page not found</h1>)
+  def checkers_game: Action[AnyContent] = Action {
+    Ok(views.html.checkers_game(gameController))
+  }
   def new8Grid: Action[AnyContent] = Action {
     gameController.createGameBoard(8)
-    Ok(gameController.gameBoardToString) //change this
+    Ok(views.html.checkers_game(gameController))
   }
 
   def new10Grid: Action[AnyContent] = Action {
     gameController.createGameBoard(10)
-    Ok(gameController.gameBoardToString) //change this
+    Ok(views.html.checkers_game(gameController))
   }
 }
