@@ -38,7 +38,7 @@ div """),format.raw/*6.5*/("""{"""),format.raw/*6.6*/("""text-align: center;""")
 
 <div class="vertical-center">
   <h1><p style="font-family:verdana">Welcome to Checkers</p></h1><br>
-  <button onclick=window.location.href='"""),_display_(/*16.42*/routes/*16.48*/.Assets.versioned("html/instructions.html")),format.raw/*16.91*/("""';"> Start Game </button><br>
+  <button onclick="window.location.href='"""),_display_(/*16.43*/routes/*16.49*/.Assets.versioned("html/instructions.html")),format.raw/*16.92*/("""';"> Start Game </button><br>
   <br>
   <button onclick="window.location.href='"""),_display_(/*18.43*/routes/*18.49*/.Assets.versioned("html/instructions.html")),format.raw/*18.92*/("""';"> Instructions </button>
   <br>
@@ -62,10 +62,10 @@ div """),format.raw/*6.5*/("""{"""),format.raw/*6.6*/("""text-align: center;""")
 
               /*
                   -- GENERATED --
-                  DATE: 2022-10-21T22:49:48.032
+                  DATE: 2022-10-22T16:02:02.529
                   SOURCE: C:/Users/petri/Desktop/Checkers_WA/app/views/index.scala.html
-                  HASH: 1c64b81d8a693a3a5566ccee0ddeb017fb794121
-                  MATRIX: 722->1|818->3|848->8|879->31|918->33|946->35|995->58|1022->59|1068->78|1096->79|1124->81|1356->286|1371->292|1435->335|1543->416|1558->422|1622->465|1707->520
+                  HASH: 32c1b85e4b7eb7cbca4de96d0c6671f1e3e527bf
+                  MATRIX: 722->1|818->3|848->8|879->31|918->33|946->35|995->58|1022->59|1068->78|1096->79|1124->81|1357->287|1372->293|1436->336|1544->417|1559->423|1623->466|1708->521
                   LINES: 21->1|26->1|28->3|28->3|28->3|29->4|31->6|31->6|31->6|31->6|32->7|41->16|41->16|41->16|43->18|43->18|43->18|47->22
                   -- GENERATED --
               */
