@@ -1,0 +1,22 @@
+@(controller:checkers.controller.controllerComponent.ControllerInterface)
+
+@size= @{ controller.gameBoardSize }
+
+@main("HTWG Sudoku") {
+  <div class="gamecontainer">
+    <div class="game">
+      @for(row <- 0 until size) {
+        <div class="fieldrow"> <!--Maybe think of a different name, might not make sense?-->
+          @for(col <- 0 until size) {
+            <span class="field">
+              <span class="@{"piece"}"> <!--Using single quotes here... But watch out!-->
+              @{if(controller.field(row, col).isSet) {controller.field(row, col).toString} else "_"} <!--Perhaps replace "_" with " ", could look cleaner-->
+              </span>
+            </span>
+          }
+        </div>
+        <div class="clear"></div> <!--idk about this...-->
+      }
+    </div>
+  </div>
+}
