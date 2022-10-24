@@ -1,114 +1,153 @@
+<!DOCTYPE html>
 <html>
+<head>
+    <title>Checkers Instructions</title>
+    <link rel="icon" type="image/x-icon" href='@routes.Assets.versioned("images/icon.png")'>
+    <link rel="stylesheet" href='@routes.Assets.versioned("stylesheets/main.css")'>
+</head>
 <body>
-<style>
-h1 {text-align: center;}
-h1 {color: darkred;}
-</style>
-<style>
-h3 {color: darkred;}
-</style>
-<article>
-  <h1>
-    Checkers Instruction
-  </h1>
-  <header>
-    <h3>
-      OBJECT
-    </h3>
-    <p>
-      The objective is to remove all of your opponent's
-      checkers from the gameboard by capturing them.
-    </p>
-  </header>
-  <header>
-    <h3>
-      GAME SETUP
-    </h3>
-    <p>
-      You will find 8 or 10 checkers already placed on
-      the boards black squares.
-    </p>
-  </header>
-  <header>
-    <h3>
-      HOW TO PLAY ?
-    </h3>
-    <p>
-      Choose a player to go first. On your turn, move
-      any of your checkers. Follow the movement rules described
-      below. After you move one checker, your turn is over. The
-      game continues with players taking alternating turns.
-    </p>
-  </header>
-  <header>
-    <h3>
-      Movement Rules
-    </h3>
-    <li>
-      Always move your checker diagonally
-      <i>
-        forward
-      </i>
-      , toward your opponent's side of the
-      boardgame.
-      <i>
-        Note:
-      </i>
-      After a checker becomes a "King",
-      he can move diagonally forward or backward.
-    </li>
-    <li>
-      Move your checker one space diagonbally, to an
-      open adjacent to the checker you jumped. When you jump
-      over an oppenent's checker, you
-      <i>
-        capture
-      </i>
-      it (see
-      <i>
-        Capturing an Opponent's Checker
-      </i>
-      ).
-    </li>
-    <li>
-      If all squares adjacent to your checker are
-      occupied, your checker is blocked and cannot move.
-    </li>
-  </header>
-  <header>
-    <h3>
-      Capturing an Opponent's Checker
-    </h3>
-    <p>
-      If you jump an opponent's checker, you capture it.
-      Remove it from the gameboard and place it in front of
-      you.
-    </p>
-  </header>
-  <header>
-    <h3>
-      Becoming a "King"
-    </h3>
-    <p>
-      As soon a one of your checkers reachers the first
-      row on your ipponent's side of the gameboard, he becomes
-      a King. Place another checker of the same color on top of
-      it. Now this double-decker checker can move forward
-      <i>
-        or
-      </i>
-      backward on the gameboard.
-    </p>
-  </header>
-  <header>
-    <h3>
-      HOW TO WIN
-    </h3>
-    <p>
-      The first player to capture all opposing checkers
-      from the gameboard wins the game!
-    </p>
-  </header>
-</article>
+
+<div class="navbar">
+    <a href="http://localhost:9000/">Home</a>
+    <a href="https://github.com/ginakokoska/Checkers_WA" target="_blank">GitHub</a>
+    <a href="http://localhost:9000/instructions">Instructions</a>
+    <div class="dropdown">
+        <button class="dropbtn">Play
+            <i class="fa fa-caret-down"></i>
+        </button>
+        <div class="dropdown-content">
+            <div class="row">
+                <div class="column">
+                    <h3>Checkers Versions</h3>
+                    <a href="http://localhost:9000/new8Grid">8x8</a>
+                    <a href="http://localhost:9000/new10Grid">10x10</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div style="padding:15px 15px 2500px;font-size:30px">
+    <article>
+        <h1>
+            Checkers Instruction
+        </h1>
+        <header>
+            <h3>
+                OBJECT
+            </h3>
+            <p>
+                The objective is to remove all of your opponent's
+                checkers from the gameboard by capturing them.
+            </p>
+        </header>
+        <header>
+            <h3>
+                GAME SETUP
+            </h3>
+            <p>
+                You will find 8 or 10 checkers already placed on
+                the boards black squares.
+            </p>
+        </header>
+        <header>
+            <h3>
+                HOW TO PLAY ?
+            </h3>
+            <p>
+                Choose a player to go first. On your turn, move
+                any of your checkers. Follow the movement rules described
+                below. After you move one checker, your turn is over. The
+                game continues with players taking alternating turns.
+            </p>
+        </header>
+        <header>
+            <h3>
+                Movement Rules
+            </h3>
+            <li>
+                Always move your checker diagonally
+                <i>
+                    forward
+                </i>
+                , toward your opponent's side of the
+                boardgame.
+                <i>
+                    Note:
+                </i>
+                After a checker becomes a "King",
+                he can move diagonally forward or backward.
+            </li>
+            <li>
+                Move your checker one space diagonbally, to an
+                open adjacent to the checker you jumped. When you jump
+                over an oppenent's checker, you
+                <i>
+                    capture
+                </i>
+                it (see
+                <i>
+                    Capturing an Opponent's Checker
+                </i>
+                ).
+            </li>
+            <li>
+                If all squares adjacent to your checker are
+                occupied, your checker is blocked and cannot move.
+            </li>
+        </header>
+        <header>
+            <h3>
+                Capturing an Opponent's Checker
+            </h3>
+            <p>
+                If you jump an opponent's checker, you capture it.
+                Remove it from the gameboard and place it in front of
+                you.
+            </p>
+        </header>
+        <header>
+            <h3>
+                Becoming a "King"
+            </h3>
+            <p>
+                As soon a one of your checkers reachers the first
+                row on your ipponent's side of the gameboard, he becomes
+                a King. Place another checker of the same color on top of
+                it. Now this double-decker checker can move forward
+                <i>
+                    or
+                </i>
+                backward on the gameboard.
+            </p>
+        </header>
+        <header>
+            <h3>
+                HOW TO WIN
+            </h3>
+            <p>
+                The first player to capture all opposing checkers
+                from the gameboard wins the game!
+            </p>
+        </header>
+    </article>
+
+</div>
+
+<script>
+// When the user scrolls down 20px from the top of the document, slide down the navbar
+window.onscroll = function() {scrollFunction()};
+
+function scrollFunction() {
+  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+    document.getElementById("navbar").style.top = "0";
+  } else {
+    document.getElementById("navbar").style.top = "-50px";
+  }
+}
+</script>
+
 </body>
 </html>
+

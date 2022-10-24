@@ -30,20 +30,19 @@ object main extends _root_.play.twirl.api.BaseScalaTemplate[play.twirl.api.HtmlF
 
 Seq[Any](format.raw/*7.32*/("""
 
-"""),format.raw/*9.1*/("""<!DOCTYPE html>
-<html lang="en">
+"""),format.raw/*9.1*/("""<html lang="en">
     <head>
-        """),format.raw/*12.62*/("""
-        """),format.raw/*13.9*/("""<title>"""),_display_(/*13.17*/title),format.raw/*13.22*/("""</title>
-        <link rel="stylesheet" media="screen" href=""""),_display_(/*14.54*/routes/*14.60*/.Assets.versioned("stylesheets/main.css")),format.raw/*14.101*/("""">
-        <link rel="shortcut icon" type="image/png" href=""""),_display_(/*15.59*/routes/*15.65*/.Assets.versioned("images/favicon.png")),format.raw/*15.104*/("""">
+        """),format.raw/*11.62*/("""
+        """),format.raw/*12.9*/("""<title>"""),_display_(/*12.17*/title),format.raw/*12.22*/("""</title>
+        <link rel="stylesheet" media="screen" href='"""),_display_(/*13.54*/routes/*13.60*/.Assets.versioned("stylesheets/main.css")),format.raw/*13.101*/("""'>
+        <link rel="shortcut icon" type="image/png" href='"""),_display_(/*14.59*/routes/*14.65*/.Assets.versioned("images/favicon.png")),format.raw/*14.104*/("""'>
 
     </head>
     <body>
-        """),format.raw/*20.32*/("""
-        """),_display_(/*21.10*/content),format.raw/*21.17*/("""
+        """),format.raw/*19.32*/("""
+        """),_display_(/*20.10*/content),format.raw/*20.17*/("""
 
-      """),format.raw/*23.7*/("""<script src=""""),_display_(/*23.21*/routes/*23.27*/.Assets.versioned("javascripts/main.js")),format.raw/*23.67*/("""" type="text/javascript"></script>
+      """),format.raw/*22.7*/("""<script src='"""),_display_(/*22.21*/routes/*22.27*/.Assets.versioned("javascripts/main.js")),format.raw/*22.67*/("""' type="text/javascript"></script>
     </body>
 </html>
 """))
@@ -62,11 +61,11 @@ Seq[Any](format.raw/*7.32*/("""
 
               /*
                   -- GENERATED --
-                  DATE: 2022-10-18T08:59:35.855
+                  DATE: 2022-10-24T22:32:12.074
                   SOURCE: C:/Users/petri/Desktop/Checkers_WA/app/views/main.scala.html
-                  HASH: 2d7bb605c571dab93f940a8a3370ee8ea17610b5
-                  MATRIX: 992->266|1117->296|1147->300|1230->408|1267->418|1302->426|1328->431|1418->494|1433->500|1496->541|1585->603|1600->609|1661->648|1728->778|1766->789|1794->796|1831->806|1872->820|1887->826|1948->866
-                  LINES: 26->7|31->7|33->9|36->12|37->13|37->13|37->13|38->14|38->14|38->14|39->15|39->15|39->15|43->20|44->21|44->21|46->23|46->23|46->23|46->23
+                  HASH: 0eb7545bca7b0acee51ef1555d5f962d49c5327c
+                  MATRIX: 992->266|1117->296|1147->300|1213->391|1250->401|1285->409|1311->414|1401->477|1416->483|1479->524|1568->586|1583->592|1644->631|1711->761|1749->772|1777->779|1814->789|1855->803|1870->809|1931->849
+                  LINES: 26->7|31->7|33->9|35->11|36->12|36->12|36->12|37->13|37->13|37->13|38->14|38->14|38->14|42->19|43->20|43->20|45->22|45->22|45->22|45->22
                   -- GENERATED --
               */
           

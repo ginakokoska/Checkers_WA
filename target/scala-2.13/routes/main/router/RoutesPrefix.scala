@@ -1,6 +1,6 @@
 // @GENERATOR:play-routes-compiler
 // @SOURCE:C:/Users/petri/Desktop/Checkers_WA/conf/routes
-// @DATE:Sat Oct 22 23:44:45 CEST 2022
+// @DATE:Mon Oct 24 18:23:20 CEST 2022
 
 
 package router {

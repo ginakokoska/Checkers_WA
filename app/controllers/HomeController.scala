@@ -21,7 +21,7 @@ class HomeController @Inject()(val controllerComponents: ControllerComponents) e
    * will be called when the application receives a `GET` request with
    * a path of `/`.
    */
-    val gameController: ControllerInterface = Checkers.controller
+  val gameController: ControllerInterface = Checkers.controller
   def index: Action[AnyContent] = Action { implicit request: Request[AnyContent] =>
     Ok(views.html.index())
   }
@@ -33,6 +33,10 @@ class HomeController @Inject()(val controllerComponents: ControllerComponents) e
     Ok(views.html.instructions())
   }
 
+  def home() = Action { implicit request: Request[AnyContent] =>
+    Ok(views.html.home())
+  }
+  
   def test = Action {
     Ok(views.html.test())
   }
