@@ -1,0 +1,40 @@
+@(controller:checkers.controller.controllerComponent.ControllerInterface)
+
+@size= @{ controller.gameBoardSize }
+
+@main("HTWG Sudoku") {
+
+<link rel="stylesheet" href='@routes.Assets.versioned("stylesheets/say.css")' />
+  <div class="gamecontainer">
+    <div class="game">
+      @for(row <- 0 until size) {
+        <div class="fieldrow"> <!--Maybe think of a different name, might not make sense?-->
+          @for(col <- 0 until size) {
+            @if((row+col) % 2 == 0) {
+              <span class="field_red">
+                @if(controller.field(row, col).isSet) {
+                  @if(controller.field(row, col).getPiece.get.getColor == "black") {
+                    <span class='@{"piece_black"}'>
+                      @{controller.field(row, col).toString}
+                    </span>
+                  } else {
+                    <span class='@{"piece_white"}'>
+                      @{controller.field(row, col).toString}
+                    </span>
+                  }
+                } else {
+                  <span class='@{"piece_was_never_an_option"}'>
+                    @{" "}
+                  </span>
+                }
+              </span>
+            } else {
+                <span class="field_black"></span> <!-- If the code breaks, just copy from above-->
+            }
+          }
+        </div>
+        <div class="clear"></div> <!--idk about this...-->
+      }
+    </div>
+  </div>
+}

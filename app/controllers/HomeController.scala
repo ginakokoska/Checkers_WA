@@ -1,9 +1,12 @@
 package controllers
 
+import checkers.Checkers
+import checkers.controller.controllerComponent.ControllerInterface
+
 import javax.inject._
 import play.api._
 import play.api.mvc._
-import Checkers.controller.gameBoardToString
+
 /**
  * This controller creates an `Action` to handle HTTP requests to the
  * application's home page.
@@ -18,8 +21,42 @@ class HomeController @Inject()(val controllerComponents: ControllerComponents) e
    * will be called when the application receives a `GET` request with
    * a path of `/`.
    */
-  def index() = Action { implicit request: Request[AnyContent] =>
-    //Ok(views.html.index())
-    Ok(gameBoardToString)
+  val gameController: ControllerInterface = Checkers.controller
+  def index: Action[AnyContent] = Action { implicit request: Request[AnyContent] =>
+    Ok(views.html.index())
+  }
+
+  def checkersAsText: String = gameController.gameBoardToString
+
+
+  def instructions = Action {
+    Ok(views.html.instructions())
+  }
+
+  def home() = Action { implicit request: Request[AnyContent] =>
+    Ok(views.html.home())
+  }
+  
+  def test = Action {
+    Ok(views.html.test())
+  }
+
+  def notFound = NotFound(<h1>Page not found</h1>)
+  def checkers_game: Action[AnyContent] = Action {
+    Ok(views.html.checkers_game(gameController))
+  }
+  def new8Grid: Action[AnyContent] = Action {
+    gameController.createGameBoard(8)
+    Ok(views.html.checkers_game(gameController))
+  }
+
+  def new10Grid: Action[AnyContent] = Action {
+    gameController.createGameBoard(10)
+    Ok(views.html.checkers_game(gameController))
+  }
+
+  def move(start:String, dest:String)= Action {
+    gameController.move(start, dest)
+    Ok(views.html.checkers_game(gameController))
   }
 }
