@@ -39,8 +39,8 @@ Seq[Any]()
 
               /*
                   -- GENERATED --
-                  DATE: 2022-10-24T22:33:04.779
-                  SOURCE: C:/Users/petri/Desktop/Checkers_WA/app/views/index.scala.html
+                  DATE: 2022-10-25T08:58:48.648
+                  SOURCE: /Users/ginakokoska/IdeaProjects/HTWG/AIN5/Webapplikation/checkers_wa/app/views/index.scala.html
                   HASH: 57f7d117a54b3581c810c21c2164de6d8408ed0d
                   MATRIX: 
                   LINES: 

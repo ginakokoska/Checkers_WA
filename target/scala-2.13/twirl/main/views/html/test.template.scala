@@ -61,10 +61,10 @@ Seq[Any](format.raw/*1.1*/("""<!DOCTYPE html>
 
               /*
                   -- GENERATED --
-                  DATE: 2022-10-22T23:56:42.428
-                  SOURCE: C:/Users/petri/Desktop/Checkers_WA/app/views/test.scala.html
-                  HASH: 3c202c6c1336ac7d2e08e0105a012e6916e9905a
-                  MATRIX: 810->0|887->51|901->57|962->98
+                  DATE: 2022-10-25T08:58:48.572
+                  SOURCE: /Users/ginakokoska/IdeaProjects/HTWG/AIN5/Webapplikation/checkers_wa/app/views/test.scala.html
+                  HASH: 5fb4a806d5ae7f95f4c9b68f65109b632cb0f2e2
+                  MATRIX: 810->0|884->48|898->54|959->95
                   LINES: 26->1|29->4|29->4|29->4
                   -- GENERATED --
               */

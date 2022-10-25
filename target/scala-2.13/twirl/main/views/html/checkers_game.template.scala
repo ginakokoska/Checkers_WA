@@ -22,47 +22,73 @@ object checkers_game extends _root_.play.twirl.api.BaseScalaTemplate[play.twirl.
     _display_ {
       {
 
-def /*3.2*/size/*3.6*/ = {{ controller.gameBoardSize }};
-Seq[Any](format.raw/*1.74*/("""
+def /*2.2*/size/*2.6*/ = {{ controller.gameBoardSize }};
+Seq[Any](format.raw/*2.37*/("""
+"""),format.raw/*3.1*/("""<html>
+<head>
+  <title>Checkers Game</title>
+  <link rel=icon" type="image/x-icon" href=""""),_display_(/*6.46*/routes/*6.52*/.Assets.versioned("images/icon.png")),format.raw/*6.88*/("""">
+  <link rel="stylesheet" href=""""),_display_(/*7.33*/routes/*7.39*/.Assets.versioned("stylesheets/say.css")),format.raw/*7.79*/("""">
+</head>
 
-"""),format.raw/*3.37*/("""
+<body>
 
-"""),_display_(/*5.2*/main("HTWG Sudoku")/*5.21*/ {_display_(Seq[Any](format.raw/*5.23*/("""
-
-"""),format.raw/*7.1*/("""<link rel="stylesheet" href='"""),_display_(/*7.31*/routes/*7.37*/.Assets.versioned("stylesheets/say.css")),format.raw/*7.77*/("""' />
-  <div class="gamecontainer">
-    <div class="game">
-      """),_display_(/*10.8*/for(row <- 0 until size) yield /*10.32*/ {_display_(Seq[Any](format.raw/*10.34*/("""
-        """),format.raw/*11.9*/("""<div class="fieldrow"> <!--Maybe think of a different name, might not make sense?-->
-          """),_display_(/*12.12*/for(col <- 0 until size) yield /*12.36*/ {_display_(Seq[Any](format.raw/*12.38*/("""
-            """),_display_(/*13.14*/if((row+col) % 2 == 0)/*13.36*/ {_display_(Seq[Any](format.raw/*13.38*/("""
-              """),format.raw/*14.15*/("""<span class="field_red">
-                """),_display_(/*15.18*/if(controller.field(row, col).isSet)/*15.54*/ {_display_(Seq[Any](format.raw/*15.56*/("""
-                  """),_display_(/*16.20*/if(controller.field(row, col).getPiece.get.getColor == "black")/*16.83*/ {_display_(Seq[Any](format.raw/*16.85*/("""
-                    """),format.raw/*17.21*/("""<span class='"""),_display_(/*17.35*/{"piece_black"}),format.raw/*17.50*/("""'>
-                      """),_display_(/*18.24*/{controller.field(row, col).toString}),format.raw/*18.61*/("""
-                    """),format.raw/*19.21*/("""</span>
-                  """)))}/*20.21*/else/*20.26*/{_display_(Seq[Any](format.raw/*20.27*/("""
-                    """),format.raw/*21.21*/("""<span class='"""),_display_(/*21.35*/{"piece_white"}),format.raw/*21.50*/("""'>
-                      """),_display_(/*22.24*/{controller.field(row, col).toString}),format.raw/*22.61*/("""
-                    """),format.raw/*23.21*/("""</span>
-                  """)))}),format.raw/*24.20*/("""
-                """)))}/*25.19*/else/*25.24*/{_display_(Seq[Any](format.raw/*25.25*/("""
-                  """),format.raw/*26.19*/("""<span class='"""),_display_(/*26.33*/{"piece_was_never_an_option"}),format.raw/*26.62*/("""'>
-                    """),_display_(/*27.22*/{" "}),format.raw/*27.27*/("""
-                  """),format.raw/*28.19*/("""</span>
-                """)))}),format.raw/*29.18*/("""
-              """),format.raw/*30.15*/("""</span>
-            """)))}/*31.15*/else/*31.20*/{_display_(Seq[Any](format.raw/*31.21*/("""
-                """),format.raw/*32.17*/("""<span class="field_black"></span> <!-- If the code breaks, just copy from above-->
-            """)))}),format.raw/*33.14*/("""
-          """)))}),format.raw/*34.12*/("""
-        """),format.raw/*35.9*/("""</div>
-        <div class="clear"></div> <!--idk about this...-->
-      """)))}),format.raw/*37.8*/("""
-    """),format.raw/*38.5*/("""</div>
+<div class="navbar">
+  <a href="http://localhost:9000/">Home</a>
+  <a href="https://github.com/ginakokoska/Checkers_WA" target="_blank">GitHub</a>
+  <a href="http://localhost:9000/instructions">Instructions</a>
+  <div class="dropdown">
+    <button class="dropbtn">Play
+      <i class="fa fa-caret-down"></i>
+    </button>
+    <div class="dropdown-content">
+      <div class="row">
+        <div class="column">
+          <h3>Checkers Versions</h3>
+          <a href="http://localhost:9000/new8Grid">8x8</a>
+          <a href="http://localhost:9000/new10Grid#">10x10</a>
+        </div>
+      </div>
+    </div>
   </div>
-""")))}))
+</div>
+
+"""),_display_(/*32.2*/main("HTWG Sudoku")/*32.21*/ {_display_(Seq[Any](format.raw/*32.23*/("""
+  """),format.raw/*33.3*/("""<div class="gamecontainer">
+    <div class="game">
+      """),_display_(/*35.8*/for(row <- 0 until size) yield /*35.32*/ {_display_(Seq[Any](format.raw/*35.34*/("""
+        """),format.raw/*36.9*/("""<div class="fieldrow"> <!--Maybe think of a different name, might not make sense?-->
+          """),_display_(/*37.12*/for(col <- 0 until size) yield /*37.36*/ {_display_(Seq[Any](format.raw/*37.38*/("""
+            """),_display_(/*38.14*/if((row+col) % 2 == 0)/*38.36*/ {_display_(Seq[Any](format.raw/*38.38*/("""
+              """),format.raw/*39.15*/("""<span class="field_red">
+                """),_display_(/*40.18*/if(controller.field(row, col).isSet)/*40.54*/ {_display_(Seq[Any](format.raw/*40.56*/("""
+                  """),_display_(/*41.20*/if(controller.field(row, col).getPiece.get.getColor == "black")/*41.83*/ {_display_(Seq[Any](format.raw/*41.85*/("""
+                    """),format.raw/*42.21*/("""<span class='"""),_display_(/*42.35*/{"piece_black"}),format.raw/*42.50*/("""'>
+                      """),_display_(/*43.24*/{controller.field(row, col).toString}),format.raw/*43.61*/("""
+                    """),format.raw/*44.21*/("""</span>
+                  """)))}/*45.21*/else/*45.26*/{_display_(Seq[Any](format.raw/*45.27*/("""
+                    """),format.raw/*46.21*/("""<span class='"""),_display_(/*46.35*/{"piece_white"}),format.raw/*46.50*/("""'>
+                      """),_display_(/*47.24*/{controller.field(row, col).toString}),format.raw/*47.61*/("""
+                    """),format.raw/*48.21*/("""</span>
+                  """)))}),format.raw/*49.20*/("""
+                """)))}/*50.19*/else/*50.24*/{_display_(Seq[Any](format.raw/*50.25*/("""
+                  """),format.raw/*51.19*/("""<span class='"""),_display_(/*51.33*/{"piece_was_never_an_option"}),format.raw/*51.62*/("""'>
+                    """),_display_(/*52.22*/{" "}),format.raw/*52.27*/("""
+                  """),format.raw/*53.19*/("""</span>
+                """)))}),format.raw/*54.18*/("""
+              """),format.raw/*55.15*/("""</span>
+            """)))}/*56.15*/else/*56.20*/{_display_(Seq[Any](format.raw/*56.21*/("""
+                """),format.raw/*57.17*/("""<span class="field_black"></span> <!-- If the code breaks, just copy from above-->
+            """)))}),format.raw/*58.14*/("""
+          """)))}),format.raw/*59.12*/("""
+        """),format.raw/*60.9*/("""</div>
+        <div class="clear"></div> <!--idk about this...-->
+      """)))}),format.raw/*62.8*/("""
+    """),format.raw/*63.5*/("""</div>
+  </div>
+""")))}),format.raw/*65.2*/("""
+
+"""),format.raw/*67.1*/("""</body>"""))
       }
     }
   }
@@ -78,11 +104,11 @@ Seq[Any](format.raw/*1.74*/("""
 
               /*
                   -- GENERATED --
-                  DATE: 2022-10-24T21:12:58.035
-                  SOURCE: C:/Users/petri/Desktop/Checkers_WA/app/views/checkers_game.scala.html
-                  HASH: b835c8572977308f462817d6101e5d3f2e28a956
-                  MATRIX: 790->1|940->78|951->82|1013->73|1044->113|1074->118|1101->137|1140->139|1170->143|1226->173|1240->179|1300->219|1394->287|1434->311|1474->313|1511->323|1635->420|1675->444|1715->446|1757->461|1788->483|1828->485|1872->501|1942->544|1987->580|2027->582|2075->603|2147->666|2187->668|2237->690|2278->704|2314->719|2368->746|2426->783|2476->805|2523->834|2536->839|2575->840|2625->862|2666->876|2702->891|2756->918|2814->955|2864->977|2923->1005|2961->1025|2974->1030|3013->1031|3061->1051|3102->1065|3152->1094|3204->1119|3230->1124|3278->1144|3335->1170|3379->1186|3420->1209|3433->1214|3472->1215|3518->1233|3646->1330|3690->1343|3727->1353|3832->1428|3865->1434
-                  LINES: 21->1|25->3|25->3|26->1|28->3|30->5|30->5|30->5|32->7|32->7|32->7|32->7|35->10|35->10|35->10|36->11|37->12|37->12|37->12|38->13|38->13|38->13|39->14|40->15|40->15|40->15|41->16|41->16|41->16|42->17|42->17|42->17|43->18|43->18|44->19|45->20|45->20|45->20|46->21|46->21|46->21|47->22|47->22|48->23|49->24|50->25|50->25|50->25|51->26|51->26|51->26|52->27|52->27|53->28|54->29|55->30|56->31|56->31|56->31|57->32|58->33|59->34|60->35|62->37|63->38
+                  DATE: 2022-10-25T09:16:24.242
+                  SOURCE: /Users/ginakokoska/IdeaProjects/HTWG/AIN5/Webapplikation/checkers_wa/app/views/checkers_game.scala.html
+                  HASH: 465299d892547a126a9b5310d10c9879b05c70be
+                  MATRIX: 790->1|940->75|951->79|1013->110|1040->111|1156->201|1170->207|1226->243|1287->278|1301->284|1361->324|2033->970|2061->989|2101->991|2131->994|2215->1052|2255->1076|2295->1078|2331->1087|2454->1183|2494->1207|2534->1209|2575->1223|2606->1245|2646->1247|2689->1262|2758->1304|2803->1340|2843->1342|2890->1362|2962->1425|3002->1427|3051->1448|3092->1462|3128->1477|3181->1503|3239->1540|3288->1561|3334->1589|3347->1594|3386->1595|3435->1616|3476->1630|3512->1645|3565->1671|3623->1708|3672->1729|3730->1756|3767->1775|3780->1780|3819->1781|3866->1800|3907->1814|3957->1843|4008->1867|4034->1872|4081->1891|4137->1916|4180->1931|4220->1953|4233->1958|4272->1959|4317->1976|4444->2072|4487->2084|4523->2093|4626->2166|4658->2171|4705->2188|4734->2190
+                  LINES: 21->1|25->2|25->2|26->2|27->3|30->6|30->6|30->6|31->7|31->7|31->7|56->32|56->32|56->32|57->33|59->35|59->35|59->35|60->36|61->37|61->37|61->37|62->38|62->38|62->38|63->39|64->40|64->40|64->40|65->41|65->41|65->41|66->42|66->42|66->42|67->43|67->43|68->44|69->45|69->45|69->45|70->46|70->46|70->46|71->47|71->47|72->48|73->49|74->50|74->50|74->50|75->51|75->51|75->51|76->52|76->52|77->53|78->54|79->55|80->56|80->56|80->56|81->57|82->58|83->59|84->60|86->62|87->63|89->65|91->67
                   -- GENERATED --
               */
           

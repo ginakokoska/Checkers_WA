@@ -48,9 +48,9 @@ Seq[Any](format.raw/*1.1*/("""<!DOCTYPE html>
 
               /*
                   -- GENERATED --
-                  DATE: 2022-10-22T22:30:00.755
-                  SOURCE: C:/Users/petri/Desktop/Checkers_WA/app/views/user.scala.html
-                  HASH: 121545828f9659d434eaf879a83e29424d90ec33
+                  DATE: 2022-10-25T08:58:48.504
+                  SOURCE: /Users/ginakokoska/IdeaProjects/HTWG/AIN5/Webapplikation/checkers_wa/app/views/user.scala.html
+                  HASH: f328e82f16cdba9bc37b207b8dd284db1d552595
                   MATRIX: 810->0
                   LINES: 26->1
                   -- GENERATED --
