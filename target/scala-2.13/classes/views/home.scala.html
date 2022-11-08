@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="@routes.Assets.versioned("stylesheets/main.css")">
+</head>
+<body>
+
+<div class="navbar">
+  <a href="http://localhost:9000/">Home</a>
+  <a href="https://github.com/ginakokoska/Checkers_WA" target="_blank">GitHub</a>
+  <a href="http://localhost:9000/instructions">Instructions</a>
+  <div class="dropdown">
+    <button class="dropbtn">Play
+      <i class="fa fa-caret-down"></i>
+    </button>
+    <div class="dropdown-content">
+      <div class="row">
+        <div class="column">
+          <h3>Checkers Versions</h3>
+          <a href="">8x8</a>
+          <a href="#">10x10</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div style="padding:16px">
+  <h3>Welcome to Checkers</h3>
+  <p>Start browsing, mister checkerrrr ! </p>
+
+  <div class="slideshow-container">
+
+    <div class="mySlides fade">
+      <div class="numbertext">1 / 4</div>
+      <img src=@routes.Assets.versioned("images/Startpoint.png") style="width:100%">
+      <div class="text">Starting Point of Game</div>
+    </div>
+
+    <div class="mySlides fade">
+      <div class="numbertext">2 / 4</div>
+      <img src=@routes.Assets.versioned("images/movediag.png") style="width:100%">
+      <div class="text">Moving diagonally</div>
+    </div>
+
+    <div class="mySlides fade">
+      <div class="numbertext">3 / 4</div>
+      <img src=@routes.Assets.versioned("images/capture.png") style="width:100%">
+      <div class="text">Capturing an Opponent's Stone</div>
+    </div>
+
+    <div class="mySlides fade">
+      <div class="numbertext">4 / 4</div>
+      <img src=@routes.Assets.versioned("images/queen.png") style="width:100%"">
+      <div class="text">Becoming a King </div>
+    </div>
+
+    <a class="prev" onclick="plusSlides(-1)">❮</a>
+    <a class="next" onclick="plusSlides(1)">❯</a>
+
+  </div>
+  <br>
+
+  <div style="text-align:center">
+    <span class="dot" onclick="currentSlide(1)"></span>
+    <span class="dot" onclick="currentSlide(2)"></span>
+    <span class="dot" onclick="currentSlide(3)"></span>
+    <span class="dot" onclick="currentSlide(4)"></span>
+  </div>
+
+  <script>
+let slideIndex = 1;
+showSlides(slideIndex);
+
+function plusSlides(n) {
+  showSlides(slideIndex += n);
+}
+
+function currentSlide(n) {
+  showSlides(slideIndex = n);
+}
+
+function showSlides(n) {
+  let i;
+  let slides = document.getElementsByClassName("mySlides");
+  let dots = document.getElementsByClassName("dot");
+  if (n > slides.length) {slideIndex = 1}
+  if (n < 1) {slideIndex = slides.length}
+  for (i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";
+  }
+  for (i = 0; i < dots.length; i++) {
+    dots[i].className = dots[i].className.replace(" active", "");
+  }
+  slides[slideIndex-1].style.display = "block";
+  dots[slideIndex-1].className += " active";
+}
+</script>
+</div>
+
+</body>
+</html>
+
