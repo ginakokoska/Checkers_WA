@@ -41,6 +41,11 @@ class HomeController @Inject()(val controllerComponents: ControllerComponents) e
     Ok(views.html.test())
   }
 
+  def alert = Action {
+    Ok(views.html.alert())
+  }
+
+
   def notFound = NotFound(<h1>Page not found</h1>)
   def checkers_game: Action[AnyContent] = Action {
     Ok(views.html.checkers_game(gameController))

@@ -1,6 +1,6 @@
 // @GENERATOR:play-routes-compiler
 // @SOURCE:/Users/ginakokoska/IdeaProjects/HTWG/AIN5/Webapplikation/checkers_wa/conf/routes
-// @DATE:Tue Oct 25 09:55:43 CEST 2022
+// @DATE:Sun Nov 13 13:32:11 CET 2022
 
 import play.api.routing.JavaScriptReverseRoute
 
@@ -24,6 +24,16 @@ package controllers.javascript {
       """
         function() {
           return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "new10Grid"})
+        }
+      """
+    )
+  
+    // @LINE:14
+    def alert: JavaScriptReverseRoute = JavaScriptReverseRoute(
+      "controllers.HomeController.alert",
+      """
+        function() {
+          return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "alert"})
         }
       """
     )

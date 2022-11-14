@@ -1,6 +1,6 @@
 // @GENERATOR:play-routes-compiler
 // @SOURCE:/Users/ginakokoska/IdeaProjects/HTWG/AIN5/Webapplikation/checkers_wa/conf/routes
-// @DATE:Tue Oct 25 09:55:43 CEST 2022
+// @DATE:Sun Nov 13 13:32:11 CET 2022
 
 import play.api.mvc.Call
 
@@ -21,6 +21,12 @@ package controllers {
     def new10Grid(): Call = {
       
       Call("GET", _prefix + { _defaultPrefix } + "new10Grid")
+    }
+  
+    // @LINE:14
+    def alert(): Call = {
+      
+      Call("GET", _prefix + { _defaultPrefix } + "alert")
     }
   
     // @LINE:11
