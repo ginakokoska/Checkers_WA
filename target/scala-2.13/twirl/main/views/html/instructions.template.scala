@@ -33,6 +33,7 @@ Seq[Any](format.raw/*1.1*/("""<!doctype html>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap&#64;5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
     <link rel="stylesheet" href='"""),_display_(/*10.35*/routes/*10.41*/.Assets.versioned("stylesheets/nav.css")),format.raw/*10.81*/("""'>
+    <link rel="stylesheet" href='"""),_display_(/*11.35*/routes/*11.41*/.Assets.versioned("stylesheets/main.css")),format.raw/*11.82*/("""'>
 </head>
 <body>
 
@@ -79,12 +80,14 @@ Seq[Any](format.raw/*1.1*/("""<!doctype html>
 
 <div data-bs-spy="scroll" data-bs-target="#navbar-example2" data-bs-root-margin="0px 0px -40%" data-bs-smooth-scroll="true" class="scrollspy-example bg-light p-3 rounded-2" tabindex="0">
     <article>
+        <div style="padding:100px">
         <h1>
-            Checkers Instruction
+                CHECKERS INSTRUCTION
         </h1>
+            <p></p>
         <header>
             <h3>
-                OBJECT
+                Object
             </h3>
             <p>
                 The objective is to remove all of your opponent's
@@ -93,7 +96,7 @@ Seq[Any](format.raw/*1.1*/("""<!doctype html>
         </header>
         <header>
             <h3>
-                GAME SETUP
+                Game Setup
             </h3>
             <p>
                 You will find 8 or 10 checkers already placed on
@@ -102,7 +105,7 @@ Seq[Any](format.raw/*1.1*/("""<!doctype html>
         </header>
         <header>
             <h3>
-                HOW TO PLAY ?
+                How to play
             </h3>
             <p>
                 Choose a player to go first. On your turn, move
@@ -145,6 +148,7 @@ Seq[Any](format.raw/*1.1*/("""<!doctype html>
                 If all squares adjacent to your checker are
                 occupied, your checker is blocked and cannot move.
             </li>
+            <p></p>
         </header>
         <header>
             <h3>
@@ -173,7 +177,7 @@ Seq[Any](format.raw/*1.1*/("""<!doctype html>
         </header>
         <header>
             <h3>
-                HOW TO WIN
+                How to win
             </h3>
             <p>
                 The first player to capture all opposing checkers
@@ -205,11 +209,11 @@ Seq[Any](format.raw/*1.1*/("""<!doctype html>
 
               /*
                   -- GENERATED --
-                  DATE: 2022-11-13T15:17:22.126
+                  DATE: 2022-11-14T14:51:14.097
                   SOURCE: /Users/ginakokoska/IdeaProjects/HTWG/AIN5/Webapplikation/checkers_wa/app/views/instructions.scala.html
-                  HASH: 197616c05d522f721088821a350a4f0672331150
-                  MATRIX: 818->0|973->129|987->135|1043->171|1535->636|1550->642|1611->682
-                  LINES: 26->1|30->5|30->5|30->5|35->10|35->10|35->10
+                  HASH: 05c7f065f8b4d777389bbf1b6492589367f0048e
+                  MATRIX: 818->0|973->129|987->135|1043->171|1535->636|1550->642|1611->682|1675->719|1690->725|1752->766
+                  LINES: 26->1|30->5|30->5|30->5|35->10|35->10|35->10|36->11|36->11|36->11
                   -- GENERATED --
               */
           
