@@ -1,4 +1,4 @@
-[0m[[0m[31merror[0m] [0m[0m/Users/ginakokoska/IdeaProjects/HTWG/AIN5/Webapplikation/checkers_wa/target/scala-2.13/twirl/main/views/html/test.template.scala:37:71: not found: value popperjs[0m
-[0m[[0m[31merror[0m] [0m[0m    <script src="https://cdn.jsdelivr.net/npm/"""),_display_(/*12.48*/popperjs),format.raw/*12.56*/("""/core&#64;2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>[0m
-[0m[[0m[31merror[0m] [0m[0m                                                                      ^[0m
+[0m[[0m[31merror[0m] [0m[0m/Users/ginakokoska/IdeaProjects/HTWG/AIN5/Webapplikation/checkers_wa/target/scala-2.13/twirl/main/views/html/checkers_game.template.scala:29:28: no arguments allowed for nullary method apply: (): play.twirl.api.HtmlFormat.Appendable in object home[0m
+[0m[[0m[31merror[0m] [0m[0m"""),_display_(/*5.2*/home("HTWG Sudoku")/*5.21*/ {_display_(Seq[Any](format.raw/*5.23*/("""[0m
+[0m[[0m[31merror[0m] [0m[0m                           ^[0m
 [0m[[0m[31merror[0m] [0m[0mone error found[0m

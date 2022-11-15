@@ -1,6 +1,6 @@
 // @GENERATOR:play-routes-compiler
 // @SOURCE:/Users/ginakokoska/IdeaProjects/HTWG/AIN5/Webapplikation/checkers_wa/conf/routes
-// @DATE:Sun Nov 13 13:32:11 CET 2022
+// @DATE:Tue Nov 15 09:03:29 CET 2022
 
 package router
 
@@ -15,7 +15,7 @@ class Routes(
   override val errorHandler: play.api.http.HttpErrorHandler, 
   // @LINE:7
   HomeController_1: controllers.HomeController,
-  // @LINE:19
+  // @LINE:18
   Assets_0: controllers.Assets,
   val prefix: String
 ) extends GeneratedRouter {
@@ -24,7 +24,7 @@ class Routes(
    def this(errorHandler: play.api.http.HttpErrorHandler,
     // @LINE:7
     HomeController_1: controllers.HomeController,
-    // @LINE:19
+    // @LINE:18
     Assets_0: controllers.Assets
   ) = this(errorHandler, HomeController_1, Assets_0, "/")
 
@@ -40,13 +40,11 @@ class Routes(
 
   def documentation = List(
     ("""GET""", this.prefix, """controllers.HomeController.home()"""),
-    ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """index""", """controllers.HomeController.index()"""),
     ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """new8Grid""", """controllers.HomeController.new8Grid()"""),
     ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """new10Grid""", """controllers.HomeController.new10Grid()"""),
     ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """instructions""", """controllers.HomeController.instructions()"""),
     ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """test""", """controllers.HomeController.test()"""),
     ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """move/""" + "$" + """start<[^/]+>/""" + "$" + """dest<[^/]+>""", """controllers.HomeController.move(start:String, dest:String)"""),
-    ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """alert""", """controllers.HomeController.alert()"""),
     ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """assets/""" + "$" + """file<.+>""", """controllers.Assets.versioned(path:String = "/public", file:Asset)"""),
     Nil
   ).foldLeft(List.empty[(String,String,String)]) { (s,e) => e.asInstanceOf[Any] match {
@@ -74,28 +72,10 @@ class Routes(
   )
 
   // @LINE:8
-  private[this] lazy val controllers_HomeController_index1_route = Route("GET",
-    PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("index")))
-  )
-  private[this] lazy val controllers_HomeController_index1_invoker = createInvoker(
-    HomeController_1.index(),
-    play.api.routing.HandlerDef(this.getClass.getClassLoader,
-      "router",
-      "controllers.HomeController",
-      "index",
-      Nil,
-      "GET",
-      this.prefix + """index""",
-      """""",
-      Seq()
-    )
-  )
-
-  // @LINE:9
-  private[this] lazy val controllers_HomeController_new8Grid2_route = Route("GET",
+  private[this] lazy val controllers_HomeController_new8Grid1_route = Route("GET",
     PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("new8Grid")))
   )
-  private[this] lazy val controllers_HomeController_new8Grid2_invoker = createInvoker(
+  private[this] lazy val controllers_HomeController_new8Grid1_invoker = createInvoker(
     HomeController_1.new8Grid(),
     play.api.routing.HandlerDef(this.getClass.getClassLoader,
       "router",
@@ -109,11 +89,11 @@ class Routes(
     )
   )
 
-  // @LINE:10
-  private[this] lazy val controllers_HomeController_new10Grid3_route = Route("GET",
+  // @LINE:9
+  private[this] lazy val controllers_HomeController_new10Grid2_route = Route("GET",
     PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("new10Grid")))
   )
-  private[this] lazy val controllers_HomeController_new10Grid3_invoker = createInvoker(
+  private[this] lazy val controllers_HomeController_new10Grid2_invoker = createInvoker(
     HomeController_1.new10Grid(),
     play.api.routing.HandlerDef(this.getClass.getClassLoader,
       "router",
@@ -127,11 +107,11 @@ class Routes(
     )
   )
 
-  // @LINE:11
-  private[this] lazy val controllers_HomeController_instructions4_route = Route("GET",
+  // @LINE:10
+  private[this] lazy val controllers_HomeController_instructions3_route = Route("GET",
     PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("instructions")))
   )
-  private[this] lazy val controllers_HomeController_instructions4_invoker = createInvoker(
+  private[this] lazy val controllers_HomeController_instructions3_invoker = createInvoker(
     HomeController_1.instructions(),
     play.api.routing.HandlerDef(this.getClass.getClassLoader,
       "router",
@@ -145,11 +125,11 @@ class Routes(
     )
   )
 
-  // @LINE:12
-  private[this] lazy val controllers_HomeController_test5_route = Route("GET",
+  // @LINE:11
+  private[this] lazy val controllers_HomeController_test4_route = Route("GET",
     PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("test")))
   )
-  private[this] lazy val controllers_HomeController_test5_invoker = createInvoker(
+  private[this] lazy val controllers_HomeController_test4_invoker = createInvoker(
     HomeController_1.test(),
     play.api.routing.HandlerDef(this.getClass.getClassLoader,
       "router",
@@ -163,11 +143,11 @@ class Routes(
     )
   )
 
-  // @LINE:13
-  private[this] lazy val controllers_HomeController_move6_route = Route("GET",
+  // @LINE:12
+  private[this] lazy val controllers_HomeController_move5_route = Route("GET",
     PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("move/"), DynamicPart("start", """[^/]+""",true), StaticPart("/"), DynamicPart("dest", """[^/]+""",true)))
   )
-  private[this] lazy val controllers_HomeController_move6_invoker = createInvoker(
+  private[this] lazy val controllers_HomeController_move5_invoker = createInvoker(
     HomeController_1.move(fakeValue[String], fakeValue[String]),
     play.api.routing.HandlerDef(this.getClass.getClassLoader,
       "router",
@@ -181,29 +161,11 @@ class Routes(
     )
   )
 
-  // @LINE:14
-  private[this] lazy val controllers_HomeController_alert7_route = Route("GET",
-    PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("alert")))
-  )
-  private[this] lazy val controllers_HomeController_alert7_invoker = createInvoker(
-    HomeController_1.alert(),
-    play.api.routing.HandlerDef(this.getClass.getClassLoader,
-      "router",
-      "controllers.HomeController",
-      "alert",
-      Nil,
-      "GET",
-      this.prefix + """alert""",
-      """""",
-      Seq()
-    )
-  )
-
-  // @LINE:19
-  private[this] lazy val controllers_Assets_versioned8_route = Route("GET",
+  // @LINE:18
+  private[this] lazy val controllers_Assets_versioned6_route = Route("GET",
     PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("assets/"), DynamicPart("file", """.+""",false)))
   )
-  private[this] lazy val controllers_Assets_versioned8_invoker = createInvoker(
+  private[this] lazy val controllers_Assets_versioned6_invoker = createInvoker(
     Assets_0.versioned(fakeValue[String], fakeValue[Asset]),
     play.api.routing.HandlerDef(this.getClass.getClassLoader,
       "router",
@@ -227,51 +189,39 @@ class Routes(
       }
   
     // @LINE:8
-    case controllers_HomeController_index1_route(params@_) =>
+    case controllers_HomeController_new8Grid1_route(params@_) =>
       call { 
-        controllers_HomeController_index1_invoker.call(HomeController_1.index())
+        controllers_HomeController_new8Grid1_invoker.call(HomeController_1.new8Grid())
       }
   
     // @LINE:9
-    case controllers_HomeController_new8Grid2_route(params@_) =>
+    case controllers_HomeController_new10Grid2_route(params@_) =>
       call { 
-        controllers_HomeController_new8Grid2_invoker.call(HomeController_1.new8Grid())
+        controllers_HomeController_new10Grid2_invoker.call(HomeController_1.new10Grid())
       }
   
     // @LINE:10
-    case controllers_HomeController_new10Grid3_route(params@_) =>
+    case controllers_HomeController_instructions3_route(params@_) =>
       call { 
-        controllers_HomeController_new10Grid3_invoker.call(HomeController_1.new10Grid())
+        controllers_HomeController_instructions3_invoker.call(HomeController_1.instructions())
       }
   
     // @LINE:11
-    case controllers_HomeController_instructions4_route(params@_) =>
+    case controllers_HomeController_test4_route(params@_) =>
       call { 
-        controllers_HomeController_instructions4_invoker.call(HomeController_1.instructions())
+        controllers_HomeController_test4_invoker.call(HomeController_1.test())
       }
   
     // @LINE:12
-    case controllers_HomeController_test5_route(params@_) =>
-      call { 
-        controllers_HomeController_test5_invoker.call(HomeController_1.test())
-      }
-  
-    // @LINE:13
-    case controllers_HomeController_move6_route(params@_) =>
+    case controllers_HomeController_move5_route(params@_) =>
       call(params.fromPath[String]("start", None), params.fromPath[String]("dest", None)) { (start, dest) =>
-        controllers_HomeController_move6_invoker.call(HomeController_1.move(start, dest))
+        controllers_HomeController_move5_invoker.call(HomeController_1.move(start, dest))
       }
   
-    // @LINE:14
-    case controllers_HomeController_alert7_route(params@_) =>
-      call { 
-        controllers_HomeController_alert7_invoker.call(HomeController_1.alert())
-      }
-  
-    // @LINE:19
-    case controllers_Assets_versioned8_route(params@_) =>
+    // @LINE:18
+    case controllers_Assets_versioned6_route(params@_) =>
       call(Param[String]("path", Right("/public")), params.fromPath[Asset]("file", None)) { (path, file) =>
-        controllers_Assets_versioned8_invoker.call(Assets_0.versioned(path, file))
+        controllers_Assets_versioned6_invoker.call(Assets_0.versioned(path, file))
       }
   }
 }
