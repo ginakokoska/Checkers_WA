@@ -88,13 +88,18 @@
 </div>
 
 <div class="form-group">
-  <label for="text-input">Text Input</label>
-  <input type="text" class="form-control" id="text-input" placeholder="Enter your move like 'XX YY'">
+  <label for="text-input"> </label>
+  <input type="text" class="form-control" id="text-input" placeholder="Enter your move like 'XX YY'" onfocus="this.placeholder = ''" input-focus-border-color="#99999" >
+  <div style="padding:20px">
+  <button onclick="move()" type="button" class="btn bouncy">Enter</button>
+    <p id="message-field">@{message} </p>
+
 </div>
 
-<button onclick="move()" type="button" class="btn btn-light">Enter</button>
-<p id="message-field">@{message}</p>
+
 </body>
+
+
 
 
 <script>
@@ -105,8 +110,13 @@
   }
   function move() {
     var x = document.getElementById("text-input").value;
+    if (x === "") {
+      alert("Input can't be empty");
+      return;
+    }
     var start = x.split(" ")[0];
     var dest = x.split(" ")[1];
     location.href = "http://localhost:9000/move/" + start + "/" + dest;
   }
+
 </script>
