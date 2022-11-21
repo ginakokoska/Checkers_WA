@@ -15,25 +15,29 @@ import play.api.templates.PlayMagic._
 import play.api.mvc._
 import play.api.data._
 
-object test extends _root_.play.twirl.api.BaseScalaTemplate[play.twirl.api.HtmlFormat.Appendable,_root_.play.twirl.api.Format[play.twirl.api.HtmlFormat.Appendable]](play.twirl.api.HtmlFormat) with _root_.play.twirl.api.Template0[play.twirl.api.HtmlFormat.Appendable] {
+object test extends _root_.play.twirl.api.BaseScalaTemplate[play.twirl.api.HtmlFormat.Appendable,_root_.play.twirl.api.Format[play.twirl.api.HtmlFormat.Appendable]](play.twirl.api.HtmlFormat) with _root_.play.twirl.api.Template1[checkers.controller.controllerComponent.ControllerInterface,play.twirl.api.HtmlFormat.Appendable] {
 
   /**/
-  def apply():play.twirl.api.HtmlFormat.Appendable = {
+  def apply/*1.2*/(controller:checkers.controller.controllerComponent.ControllerInterface):play.twirl.api.HtmlFormat.Appendable = {
     _display_ {
       {
 
+def /*3.2*/size/*3.6*/ = {{controller.gameBoardSize}};
+Seq[Any](format.raw/*2.1*/("""
+"""),format.raw/*3.35*/("""
 
-Seq[Any](format.raw/*1.1*/("""<!DOCTYPE html>
+"""),format.raw/*5.1*/("""<!DOCTYPE html>
 <html lang="en">
 <head>
     <title>Checkers Testpage</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="icon" type="image/x-icon" href='"""),_display_(/*7.49*/routes/*7.55*/.Assets.versioned("images/icon.png")),format.raw/*7.91*/("""'>
+    <link rel="icon" type="image/x-icon" href='"""),_display_(/*11.49*/routes/*11.55*/.Assets.versioned("images/icon.png")),format.raw/*11.91*/("""'>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap&#64;5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
-    <link rel="stylesheet" href='"""),_display_(/*10.35*/routes/*10.41*/.Assets.versioned("stylesheets/nav.css")),format.raw/*10.81*/("""'>
-    <link rel="stylesheet" href='"""),_display_(/*11.35*/routes/*11.41*/.Assets.versioned("stylesheets/main.css")),format.raw/*11.82*/("""'>
+    <link rel="stylesheet" href='"""),_display_(/*14.35*/routes/*14.41*/.Assets.versioned("stylesheets/nav.css")),format.raw/*14.81*/("""'>
+    <link rel="stylesheet" href='"""),_display_(/*15.35*/routes/*15.41*/.Assets.versioned("stylesheets/main.css")),format.raw/*15.82*/("""'>
+    <link rel="stylesheet" href='"""),_display_(/*16.35*/routes/*16.41*/.Assets.versioned("stylesheets/say.css")),format.raw/*16.81*/("""'>
 </head>
 <body>
 
@@ -76,17 +80,51 @@ Seq[Any](format.raw/*1.1*/("""<!DOCTYPE html>
     </div>
 </nav>
 
+
+<div style="padding:100px">
+    <div class="container">
+        """),_display_(/*62.10*/for(row <- 0 until size) yield /*62.34*/ {_display_(Seq[Any](format.raw/*62.36*/("""
+        """),_display_(/*63.10*/for(row <- 1 until size) yield /*63.34*/ {_display_(Seq[Any](format.raw/*63.36*/("""
+        """),format.raw/*64.9*/("""<div class="item"> x</div>
+        """)))}),format.raw/*65.10*/("""
+        """)))}),format.raw/*66.10*/("""
+        """),format.raw/*67.9*/("""<dic class="item-a"> a </dic>
+        <dic class="item-b"> b </dic>
+        <dic class="item-c"> c </dic>
+        <dic class="item-d"> d </dic>
+        <dic class="item-e"> e </dic>
+        <dic class="item-f"> f </dic>
+        <dic class="item-g"> g </dic>
+        <dic class="item-h"> h </dic>
+
+        <dic class="item-au"> a </dic>
+        <dic class="item-bu"> b </dic>
+        <dic class="item-cu"> c </dic>
+        <dic class="item-du"> d </dic>
+        <dic class="item-eu"> e </dic>
+        <dic class="item-fu"> f </dic>
+        <dic class="item-gu"> g </dic>
+        <dic class="item-hu"> h </dic>
+
+        <dic class="item-1"> 1 </dic>
+
+    </div>
+</div>
+
+
+
 </body>
 </html>
+
 
 """))
       }
     }
   }
 
-  def render(): play.twirl.api.HtmlFormat.Appendable = apply()
+  def render(controller:checkers.controller.controllerComponent.ControllerInterface): play.twirl.api.HtmlFormat.Appendable = apply(controller)
 
-  def f:(() => play.twirl.api.HtmlFormat.Appendable) = () => apply()
+  def f:((checkers.controller.controllerComponent.ControllerInterface) => play.twirl.api.HtmlFormat.Appendable) = (controller) => apply(controller)
 
   def ref: this.type = this
 
@@ -95,11 +133,11 @@ Seq[Any](format.raw/*1.1*/("""<!DOCTYPE html>
 
               /*
                   -- GENERATED --
-                  DATE: 2022-11-15T09:19:16.444
+                  DATE: 2022-11-21T11:41:55.438
                   SOURCE: /Users/ginakokoska/IdeaProjects/HTWG/AIN5/Webapplikation/checkers_wa/app/views/test.scala.html
-                  HASH: 7138f13b2694f58a039073055a0ff71a2f036e61
-                  MATRIX: 810->0|1061->225|1075->231|1131->267|1523->632|1538->638|1599->678|1663->715|1678->721|1740->762
-                  LINES: 26->1|32->7|32->7|32->7|35->10|35->10|35->10|36->11|36->11|36->11
+                  HASH: 38f9dd869ce840e97b0e5a93e2affb5f82ade271
+                  MATRIX: 781->1|931->76|942->80|1001->74|1029->109|1057->111|1309->336|1324->342|1381->378|1773->743|1788->749|1849->789|1913->826|1928->832|1990->873|2054->910|2069->916|2130->956|4944->3743|4984->3767|5024->3769|5061->3779|5101->3803|5141->3805|5177->3814|5244->3850|5285->3860|5321->3869
+                  LINES: 21->1|25->3|25->3|26->2|27->3|29->5|35->11|35->11|35->11|38->14|38->14|38->14|39->15|39->15|39->15|40->16|40->16|40->16|86->62|86->62|86->62|87->63|87->63|87->63|88->64|89->65|90->66|91->67
                   -- GENERATED --
               */
           

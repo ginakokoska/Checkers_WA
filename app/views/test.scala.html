@@ -1,3 +1,7 @@
+@(controller:checkers.controller.controllerComponent.ControllerInterface)
+
+@size= @{controller.gameBoardSize}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,6 +13,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
     <link rel="stylesheet" href='@routes.Assets.versioned("stylesheets/nav.css")'>
     <link rel="stylesheet" href='@routes.Assets.versioned("stylesheets/main.css")'>
+    <link rel="stylesheet" href='@routes.Assets.versioned("stylesheets/say.css")'>
 </head>
 <body>
 
@@ -51,6 +56,38 @@
     </div>
 </nav>
 
+
+<div style="padding:100px">
+    <div class="container">
+        @for(row <- 0 until size) {
+        @for(row <- 1 until size) {
+        <div class="item"> x</div>
+        }
+        }
+        <dic class="item-a"> a </dic>
+        <dic class="item-b"> b </dic>
+        <dic class="item-c"> c </dic>
+        <dic class="item-d"> d </dic>
+        <dic class="item-e"> e </dic>
+        <dic class="item-f"> f </dic>
+        <dic class="item-g"> g </dic>
+        <dic class="item-h"> h </dic>
+
+        <dic class="item-au"> a </dic>
+        <dic class="item-bu"> b </dic>
+        <dic class="item-cu"> c </dic>
+        <dic class="item-du"> d </dic>
+        <dic class="item-eu"> e </dic>
+        <dic class="item-fu"> f </dic>
+        <dic class="item-gu"> g </dic>
+        <dic class="item-hu"> h </dic>
+
+        <dic class="item-1"> 1 </dic>
+
+    </div>
+</div>
+
 </body>
 </html>
+
 

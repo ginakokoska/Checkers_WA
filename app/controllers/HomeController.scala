@@ -36,7 +36,7 @@ class HomeController @Inject()(val controllerComponents: ControllerComponents) e
   }
   
   def test = Action {
-    Ok(views.html.test())
+    Ok(views.html.test(gameController))
   }
 
   def checkers_game: Action[AnyContent] = Action {
