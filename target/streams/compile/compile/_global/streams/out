@@ -1,7 +1,2 @@
-[0m[[0m[31merror[0m] [0m[0m/Users/ginakokoska/IdeaProjects/HTWG/AIN5/Webapplikation/checkers_wa/target/scala-2.13/twirl/main/views/html/test.template.scala:87:57: illegal start of simple expression[0m
-[0m[[0m[31merror[0m] [0m[0m        """),_display_(/*63.10*/for(row <- 0 until size)),format.raw/*63.34*/("""[0m
-[0m[[0m[31merror[0m] [0m[0m                                                        ^[0m
-[0m[[0m[31merror[0m] [0m[0m/Users/ginakokoska/IdeaProjects/HTWG/AIN5/Webapplikation/checkers_wa/target/scala-2.13/twirl/main/views/html/test.template.scala:138:7: ')' expected but '}' found.[0m
-[0m[[0m[31merror[0m] [0m[0m      }[0m
-[0m[[0m[31merror[0m] [0m[0m      ^[0m
-[0m[[0m[31merror[0m] [0m[0mtwo errors found[0m
+[debug] Acquiring lock on file C:\Users\Yannick\IdeaProjects\Checkers_WA\project\target\.sbt-compilation-infos\root-compile\.sbt-idea-lock ...
+[debug] Releasing lock on file C:\Users\Yannick\IdeaProjects\Checkers_WA\project\target\.sbt-compilation-infos\root-compile\.sbt-idea-lock.

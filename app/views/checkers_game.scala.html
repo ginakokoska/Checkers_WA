@@ -1,4 +1,4 @@
-@(controller:checkers.controller.controllerComponent.ControllerInterface)
+@(controller:checkers.controller.controllerComponent.ControllerInterface, message:String)
 
 @size= @{controller.gameBoardSize}
 
@@ -54,47 +54,59 @@
 </nav>
 
 
-  <div class="gamecontainer">
-    <div class="game">
-      @for(row <- 0 until size) {
-        <div class="fieldrow"> <!--Maybe think of a different name, might not make sense?-->
-          @for(col <- 0 until size) {
-            @if((row+col) % 2 == 0) {
-              <span class="field_red">
-                @if(controller.field(row, col).isSet) {
-                  @if(controller.field(row, col).getPiece.get.getColor == "black") {
-                    <span class='@{"piece_black"}'>
-                      @{controller.field(row, col).toString}
-                    </span>
-                  } else {
-                    <span class='@{"piece_white"}'>
-                      @{controller.field(row, col).toString}
-                    </span>
-                  }
+<div class="gamecontainer">
+  <div class="game">
+    @for(row <- 0 until size) {
+    <div class="fieldrow"> <!--Maybe think of a different name, might not make sense?-->
+      @for(col <- 0 until size) {
+      @if((row+col) % 2 == 0) {
+      <span class="field_red">
+              @if(controller.field(row, col).isSet) {
+                @if(controller.field(row, col).getPiece.get.getColor == "black") {
+                  <span class='@{"piece_black"}'>
+                    @{controller.field(row, col).toString}
+                  </span>
                 } else {
-                  <span class='@{"piece_was_never_an_option"}'>
-                    @{" "}
+                  <span class='@{"piece_white"}'>
+                    @{controller.field(row, col).toString}
                   </span>
                 }
-              </span>
-            } else {
-                <span class="field_black"></span> <!-- If the code breaks, just copy from above-->
-            }
-          }
-        </div>
-        <div class="clear"></div> <!--idk about this...-->
+              } else {
+                <span class='@{"piece_was_never_an_option"}'>
+                  @{" "}
+                </span>
+              }
+            </span>
+      } else {
+      <span class="field_black"></span> <!-- If the code breaks, just copy from above-->
+      }
       }
     </div>
+    <div class="clear"></div> <!--idk about this...-->
+    }
   </div>
+</div>
 
+<div class="form-group">
+  <label for="text-input">Text Input</label>
+  <input type="text" class="form-control" id="text-input" placeholder="Enter your move like 'XX YY'">
+</div>
 
+<button onclick="move()" type="button" class="btn btn-light">Enter</button>
+<p id="message-field">@{message}</p>
 </body>
 
 
 <script>
   function openGrid(nmbr) {
-  if (confirm("Are you sure you want to continue? Starting a new game means that current progress will be lost!")) {
-    window.location.href="http://localhost:9000/new"+nmbr+"Grid";
+    if (confirm("Are you sure you want to continue? Starting a new game means that current progress will be lost!")) {
+      window.location.href="http://localhost:9000/new"+nmbr+"Grid";
+    }
   }
-}
+  function move() {
+    var x = document.getElementById("text-input").value;
+    var start = x.split(" ")[0];
+    var dest = x.split(" ")[1];
+    location.href = "http://localhost:9000/move/" + start + "/" + dest;
+  }
 </script>

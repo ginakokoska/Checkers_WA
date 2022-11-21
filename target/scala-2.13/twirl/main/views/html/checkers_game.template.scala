@@ -15,15 +15,16 @@ import play.api.templates.PlayMagic._
 import play.api.mvc._
 import play.api.data._
 
-object checkers_game extends _root_.play.twirl.api.BaseScalaTemplate[play.twirl.api.HtmlFormat.Appendable,_root_.play.twirl.api.Format[play.twirl.api.HtmlFormat.Appendable]](play.twirl.api.HtmlFormat) with _root_.play.twirl.api.Template1[checkers.controller.controllerComponent.ControllerInterface,play.twirl.api.HtmlFormat.Appendable] {
+object checkers_game extends _root_.play.twirl.api.BaseScalaTemplate[play.twirl.api.HtmlFormat.Appendable,_root_.play.twirl.api.Format[play.twirl.api.HtmlFormat.Appendable]](play.twirl.api.HtmlFormat) with _root_.play.twirl.api.Template2[checkers.controller.controllerComponent.ControllerInterface,String,play.twirl.api.HtmlFormat.Appendable] {
 
   /**/
-  def apply/*1.2*/(controller:checkers.controller.controllerComponent.ControllerInterface):play.twirl.api.HtmlFormat.Appendable = {
+  def apply/*1.2*/(controller:checkers.controller.controllerComponent.ControllerInterface, message:String):play.twirl.api.HtmlFormat.Appendable = {
     _display_ {
       {
 
 def /*3.2*/size/*3.6*/ = {{controller.gameBoardSize}};
-Seq[Any](format.raw/*2.1*/("""
+Seq[Any](format.raw/*1.90*/("""
+
 """),format.raw/*3.35*/("""
 
 """),format.raw/*5.1*/("""<html lang="en">
@@ -78,57 +79,69 @@ Seq[Any](format.raw/*2.1*/("""
 </nav>
 
 
-  <div class="gamecontainer">
-    <div class="game">
-      """),_display_(/*59.8*/for(row <- 0 until size) yield /*59.32*/ {_display_(Seq[Any](format.raw/*59.34*/("""
-        """),format.raw/*60.9*/("""<div class="fieldrow"> <!--Maybe think of a different name, might not make sense?-->
-          """),_display_(/*61.12*/for(col <- 0 until size) yield /*61.36*/ {_display_(Seq[Any](format.raw/*61.38*/("""
-            """),_display_(/*62.14*/if((row+col) % 2 == 0)/*62.36*/ {_display_(Seq[Any](format.raw/*62.38*/("""
-              """),format.raw/*63.15*/("""<span class="field_red">
-                """),_display_(/*64.18*/if(controller.field(row, col).isSet)/*64.54*/ {_display_(Seq[Any](format.raw/*64.56*/("""
-                  """),_display_(/*65.20*/if(controller.field(row, col).getPiece.get.getColor == "black")/*65.83*/ {_display_(Seq[Any](format.raw/*65.85*/("""
-                    """),format.raw/*66.21*/("""<span class='"""),_display_(/*66.35*/{"piece_black"}),format.raw/*66.50*/("""'>
-                      """),_display_(/*67.24*/{controller.field(row, col).toString}),format.raw/*67.61*/("""
-                    """),format.raw/*68.21*/("""</span>
-                  """)))}/*69.21*/else/*69.26*/{_display_(Seq[Any](format.raw/*69.27*/("""
-                    """),format.raw/*70.21*/("""<span class='"""),_display_(/*70.35*/{"piece_white"}),format.raw/*70.50*/("""'>
-                      """),_display_(/*71.24*/{controller.field(row, col).toString}),format.raw/*71.61*/("""
-                    """),format.raw/*72.21*/("""</span>
-                  """)))}),format.raw/*73.20*/("""
-                """)))}/*74.19*/else/*74.24*/{_display_(Seq[Any](format.raw/*74.25*/("""
-                  """),format.raw/*75.19*/("""<span class='"""),_display_(/*75.33*/{"piece_was_never_an_option"}),format.raw/*75.62*/("""'>
-                    """),_display_(/*76.22*/{" "}),format.raw/*76.27*/("""
-                  """),format.raw/*77.19*/("""</span>
-                """)))}),format.raw/*78.18*/("""
-              """),format.raw/*79.15*/("""</span>
-            """)))}/*80.15*/else/*80.20*/{_display_(Seq[Any](format.raw/*80.21*/("""
-                """),format.raw/*81.17*/("""<span class="field_black"></span> <!-- If the code breaks, just copy from above-->
-            """)))}),format.raw/*82.14*/("""
-          """)))}),format.raw/*83.12*/("""
-        """),format.raw/*84.9*/("""</div>
-        <div class="clear"></div> <!--idk about this...-->
-      """)))}),format.raw/*86.8*/("""
-    """),format.raw/*87.5*/("""</div>
-  </div>
+<div class="gamecontainer">
+  <div class="game">
+    """),_display_(/*59.6*/for(row <- 0 until size) yield /*59.30*/ {_display_(Seq[Any](format.raw/*59.32*/("""
+    """),format.raw/*60.5*/("""<div class="fieldrow"> <!--Maybe think of a different name, might not make sense?-->
+      """),_display_(/*61.8*/for(col <- 0 until size) yield /*61.32*/ {_display_(Seq[Any](format.raw/*61.34*/("""
+      """),_display_(/*62.8*/if((row+col) % 2 == 0)/*62.30*/ {_display_(Seq[Any](format.raw/*62.32*/("""
+      """),format.raw/*63.7*/("""<span class="field_red">
+              """),_display_(/*64.16*/if(controller.field(row, col).isSet)/*64.52*/ {_display_(Seq[Any](format.raw/*64.54*/("""
+                """),_display_(/*65.18*/if(controller.field(row, col).getPiece.get.getColor == "black")/*65.81*/ {_display_(Seq[Any](format.raw/*65.83*/("""
+                  """),format.raw/*66.19*/("""<span class='"""),_display_(/*66.33*/{"piece_black"}),format.raw/*66.48*/("""'>
+                    """),_display_(/*67.22*/{controller.field(row, col).toString}),format.raw/*67.59*/("""
+                  """),format.raw/*68.19*/("""</span>
+                """)))}/*69.19*/else/*69.24*/{_display_(Seq[Any](format.raw/*69.25*/("""
+                  """),format.raw/*70.19*/("""<span class='"""),_display_(/*70.33*/{"piece_white"}),format.raw/*70.48*/("""'>
+                    """),_display_(/*71.22*/{controller.field(row, col).toString}),format.raw/*71.59*/("""
+                  """),format.raw/*72.19*/("""</span>
+                """)))}),format.raw/*73.18*/("""
+              """)))}/*74.17*/else/*74.22*/{_display_(Seq[Any](format.raw/*74.23*/("""
+                """),format.raw/*75.17*/("""<span class='"""),_display_(/*75.31*/{"piece_was_never_an_option"}),format.raw/*75.60*/("""'>
+                  """),_display_(/*76.20*/{" "}),format.raw/*76.25*/("""
+                """),format.raw/*77.17*/("""</span>
+              """)))}),format.raw/*78.16*/("""
+            """),format.raw/*79.13*/("""</span>
+      """)))}/*80.9*/else/*80.14*/{_display_(Seq[Any](format.raw/*80.15*/("""
+      """),format.raw/*81.7*/("""<span class="field_black"></span> <!-- If the code breaks, just copy from above-->
+      """)))}),format.raw/*82.8*/("""
+      """)))}),format.raw/*83.8*/("""
+    """),format.raw/*84.5*/("""</div>
+    <div class="clear"></div> <!--idk about this...-->
+    """)))}),format.raw/*86.6*/("""
+  """),format.raw/*87.3*/("""</div>
+</div>
 
+<div class="form-group">
+  <label for="text-input">Text Input</label>
+  <input type="text" class="form-control" id="text-input" placeholder="Enter your move like 'XX YY'">
+</div>
 
+<button onclick="move()" type="button" class="btn btn-light">Enter</button>
+<p id="message-field">"""),_display_(/*96.24*/{message}),format.raw/*96.33*/("""</p>
 </body>
 
 
 <script>
-  function openGrid(nmbr) """),format.raw/*95.27*/("""{"""),format.raw/*95.28*/("""
-  """),format.raw/*96.3*/("""if (confirm("Are you sure you want to continue? Starting a new game means that current progress will be lost!")) """),format.raw/*96.116*/("""{"""),format.raw/*96.117*/("""
-    """),format.raw/*97.5*/("""window.location.href="http://localhost:9000/new"+nmbr+"Grid";
-  """),format.raw/*98.3*/("""}"""),format.raw/*98.4*/("""
-"""),format.raw/*99.1*/("""}"""),format.raw/*99.2*/("""
-"""),format.raw/*100.1*/("""</script>"""))
+  function openGrid(nmbr) """),format.raw/*101.27*/("""{"""),format.raw/*101.28*/("""
+    """),format.raw/*102.5*/("""if (confirm("Are you sure you want to continue? Starting a new game means that current progress will be lost!")) """),format.raw/*102.118*/("""{"""),format.raw/*102.119*/("""
+      """),format.raw/*103.7*/("""window.location.href="http://localhost:9000/new"+nmbr+"Grid";
+    """),format.raw/*104.5*/("""}"""),format.raw/*104.6*/("""
+  """),format.raw/*105.3*/("""}"""),format.raw/*105.4*/("""
+  """),format.raw/*106.3*/("""function move() """),format.raw/*106.19*/("""{"""),format.raw/*106.20*/("""
+    """),format.raw/*107.5*/("""var x = document.getElementById("text-input").value;
+    var start = x.split(" ")[0];
+    var dest = x.split(" ")[1];
+    location.href = "http://localhost:9000/move/" + start + "/" + dest;
+  """),format.raw/*111.3*/("""}"""),format.raw/*111.4*/("""
+"""),format.raw/*112.1*/("""</script>"""))
       }
     }
   }
 
-  def render(controller:checkers.controller.controllerComponent.ControllerInterface): play.twirl.api.HtmlFormat.Appendable = apply(controller)
+  def render(controller:checkers.controller.controllerComponent.ControllerInterface,message:String): play.twirl.api.HtmlFormat.Appendable = apply(controller,message)
 
-  def f:((checkers.controller.controllerComponent.ControllerInterface) => play.twirl.api.HtmlFormat.Appendable) = (controller) => apply(controller)
+  def f:((checkers.controller.controllerComponent.ControllerInterface,String) => play.twirl.api.HtmlFormat.Appendable) = (controller,message) => apply(controller,message)
 
   def ref: this.type = this
 
@@ -137,11 +150,11 @@ Seq[Any](format.raw/*2.1*/("""
 
               /*
                   -- GENERATED --
-                  DATE: 2022-11-21T09:45:09.614
-                  SOURCE: /Users/ginakokoska/IdeaProjects/HTWG/AIN5/Webapplikation/checkers_wa/app/views/checkers_game.scala.html
-                  HASH: f2f7b594a59ec48acff38782a968ca6dc12337fe
-                  MATRIX: 790->1|940->76|951->80|1010->74|1038->109|1066->111|1290->308|1305->314|1362->350|1748->709|1763->715|1824->755|4278->3183|4318->3207|4358->3209|4394->3218|4517->3314|4557->3338|4597->3340|4638->3354|4669->3376|4709->3378|4752->3393|4821->3435|4866->3471|4906->3473|4953->3493|5025->3556|5065->3558|5114->3579|5155->3593|5191->3608|5244->3634|5302->3671|5351->3692|5397->3720|5410->3725|5449->3726|5498->3747|5539->3761|5575->3776|5628->3802|5686->3839|5735->3860|5793->3887|5830->3906|5843->3911|5882->3912|5929->3931|5970->3945|6020->3974|6071->3998|6097->4003|6144->4022|6200->4047|6243->4062|6283->4084|6296->4089|6335->4090|6380->4107|6507->4203|6550->4215|6586->4224|6689->4297|6721->4302|6812->4365|6841->4366|6871->4369|7013->4482|7043->4483|7075->4488|7166->4552|7194->4553|7222->4554|7250->4555|7279->4556
-                  LINES: 21->1|25->3|25->3|26->2|27->3|29->5|34->10|34->10|34->10|37->13|37->13|37->13|83->59|83->59|83->59|84->60|85->61|85->61|85->61|86->62|86->62|86->62|87->63|88->64|88->64|88->64|89->65|89->65|89->65|90->66|90->66|90->66|91->67|91->67|92->68|93->69|93->69|93->69|94->70|94->70|94->70|95->71|95->71|96->72|97->73|98->74|98->74|98->74|99->75|99->75|99->75|100->76|100->76|101->77|102->78|103->79|104->80|104->80|104->80|105->81|106->82|107->83|108->84|110->86|111->87|119->95|119->95|120->96|120->96|120->96|121->97|122->98|122->98|123->99|123->99|124->100
+                  DATE: 2022-11-21T12:19:48.277
+                  SOURCE: C:/Users/Yannick/IdeaProjects/Checkers_WA/app/views/checkers_game.scala.html
+                  HASH: 2d7324a2f8b97d45e20144d716caf32a84753eca
+                  MATRIX: 797->1|963->94|974->98|1034->89|1065->127|1095->131|1324->333|1339->339|1396->375|1785->737|1800->743|1861->783|4355->3251|4395->3275|4435->3277|4468->3283|4587->3376|4627->3400|4667->3402|4702->3411|4733->3433|4773->3435|4808->3443|4876->3484|4921->3520|4961->3522|5007->3541|5079->3604|5119->3606|5167->3626|5208->3640|5244->3655|5296->3680|5354->3717|5402->3737|5447->3764|5460->3769|5499->3770|5547->3790|5588->3804|5624->3819|5676->3844|5734->3881|5782->3901|5839->3927|5875->3945|5888->3950|5927->3951|5973->3969|6014->3983|6064->4012|6114->4035|6140->4040|6186->4058|6241->4082|6283->4096|6317->4113|6330->4118|6369->4119|6404->4127|6525->4218|6564->4227|6597->4233|6696->4302|6727->4306|7057->4609|7087->4618|7171->4673|7201->4674|7235->4680|7378->4793|7409->4794|7445->4802|7540->4869|7569->4870|7601->4874|7630->4875|7662->4879|7707->4895|7737->4896|7771->4902|7995->5098|8024->5099|8054->5101
+                  LINES: 21->1|25->3|25->3|26->1|28->3|30->5|35->10|35->10|35->10|38->13|38->13|38->13|84->59|84->59|84->59|85->60|86->61|86->61|86->61|87->62|87->62|87->62|88->63|89->64|89->64|89->64|90->65|90->65|90->65|91->66|91->66|91->66|92->67|92->67|93->68|94->69|94->69|94->69|95->70|95->70|95->70|96->71|96->71|97->72|98->73|99->74|99->74|99->74|100->75|100->75|100->75|101->76|101->76|102->77|103->78|104->79|105->80|105->80|105->80|106->81|107->82|108->83|109->84|111->86|112->87|121->96|121->96|126->101|126->101|127->102|127->102|127->102|128->103|129->104|129->104|130->105|130->105|131->106|131->106|131->106|132->107|136->111|136->111|137->112
                   -- GENERATED --
               */
           
