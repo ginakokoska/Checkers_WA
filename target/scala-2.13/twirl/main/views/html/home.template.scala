@@ -32,8 +32,7 @@ Seq[Any](format.raw/*1.1*/("""<!doctype html>
   <link rel="icon" type="image/x-icon" href='"""),_display_(/*7.47*/routes/*7.53*/.Assets.versioned("images/icon.png")),format.raw/*7.89*/("""'>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap&#64;5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
-  <link rel="stylesheet" href='"""),_display_(/*10.33*/routes/*10.39*/.Assets.versioned("stylesheets/nav.css")),format.raw/*10.79*/("""'>
-  <link rel="stylesheet" href='"""),_display_(/*11.33*/routes/*11.39*/.Assets.versioned("stylesheets/main.css")),format.raw/*11.80*/("""'>
+  <link rel="stylesheet" href='"""),_display_(/*10.33*/routes/*10.39*/.Assets.versioned("stylesheets/home.css")),format.raw/*10.80*/("""'>
 
 </head>
 <body>
@@ -91,16 +90,16 @@ Seq[Any](format.raw/*1.1*/("""<!doctype html>
 
       <div class="carousel-inner">
         <div class="carousel-item active">
-          <img src="""),_display_(/*69.21*/routes/*69.27*/.Assets.versioned("images/Startpoint.png")),format.raw/*69.69*/(""" """),format.raw/*69.70*/("""class="d-block w-100">
+          <img src="""),_display_(/*68.21*/routes/*68.27*/.Assets.versioned("images/Startpoint.png")),format.raw/*68.69*/(""" """),format.raw/*68.70*/("""class="d-block w-100">
         </div>
         <div class="carousel-item">
-          <img src="""),_display_(/*72.21*/routes/*72.27*/.Assets.versioned("images/movediag.png")),format.raw/*72.67*/(""" """),format.raw/*72.68*/("""class="d-block w-100">
+          <img src="""),_display_(/*71.21*/routes/*71.27*/.Assets.versioned("images/movediag.png")),format.raw/*71.67*/(""" """),format.raw/*71.68*/("""class="d-block w-100">
         </div>
         <div class="carousel-item">
-          <img src="""),_display_(/*75.21*/routes/*75.27*/.Assets.versioned("images/capture.png")),format.raw/*75.66*/(""" """),format.raw/*75.67*/("""class="d-block w-100">
+          <img src="""),_display_(/*74.21*/routes/*74.27*/.Assets.versioned("images/capture.png")),format.raw/*74.66*/(""" """),format.raw/*74.67*/("""class="d-block w-100">
         </div>
         <div class="carousel-item">
-          <img src="""),_display_(/*78.21*/routes/*78.27*/.Assets.versioned("images/queen.png")),format.raw/*78.64*/(""" """),format.raw/*78.65*/("""class="d-block w-100">
+          <img src="""),_display_(/*77.21*/routes/*77.27*/.Assets.versioned("images/queen.png")),format.raw/*77.64*/(""" """),format.raw/*77.65*/("""class="d-block w-100">
         </div>
       </div>
       <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
@@ -131,11 +130,11 @@ Seq[Any](format.raw/*1.1*/("""<!doctype html>
 
               /*
                   -- GENERATED --
-                  DATE: 2022-11-15T08:58:31.513
+                  DATE: 2022-11-15T09:44:04.024
                   SOURCE: /Users/ginakokoska/IdeaProjects/HTWG/AIN5/Webapplikation/checkers_wa/app/views/home.scala.html
-                  HASH: f505a393017b087e8b3565a357f1e8299ff241bb
-                  MATRIX: 810->0|1055->219|1069->225|1125->261|1514->623|1529->629|1590->669|1653->705|1668->711|1730->752|5111->4106|5126->4112|5189->4154|5218->4155|5342->4252|5357->4258|5418->4298|5447->4299|5571->4396|5586->4402|5646->4441|5675->4442|5799->4539|5814->4545|5872->4582|5901->4583
-                  LINES: 26->1|32->7|32->7|32->7|35->10|35->10|35->10|36->11|36->11|36->11|94->69|94->69|94->69|94->69|97->72|97->72|97->72|97->72|100->75|100->75|100->75|100->75|103->78|103->78|103->78|103->78
+                  HASH: 866db20d2ec623b2a3b3066b3aabe98748b331e8
+                  MATRIX: 810->0|1055->219|1069->225|1125->261|1514->623|1529->629|1591->670|4972->4024|4987->4030|5050->4072|5079->4073|5203->4170|5218->4176|5279->4216|5308->4217|5432->4314|5447->4320|5507->4359|5536->4360|5660->4457|5675->4463|5733->4500|5762->4501
+                  LINES: 26->1|32->7|32->7|32->7|35->10|35->10|35->10|93->68|93->68|93->68|93->68|96->71|96->71|96->71|96->71|99->74|99->74|99->74|99->74|102->77|102->77|102->77|102->77
                   -- GENERATED --
               */
           

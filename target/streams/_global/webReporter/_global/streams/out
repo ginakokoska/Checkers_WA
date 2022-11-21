@@ -1,4 +1,7 @@
-[0m[[0m[31merror[0m] [0m[0m/Users/ginakokoska/IdeaProjects/HTWG/AIN5/Webapplikation/checkers_wa/app/assets/stylesheets/nav.less:100:3: .myAlign is undefined[0m
-[0m[[0m[31merror[0m] [0m[0m  .myAlign;[0m
-[0m[[0m[31merror[0m] [0m[0m  ^[0m
-[0m[[0m[31merror[0m] [0m[0mone error found[0m
+[0m[[0m[31merror[0m] [0m[0m/Users/ginakokoska/IdeaProjects/HTWG/AIN5/Webapplikation/checkers_wa/app/assets/stylesheets/main.less:1:1: missing semi-colon or unrecognised media features on import[0m
+[0m[[0m[31merror[0m] [0m[0m@import 'nav.less'[0m
+[0m[[0m[31merror[0m] [0m[0m^[0m
+[0m[[0m[31merror[0m] [0m[0m/Users/ginakokoska/IdeaProjects/HTWG/AIN5/Webapplikation/checkers_wa/app/assets/stylesheets/home.less:1:1: missing semi-colon or unrecognised media features on import[0m
+[0m[[0m[31merror[0m] [0m[0m@import 'main.less';[0m
+[0m[[0m[31merror[0m] [0m[0m^[0m
+[0m[[0m[31merror[0m] [0m[0mtwo errors found[0m

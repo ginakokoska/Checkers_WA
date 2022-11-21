@@ -32,8 +32,7 @@ Seq[Any](format.raw/*1.1*/("""<!doctype html>
     <link rel="icon" type="image/x-icon" href='"""),_display_(/*7.49*/routes/*7.55*/.Assets.versioned("images/icon.png")),format.raw/*7.91*/("""'>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap&#64;5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
-    <link rel="stylesheet" href='"""),_display_(/*10.35*/routes/*10.41*/.Assets.versioned("stylesheets/nav.css")),format.raw/*10.81*/("""'>
-    <link rel="stylesheet" href='"""),_display_(/*11.35*/routes/*11.41*/.Assets.versioned("stylesheets/main.css")),format.raw/*11.82*/("""'>
+    <link rel="stylesheet" href='"""),_display_(/*10.35*/routes/*10.41*/.Assets.versioned("stylesheets/main.css")),format.raw/*10.82*/("""'>
 </head>
 <body>
 
@@ -208,11 +207,11 @@ Seq[Any](format.raw/*1.1*/("""<!doctype html>
 
               /*
                   -- GENERATED --
-                  DATE: 2022-11-15T08:58:31.530
+                  DATE: 2022-11-15T09:49:14.061
                   SOURCE: /Users/ginakokoska/IdeaProjects/HTWG/AIN5/Webapplikation/checkers_wa/app/views/instructions.scala.html
-                  HASH: 5f685ca806ff4b5396c329bb8e9b149d1fab1b86
-                  MATRIX: 818->0|1073->229|1087->235|1143->271|1535->636|1550->642|1611->682|1675->719|1690->725|1752->766
-                  LINES: 26->1|32->7|32->7|32->7|35->10|35->10|35->10|36->11|36->11|36->11
+                  HASH: bfc6300010ebaa47d4d9d17dd90c94f4117993e2
+                  MATRIX: 818->0|1073->229|1087->235|1143->271|1535->636|1550->642|1612->683
+                  LINES: 26->1|32->7|32->7|32->7|35->10|35->10|35->10
                   -- GENERATED --
               */
           
