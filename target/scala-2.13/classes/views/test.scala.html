@@ -1,0 +1,163 @@
+@(controller:checkers.controller.controllerComponent.ControllerInterface)
+
+@size= @{controller.gameBoardSize}
+
+<html lang="en">
+<head>
+    <title>Checkers Game</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/x-icon" href='@routes.Assets.versioned("images/icon.png")'>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap&#64;5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+    <link rel="stylesheet" href='@routes.Assets.versioned("stylesheets/say.css")'>
+
+
+    <style>.wrapper-inner{grid-template-columns: repeat(@{size}, auto);}</style>
+</head>
+
+<body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap&#64;5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+<nav class="navbar navbar-dark bg-dark fixed-top">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="http://localhost:9000/"> <i class="fa-solid fa-chess"></i> Checkers</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvasDarkNavbar" aria-labelledby="offcanvasDarkNavbarLabel">
+            <div class="offcanvas-header">
+                <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel">Checkers Menu</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body">
+                <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                    <li class="nav-item">
+                        <a class="nav-link active"  aria-current="page" href="http://localhost:9000/"> <i class="fa-solid fa-igloo"></i> Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://github.com/ginakokoska/Checkers_WA"> <i class="fa-brands fa-github-alt"></i> GitHub</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="fa-solid fa-chess-board"></i> Boardsize
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-dark">
+                            <li><a class="dropdown-item "  onclick="openGrid(8)"> <i class="fa-solid fa-chess-queen"></i> 8x8</a></li>
+                            <li><a class="dropdown-item "  onclick="openGrid(10)"> <i class="fa-regular  fa-chess-queen"></i> 10x10</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="http://localhost:9000/instructions"> <i class="fa-solid fa-clipboard-list"></i> User Manual</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</nav>
+
+
+
+
+<div class="grid-container">
+
+
+    <div class="left">
+        <div class="l-wrapper-inner">
+            <div class="box-inner">A</div>
+            <div class="box-inner">B</div>
+            <div class="box-inner">C</div>
+            <div class="box-inner">D</div>
+            <div class="box-inner">E</div>
+            <div class="box-inner">F</div>
+            <div class="box-inner">G</div>
+            <div class="box-inner">H</div>
+        </div>
+    </div>
+
+
+
+    <div class="item-game">
+        <div class="gamecontainer">
+            <div class="game">
+                @for(row <- 0 until size) {
+                <div class="fieldrow"> <!--Maybe think of a different name, might not make sense?-->
+                    @for(col <- 0 until size) {
+                    @if((row+col) % 2 == 0) {
+                    <span class="field_red">
+          @if(controller.field(row, col).isSet) {
+            @if(controller.field(row, col).getPiece.get.getColor == "black") {
+              <span class='@{"piece_black"}'>
+                @{controller.field(row, col).toString}
+              </span>
+            } else {
+              <span class='@{"piece_white"}'>
+                @{controller.field(row, col).toString}
+              </span>
+            }
+          } else {
+            <span class='@{"piece_was_never_an_option"}'>
+              @{" "}
+            </span>
+          }
+        </span>
+                    } else {
+                    <span class="field_black"></span> <!-- If the code breaks, just copy from above-->
+                    }
+                    }
+                </div>
+                <div class="clear"></div> <!--idk about this...-->
+                }
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="bottom">
+        <div class="wrapper-inner">
+            <div class="box-inner">A</div>
+            <div class="box-inner">B</div>
+            <div class="box-inner">C</div>
+            <div class="box-inner">D</div>
+            <div class="box-inner">E</div>
+            <div class="box-inner">F</div>
+            <div class="box-inner">G</div>
+            <div class="box-inner">H</div>
+        </div>
+    </div>
+
+
+</div>
+
+
+
+
+<div class="form-group">
+    <label for="text-input">Text Input</label>
+    <input type="text" class="form-control" id="text-input" placeholder="Enter your move like 'XX YY'">
+</div>
+
+<button onclick="move()" type="button" class="btn btn-light">Enter</button>
+<p id="message-field">test</p>
+</body>
+
+
+<script>
+  function openGrid(nmbr) {
+    if (confirm("Are you sure you want to continue? Starting a new game means that current progress will be lost!")) {
+      window.location.href="http://localhost:9000/new"+nmbr+"Grid";
+    }
+  }
+  function move() {
+    var x = document.getElementById("text-input").value;
+    var start = x.split(" ")[0];
+    var dest = x.split(" ")[1];
+    location.href = "http://localhost:9000/move/" + start + "/" + dest;
+  }
+</script>
+
+
+</html>
+
+
