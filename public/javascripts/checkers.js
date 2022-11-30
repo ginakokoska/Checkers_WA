@@ -1,5 +1,6 @@
 let size = 9
 
+
 // zahl zwischen 0 & size^2 - 1
 function toScalar(fieldrow, field) {
     return fieldrow*size + field;
@@ -18,6 +19,20 @@ function col(scalar) {
 function cell(fieldrowIndex, cellIndex) {
     return row(toScalar(fieldrowIndex,cellIndex)), col(toScalar(fieldrowIndex,cellIndex))
 }
+
+let data = {}
+
+function getData() {
+    return $.ajax({
+        method: "GET",
+        url: "/current",
+        dataType: "json",
+        success: function (response) {
+            data = response;
+        }
+    });
+}
+
 
 class Gameboard {
     constructor(size){
@@ -43,15 +58,18 @@ let gameboard = new Gameboard(size)
 function updateGameboard(gameboard) {
     for (let scalar=0; scalar <gameboard.size*gameboard.size; scalar++) {
         if (gameboard.state[scalar] == "normal" {
-            $("#scalar"+scalar).html("o");
+            //$("#scalar"+scalar).html("o");
+            $("#scalar"+scalar).attr("src", "/assets/images/game/white.png");
         } else if (gameboard.state[scalar] == "queen" {
-            $("#scalar"+scalar).html("q");
+            //$("#scalar"+scalar).html("q");
+            $("#scalar"+scalar).attr("src", "/assets/images/game/white_queen.png");
+
         }
 
         if (gameboard.field.piece.color[scalar] == "black") {
-            $("#scalar"+scalar).addClass("piece_black");
+            $("#scalar"+scalar).attr("src", "/assets/images/game/black.png");
         } else if (gameboard.field.piece.color[scalar] == "white" {
-            $("#scalar"+scalar).addClass("piece_white");
+            $("#scalar"+scalar).attr("src", "/assets/images/game/black_queen.png");
         }
     }
 }
@@ -65,6 +83,8 @@ function setField(scalar, state) {
     $("#scalar"+scalar).off("click");
 
 }
+
+
 
 function registerClickListener() {
     for (let scalar=0; scalar < gameboard.size*gameboard.size;scalar++) {
