@@ -53,7 +53,7 @@ class Gameboard {
 
     fill(json) {
         for (let scalar=0; scalar <this.size*this.size;scalar++) {
-            this.state[scalar]=(json[toScalar(row(scalar),col(scalar))].field.piece.state);
+            this.state[scalar]=(json[scalar].state);
             this.color[scalar]=(json[toScalar(row(scalar),col(scalar))].field.piece.color);
             this.prow[scalar]=(json[toScalar(row(scalar),col(scalar))].field.piece.prow);
             this.pcol[scalar]=(json[toScalar(row(scalar),col(scalar))].field.piece.pcol);
@@ -83,7 +83,7 @@ function updateGameboard(gameboard) {
             $("#scalar"+scalar).attr("src", "/assets/images/white.png");
         } else if (gameboard.state[scalar] === "queen") {
             //$("#scalar"+scalar).html("q");
-            $("#scalar"+scalar).attr("src", "/assets/images/game/white_queen.png");
+            $("#scalar"+scalar).attr("src", "/assets/images/white_queen.png");
 
         }
         if (gameboard.color[scalar] === "black") {
@@ -93,6 +93,11 @@ function updateGameboard(gameboard) {
         }
     }
 }
+
+
+
+
+
 
 /**
 function test(row, col, clicked) {

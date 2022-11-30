@@ -91,7 +91,7 @@ class HomeController @Inject()(val controllerComponents: ControllerComponents) e
     Ok(views.html.error(any))
   }
 
-  def toJason() = Action {
+  def toJson() = Action {
     Ok(gameController.toJson)
   }
 
