@@ -1,11 +1,13 @@
 package controllers
 
 import checkers.Checkers
-import checkers.controller.controllerComponent.ControllerInterface
-import checkers.model.gameBoardComponent.gameBoardBaseImpl.Piece
+import checkers.model.gameBoardComponent.FieldInterface
+//import checkers.controller.controllerComponent.ControllerInterface
+import checkers.model.gameBoardComponent.gameBoardBaseImpl.{Field, GameBoard, Piece}
 
 import javax.inject._
 import play.api._
+import play.api.libs.json.{JsNull, JsNumber, JsValue, Json, Writes}
 import play.api.mvc._
 
 /**
@@ -22,7 +24,7 @@ class HomeController @Inject()(val controllerComponents: ControllerComponents) e
    * will be called when the application receives a `GET` request with
    * a path of `/`.
    */
-  val gameController: ControllerInterface = Checkers.controller
+  val gameController = Checkers.controller
   var message: String = ""
 
   def checkersAsText: String = gameController.gameBoardToString
@@ -92,6 +94,47 @@ class HomeController @Inject()(val controllerComponents: ControllerComponents) e
   def toJason() = Action {
     Ok(gameController.toJson)
   }
+
+
+  implicit val fieldWrites = new Writes[FieldInterface] {
+    def writes(field: FieldInterface) = Json.obj(
+      "pos" -> field.getPos,
+      "piece" -> pieceWrites.writes(field.getPiece)
+    )
+  }
+
+  implicit val pieceWrites = new Writes[Option[Piece]] {
+    def writes(piece: Option[Piece]): JsValue = piece match {
+      case Some(t) => Json.obj(
+        "state" -> t.state,
+        "prow" -> t.row,
+        "pcol" -> t.col,
+        "color" -> t.getColor
+      )
+      case None => JsNull
+    }
+  }
+
+  implicit val gameBoardWrites: Writes[GameBoard] = new Writes[GameBoard] {
+    def writes(gameBoard: GameBoard): JsValue = Json.toJson(
+      "gameBoard" -> Json.obj(
+        "size" -> JsNumber(gameBoard.size),
+        "fields" -> Json.toJson(
+          for {
+            row <- 0 until gameBoard.size
+            col <- 0 until gameBoard.size
+          } yield {
+            Json.obj(
+              "row" -> row,
+              "col" -> col,
+              "field" -> Json.toJson(gameController.gameBoard.field(row, col))
+            )
+          }
+        )
+      )
+    )
+  }
+
 
 
 }

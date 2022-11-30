@@ -1,6 +1,4 @@
-[0m[[0m[0mdebug[0m] [0m[0mnot up to date. inChanged = true, force = false[0m
-[0m[[0m[0mdebug[0m] [0m[0mUpdating ProjectRef(uri("file:/Users/ginakokoska/IdeaProjects/HTWG/AIN5/Webapplikation/checkers_wa/project/"), "checkers_wa-build")...[0m
-[0m[[0m[0minfo[0m] [0m[0mUpdating [0m
-[0m[[0m[0minfo[0m] [0m[0mResolved  dependencies[0m
-[0m[[0m[0mdebug[0m] [0m[0mDone updating ProjectRef(uri("file:/Users/ginakokoska/IdeaProjects/HTWG/AIN5/Webapplikation/checkers_wa/project/"), "checkers_wa-build")[0m
-[0m[[0m[33mwarn[0m] [0m[0mThere may be incompatibilities among your library dependencies; run 'evicted' to see detailed eviction warnings.[0m
+[debug] not up to date. inChanged = true, force = false
+[debug] Updating ProjectRef(uri("file:/C:/Users/Yannick/IdeaProjects/Checkers_WA/project/"), "checkers_wa-build")...
+[debug] Done updating ProjectRef(uri("file:/C:/Users/Yannick/IdeaProjects/Checkers_WA/project/"), "checkers_wa-build")
+[warn] There may be incompatibilities among your library dependencies; run 'evicted' to see detailed eviction warnings.

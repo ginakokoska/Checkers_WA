@@ -67,7 +67,7 @@ function setField(scalar, state) {
 }
 
 function registerClickListener() {
-    for (let scalar=0; scalar <gameboard.size*gameboard.size;scalar++) {
+    for (let scalar=0; scalar < gameboard.size*gameboard.size;scalar++) {
         if (gameboard.state[scalar] == 0) {
             $("#fieldrow"+scalar).click(function() {showCandidates(scalar)});
         }
