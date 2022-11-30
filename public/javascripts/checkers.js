@@ -1,24 +1,51 @@
-let size = 9
 
+// for Ajax
+$(document).ready(function() {
+        getData().then(() => {
+            //checkWin();
+            setScalarCol();
+            updateGameboard();
+            refreshOnClickEvents();
+        })
+    }
+)
 
-// zahl zwischen 0 & size^2 - 1
-function toScalar(fieldrow, field) {
-    return fieldrow*size + field;
+// for webserver ??
+function processCommand(cmd, data) {
+    post("POST", "/command", {"cmd": cmd, "data": data}).then(() => {
+        getData().then(() => {
+            checkWin();
+            updateInfoPanel();
+            updateInputPanel();
+            updateGameBoard();
+            refreshOnClickEvents()
+        })
+    })
 }
 
-// stimmt
-function row(scalar) {
-    return Math.floor(scalar / size);
-}
 
-// stimmt
-function col(scalar) {
-    return scalar % size;
-}
 
-function cell(fieldrowIndex, cellIndex) {
-    return row(toScalar(fieldrowIndex,cellIndex)), col(toScalar(fieldrowIndex,cellIndex))
-}
+//
+// let size = 9
+// // zahl zwischen 0 & size^2 - 1
+//
+// function toScalar(fieldrow, field) {
+//     return fieldrow*size + field;
+// }
+//
+// // stimmt
+// function row(scalar) {
+//     return Math.floor(scalar / size);
+// }
+//
+// // stimmt
+// function col(scalar) {
+//     return scalar % size;
+// }
+//
+// function cell(fieldrowIndex, cellIndex) {
+//     return row(toScalar(fieldrowIndex,cellIndex)), col(toScalar(fieldrowIndex,cellIndex))
+// }
 
 let data = {}
 
@@ -42,31 +69,33 @@ function updateGame(game) {
 }
 
 
-class Gameboard {
-    constructor(size){
-        this.size = size;
-        this.state = [];
-        this.color = [];
-        this.prow = [];
-        this.pcol = [];
-    }
+// class Gameboard {
+//     constructor(size){
+//         this.size = size;
+//         this.state = [];
+//         this.color = [];
+//         this.prow = [];
+//         this.pcol = [];
+//     }
+//
+//     fill(json) {
+//         for (let scalar=0; scalar <this.size*this.size;scalar++) {
+//             this.state[scalar]=(json[scalar].state);
+//             this.color[scalar]=(json[toScalar(row(scalar),col(scalar))].color);
+//             this.prow[scalar]=(json[toScalar(row(scalar),col(scalar))].prow);
+//             this.pcol[scalar]=(json[toScalar(row(scalar),col(scalar))].field.piece.pcol);
+//         }
+//     }
+// }
 
-    fill(json) {
-        for (let scalar=0; scalar <this.size*this.size;scalar++) {
-            this.state[scalar]=(json[scalar].state);
-            this.color[scalar]=(json[toScalar(row(scalar),col(scalar))].field.piece.color);
-            this.prow[scalar]=(json[toScalar(row(scalar),col(scalar))].field.piece.prow);
-            this.pcol[scalar]=(json[toScalar(row(scalar),col(scalar))].field.piece.pcol);
-        }
-    }
-}
 
+let size = 8
 let gameboard = new Gameboard(size)
+
 // document.getElementById("scalar{i}").bgcolor="{color}";
 // function mit % um jedes zweite feld als rot oder als schwarz zu haben
-
-function setScalarCol(gameboard) {
-    for (let scalar=0; scalar <gameboard.size*gameboard.size; scalar++) {
+function setScalarCol() {
+    for (let scalar=0; scalar < data.gameBoard.size*data.gameBoard.size; scalar++) {
         if (scalar % 2 === 0) {
             document.getElementById("scalar"+scalar).bgcolor="black";
         } else {
@@ -75,6 +104,11 @@ function setScalarCol(gameboard) {
     }
 }
 
+// {"game":
+// {"gameState":
+// "WHITE_TURN","gameBoard":
+// {"size":8,"fields":
+// [{"row":0,"col":0,"field":{"pos":"A1","piece":{"state":"normal","prow":0,"pcol":0,"color":"black"}}},
 
 function updateGameboard(gameboard) {
     for (let scalar=0; scalar <gameboard.size*gameboard.size; scalar++) {
@@ -83,7 +117,7 @@ function updateGameboard(gameboard) {
             $("#scalar"+scalar).attr("src", "/assets/images/white.png");
         } else if (gameboard.state[scalar] === "queen") {
             //$("#scalar"+scalar).html("q");
-            $("#scalar"+scalar).attr("src", "/assets/images/white_queen.png");
+            $('#' + fieldID).attr("src", "/assets/images/white_queen.png");
 
         }
         if (gameboard.color[scalar] === "black") {

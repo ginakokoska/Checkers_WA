@@ -1,6 +1,6 @@
 // @GENERATOR:play-routes-compiler
 // @SOURCE:/Users/ginakokoska/IdeaProjects/HTWG/AIN5/Webapplikation/checkers_wa/conf/routes
-// @DATE:Wed Nov 30 16:06:30 CET 2022
+// @DATE:Wed Nov 30 19:19:00 CET 2022
 
 import play.api.mvc.Call
 
@@ -16,12 +16,6 @@ package controllers {
       if (_prefix.endsWith("/")) "" else "/"
     }
 
-  
-    // @LINE:13
-    def toJson(): Call = {
-      
-      Call("GET", _prefix + { _defaultPrefix } + "toJson")
-    }
   
     // @LINE:9
     def new10Grid(): Call = {
@@ -51,6 +45,12 @@ package controllers {
     def home(): Call = {
       
       Call("GET", _prefix)
+    }
+  
+    // @LINE:13
+    def status(): Call = {
+      
+      Call("GET", _prefix + { _defaultPrefix } + "status")
     }
   
     // @LINE:8

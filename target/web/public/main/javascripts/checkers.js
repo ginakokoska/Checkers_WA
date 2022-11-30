@@ -1,24 +1,51 @@
-let size = 9
 
+// for Ajax
+$(document).ready(function() {
+        getData().then(() => {
+            //checkWin();
+            setScalarCol();
+            updateGameboard();
+            refreshOnClickEvents();
+        })
+    }
+)
 
-// zahl zwischen 0 & size^2 - 1
-function toScalar(fieldrow, field) {
-    return fieldrow*size + field;
+// for webserver ??
+function processCommand(cmd, data) {
+    post("POST", "/command", {"cmd": cmd, "data": data}).then(() => {
+        getData().then(() => {
+            checkWin();
+            updateInfoPanel();
+            updateInputPanel();
+            updateGameBoard();
+            refreshOnClickEvents()
+        })
+    })
 }
 
-// stimmt
-function row(scalar) {
-    return Math.floor(scalar / size);
-}
 
-// stimmt
-function col(scalar) {
-    return scalar % size;
-}
 
-function cell(fieldrowIndex, cellIndex) {
-    return row(toScalar(fieldrowIndex,cellIndex)), col(toScalar(fieldrowIndex,cellIndex))
-}
+//
+// let size = 9
+// // zahl zwischen 0 & size^2 - 1
+//
+// function toScalar(fieldrow, field) {
+//     return fieldrow*size + field;
+// }
+//
+// // stimmt
+// function row(scalar) {
+//     return Math.floor(scalar / size);
+// }
+//
+// // stimmt
+// function col(scalar) {
+//     return scalar % size;
+// }
+//
+// function cell(fieldrowIndex, cellIndex) {
+//     return row(toScalar(fieldrowIndex,cellIndex)), col(toScalar(fieldrowIndex,cellIndex))
+// }
 
 let data = {}
 
@@ -42,57 +69,90 @@ function updateGame(game) {
 }
 
 
-class Gameboard {
-    constructor(size){
-        this.size = size;
-        this.state = [];
-        this.color = [];
-        this.prow = [];
-        this.pcol = [];
-    }
+// class Gameboard {
+//     constructor(size){
+//         this.size = size;
+//         this.state = [];
+//         this.color = [];
+//         this.prow = [];
+//         this.pcol = [];
+//     }
+//
+//     fill(json) {
+//         for (let scalar=0; scalar <this.size*this.size;scalar++) {
+//             this.state[scalar]=(json[scalar].state);
+//             this.color[scalar]=(json[toScalar(row(scalar),col(scalar))].color);
+//             this.prow[scalar]=(json[toScalar(row(scalar),col(scalar))].prow);
+//             this.pcol[scalar]=(json[toScalar(row(scalar),col(scalar))].field.piece.pcol);
+//         }
+//     }
+// }
 
-    fill(json) {
-        for (let scalar=0; scalar <this.size*this.size;scalar++) {
-            this.state[scalar]=(json[scalar].state);
-            this.color[scalar]=(json[toScalar(row(scalar),col(scalar))].field.piece.color);
-            this.prow[scalar]=(json[toScalar(row(scalar),col(scalar))].field.piece.prow);
-            this.pcol[scalar]=(json[toScalar(row(scalar),col(scalar))].field.piece.pcol);
-        }
-    }
-}
 
+let size = 8
 let gameboard = new Gameboard(size)
+
 // document.getElementById("scalar{i}").bgcolor="{color}";
 // function mit % um jedes zweite feld als rot oder als schwarz zu haben
-
-function setScalarCol(gameboard) {
-    for (let scalar=0; scalar <gameboard.size*gameboard.size; scalar++) {
+function setScalarCol() {
+    for (let scalar=0; scalar < data.gameBoard.size*data.gameBoard.size; scalar++) {
         if (scalar % 2 === 0) {
-            document.getElementById("scalar"+scalar).bgcolor="black";
+            document.getElementById("scalar" + scalar).bgcolor="black";
         } else {
-            document.getElementById("scalar"+scalar).bgcolor="red";
+            document.getElementById("scalar" + scalar).bgcol;
         }
     }
 }
 
+// {"game":
+// {"gameState":
+// "WHITE_TURN","gameBoard":
+// {"size":8,"fields":
+// [{"row":0,"col":0,"field":{"pos":"A1","piece":{"state":"normal","prow":0,"pcol":0,"color":"black"}}},
 
-function updateGameboard(gameboard) {
-    for (let scalar=0; scalar <gameboard.size*gameboard.size; scalar++) {
-        if (gameboard.state[scalar] === "normal") {
+function updateGameboard() {
+    for (let scalar=0; scalar < data.gameBoard.size*data.gameBoard.size; scalar++) {
+        let row = data.game.gameboard.fields[scalar].row
+        let col = data.game.gameboard.fields[scalar].col
+        let fieldID = "scalar" + scalar
+        let color = data.game.gameboard.fields[scalar].field.piece.color
+        let state = data.game.gameboard.fields[scalar].field.piece.state
+
+        if (state === "normal") {
             //$("#scalar"+scalar).html("o");
-            $("#scalar"+scalar).attr("src", "/assets/images/white.png");
-        } else if (gameboard.state[scalar] === "queen") {
+            $('#' + fieldID).attr("src", "/assets/images/white.png");
+        } else if (state === "queen") {
             //$("#scalar"+scalar).html("q");
-            $("#scalar"+scalar).attr("src", "/assets/images/white_queen.png");
+            $('#' + fieldID).attr("src", "/assets/images/white_queen.png");
 
         }
-        if (gameboard.color[scalar] === "black") {
-            $("#scalar"+scalar).attr("src", "/assets/images/black.png");
-        } else if (gameboard.color[scalar] === "white") {
-            $("#scalar"+scalar).attr("src", "/assets/images/black_queen.png");
+        if (color === "black") {
+            $('#' + fieldID).attr("src", "/assets/images/black.png");
+        } else if (color === "white") {
+            $('#' + fieldID).attr("src", "/assets/images/black_queen.png");
         }
     }
 }
+
+// function updateGameboard(gameboard) {
+//     for (let scalar=0; scalar <data.gameBoard.size*data.gameBoard.size; scalar++) {
+//         if (gameboard.state[scalar] === "normal") {
+//             //$("#scalar"+scalar).html("o");
+//             $("#scalar"+scalar).attr("src", "/assets/images/white.png");
+//         } else if (gameboard.state[scalar] === "queen") {
+//             //$("#scalar"+scalar).html("q");
+//             $("#scalar"+scalar).attr("src", "/assets/images/white_queen.png");
+//
+//         }
+//         if (gameboard.color[scalar] === "black") {
+//             $("#scalar"+scalar).attr("src", "/assets/images/black.png");
+//         } else if (gameboard.color[scalar] === "white") {
+//             $("#scalar"+scalar).attr("src", "/assets/images/black_queen.png");
+//         }
+//     }
+// }
+
+
 
 
 /**
@@ -132,7 +192,7 @@ function test(row, col, clicked) {
 //
 //
 // function registerClickListener() {
-//     for (let scalar=0; scalar < gameboard.size*gameboard.size;scalar++) {
+//     for (let scalar=0; scalar < data.gameBoard.size*data.gameBoard.size;scalar++) {
 //         if (gameboard.state[scalar] == 0) {
 //             $("#fieldrow"+scalar).click(function() {showCandidates(scalar)});
 //         }
@@ -152,7 +212,7 @@ function test(row, col, clicked) {
 //         dataType: "json",
 //
 //         success: function (result) {
-//             gameboard = new Gameboard(result.gameboard.size);
+//             gameboard = new Gameboard(result.data.gameBoard.size);
 //             gameboard.fill(result.gameboard.fields);
 //             updateGameboard(gameboard);
 //             registerClickListener();

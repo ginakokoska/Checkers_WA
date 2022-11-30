@@ -1,11 +1,4 @@
-[0m[[0m[33mwarn[0m] [0m[0m/Users/ginakokoska/IdeaProjects/HTWG/AIN5/Webapplikation/checkers_wa/target/scala-2.13/routes/main/router/Routes.scala:170:22: Auto-application to `()` is deprecated. Supply the empty argument list `()` explicitly to invoke method toJson,[0m
-[0m[[0m[33mwarn[0m] [0m[0mor remove the empty argument list from its definition (Java-defined methods are exempt).[0m
-[0m[[0m[33mwarn[0m] [0m[0mIn Scala 3, an unapplied method like this will be eta-expanded into a function.[0m
-[0m[[0m[33mwarn[0m] [0m[0m    HomeController_1.toJson,[0m
-[0m[[0m[33mwarn[0m] [0m[0m                     ^[0m
-[0m[[0m[33mwarn[0m] [0m[0m/Users/ginakokoska/IdeaProjects/HTWG/AIN5/Webapplikation/checkers_wa/target/scala-2.13/routes/main/router/Routes.scala:243:74: Auto-application to `()` is deprecated. Supply the empty argument list `()` explicitly to invoke method toJson,[0m
-[0m[[0m[33mwarn[0m] [0m[0mor remove the empty argument list from its definition (Java-defined methods are exempt).[0m
-[0m[[0m[33mwarn[0m] [0m[0mIn Scala 3, an unapplied method like this will be eta-expanded into a function.[0m
-[0m[[0m[33mwarn[0m] [0m[0m        controllers_HomeController_toJson6_invoker.call(HomeController_1.toJson)[0m
-[0m[[0m[33mwarn[0m] [0m[0m                                                                         ^[0m
-[0m[[0m[33mwarn[0m] [0m[0mtwo warnings found[0m
+[0m[[0m[31merror[0m] [0m[0m/Users/ginakokoska/IdeaProjects/HTWG/AIN5/Webapplikation/checkers_wa/target/scala-2.13/twirl/main/views/html/checkers_game.template.scala:89:43: '=' expected but '}' found.[0m
+[0m[[0m[31merror[0m] [0m[0m        """),_display_(/*65.10*/{val color}),format.raw/*65.21*/(""" """),format.raw/*65.22*/("""= #00ACED[0m
+[0m[[0m[31merror[0m] [0m[0m                                          ^[0m
+[0m[[0m[31merror[0m] [0m[0mone error found[0m

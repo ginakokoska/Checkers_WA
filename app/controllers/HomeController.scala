@@ -1,7 +1,11 @@
 package controllers
 
 import checkers.Checkers
+import checkers.Checkers.controller.gameState
+import checkers.controller.controllerComponent.ControllerInterface
+import checkers.controller.controllerComponent.GameState.{BLACK_TURN, GameState, WHITE_TURN}
 import checkers.model.gameBoardComponent.FieldInterface
+import play.api.libs.json.JsObject
 //import checkers.controller.controllerComponent.ControllerInterface
 import checkers.model.gameBoardComponent.gameBoardBaseImpl.{Field, GameBoard, Piece}
 
@@ -116,13 +120,16 @@ class HomeController @Inject()(val controllerComponents: ControllerComponents) e
     }
   }
 
-  // gamestate fehlt in json file
-  // toJson erreichbar
+
+
+
+
   // Json ist dict, why handle it like arry ? check on boger toJson
   implicit val gameBoardWrites: Writes[GameBoard] = new Writes[GameBoard] {
-    def writes(gameBoard: GameBoard): JsValue = Json.toJson(
+    def writes(gameBoard: GameBoard): JsObject = Json.obj(
+      "gameState" -> gameState.toString,
       "gameBoard" -> Json.obj(
-        "size" -> JsNumber(gameBoard.size),
+        "size" -> JsNumber(gameController.gameBoardSize),
         "fields" -> Json.toJson(
           for {
             row <- 0 until gameBoard.size

@@ -1,6 +1,6 @@
 // @GENERATOR:play-routes-compiler
 // @SOURCE:/Users/ginakokoska/IdeaProjects/HTWG/AIN5/Webapplikation/checkers_wa/conf/routes
-// @DATE:Wed Nov 30 16:06:30 CET 2022
+// @DATE:Wed Nov 30 19:19:00 CET 2022
 
 package router
 
@@ -45,7 +45,7 @@ class Routes(
     ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """instructions""", """controllers.HomeController.instructions()"""),
     ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """test""", """controllers.HomeController.test()"""),
     ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """move/""" + "$" + """start<[^/]+>/""" + "$" + """dest<[^/]+>""", """controllers.HomeController.move(start:String, dest:String)"""),
-    ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """toJson""", """controllers.HomeController.toJson"""),
+    ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """status""", """controllers.HomeController.status"""),
     ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """assets/""" + "$" + """file<.+>""", """controllers.Assets.versioned(path:String = "/public", file:Asset)"""),
     Nil
   ).foldLeft(List.empty[(String,String,String)]) { (s,e) => e.asInstanceOf[Any] match {
@@ -163,18 +163,18 @@ class Routes(
   )
 
   // @LINE:13
-  private[this] lazy val controllers_HomeController_toJson6_route = Route("GET",
-    PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("toJson")))
+  private[this] lazy val controllers_HomeController_status6_route = Route("GET",
+    PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("status")))
   )
-  private[this] lazy val controllers_HomeController_toJson6_invoker = createInvoker(
-    HomeController_1.toJson,
+  private[this] lazy val controllers_HomeController_status6_invoker = createInvoker(
+    HomeController_1.status,
     play.api.routing.HandlerDef(this.getClass.getClassLoader,
       "router",
       "controllers.HomeController",
-      "toJson",
+      "status",
       Nil,
       "GET",
-      this.prefix + """toJson""",
+      this.prefix + """status""",
       """""",
       Seq()
     )
@@ -238,9 +238,9 @@ class Routes(
       }
   
     // @LINE:13
-    case controllers_HomeController_toJson6_route(params@_) =>
+    case controllers_HomeController_status6_route(params@_) =>
       call { 
-        controllers_HomeController_toJson6_invoker.call(HomeController_1.toJson)
+        controllers_HomeController_status6_invoker.call(HomeController_1.status)
       }
   
     // @LINE:18

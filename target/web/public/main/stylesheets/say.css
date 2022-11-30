@@ -31,6 +31,18 @@ h5 {
   margin: auto;
   width: auto;
 }
+.field {
+  display: inline-block;
+  float: left;
+  border-style: outset;
+  border-width: 0em;
+  background-color: #641403;
+  border-color: black;
+  width: 1.2em;
+  height: 1.2em;
+  margin: 0.1em;
+  text-align: center;
+}
 .field_black {
   display: inline-block;
   float: left;
