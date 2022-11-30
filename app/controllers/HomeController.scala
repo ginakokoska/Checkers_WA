@@ -11,7 +11,7 @@ import checkers.model.gameBoardComponent.gameBoardBaseImpl.{Field, GameBoard, Pi
 
 import javax.inject._
 import play.api._
-import play.api.libs.json.{JsNull, JsNumber, JsValue, Json, Writes}
+import play.api.libs.json.{JsNull, JsNumber, JsString, JsValue, Json, Writes}
 import play.api.mvc._
 
 /**
@@ -99,7 +99,12 @@ class HomeController @Inject()(val controllerComponents: ControllerComponents) e
     Ok(gameController.toJson)
   }
 
-
+  def status = Action {
+    Ok(Json.obj(
+      "game" -> GameBoard()
+      )
+    )
+  }
 
   implicit val fieldWrites: Writes[FieldInterface] = new Writes[FieldInterface] {
     def writes(field: FieldInterface) = Json.obj(
@@ -125,6 +130,7 @@ class HomeController @Inject()(val controllerComponents: ControllerComponents) e
 
 
   // Json ist dict, why handle it like arry ? check on boger toJson
+  case class GameBoard()
   implicit val gameBoardWrites: Writes[GameBoard] = new Writes[GameBoard] {
     def writes(gameBoard: GameBoard): JsObject = Json.obj(
       "gameState" -> gameState.toString,
@@ -132,8 +138,8 @@ class HomeController @Inject()(val controllerComponents: ControllerComponents) e
         "size" -> JsNumber(gameController.gameBoardSize),
         "fields" -> Json.toJson(
           for {
-            row <- 0 until gameBoard.size
-            col <- 0 until gameBoard.size
+            row <- 0 until gameController.gameBoardSize
+            col <- 0 until gameController.gameBoardSize
           } yield {
             Json.obj(
               "row" -> row,

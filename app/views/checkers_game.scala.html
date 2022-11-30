@@ -1,6 +1,7 @@
 @(controller:checkers.controller.controllerComponent.ControllerInterface, message:String)
 
 @size= @{controller.gameBoardSize}
+@color= @{"#000000"}
 
 <html lang="en">
 <head>
@@ -54,6 +55,25 @@
     </div>
   </div>
 </nav>
+
+
+  @*<img class="field" id="scalar@{row*size+col}" src="/assets/images/white_queen.png" style="background: #00ACED"/>*@
+<div class="gamecontainer">
+  <div class="game">
+  @for(row <- 0 until size) {
+
+    <div class="fieldrow"> <!--Maybe think of a different name, might not make sense?-->
+      @for(col <- 0 until size) {
+        @if((row*size+col) % 2 == 0) @color= @{"#641403"} @val c= <img class="field" id="scalar@{row*size+col}" src="/assets/images/white_queen.png" style="background: #00ACED"/>
+      }
+  }
+    </div>
+  </div>
+</div>
+
+
+
+
 
 
 @*<div class="gamecontainer">*@
@@ -116,13 +136,13 @@
     }
   }
   function move() {
-    var x = document.getElementById("text-input").value;
+    let x = document.getElementById("text-input").value;
     if (x === "") {
       alert("Input can't be empty");
       return;
     }
-    var start = x.split(" ")[0];
-    var dest = x.split(" ")[1];
+    let start = x.split(" ")[0];
+    let dest = x.split(" ")[1];
     location.href = "http://localhost:9000/move/" + start + "/" + dest;
   }
 
