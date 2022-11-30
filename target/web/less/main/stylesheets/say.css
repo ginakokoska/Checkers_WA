@@ -236,6 +236,9 @@ btn:hover {
   color: #641403;
   background-color: #ccc;
 }
+.scalar {
+  background-color: white;
+}
 .form-control {
   text-align: center;
   font-size: 16px;

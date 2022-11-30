@@ -10,7 +10,7 @@ GET     /new10Grid                  controllers.HomeController.new10Grid()
 GET     /instructions               controllers.HomeController.instructions()
 GET     /test                       controllers.HomeController.test()
 GET     /move/:start/:dest          controllers.HomeController.move(start:String,dest:String)
-
+GET     /toJson                     controllers.HomeController.toJson
 
 #controllers.Default.notFound
 

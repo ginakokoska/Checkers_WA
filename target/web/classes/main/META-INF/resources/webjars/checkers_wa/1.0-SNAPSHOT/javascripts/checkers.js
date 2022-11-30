@@ -1,8 +1,9 @@
 let size = 9
 
 
-function toScalar(fieldrow, cell) {
-    return fieldrow*size + cell;
+// zahl zwischen 0 & size^2 - 1
+function toScalar(fieldrow, field) {
+    return fieldrow*size + field;
 }
 
 // stimmt
@@ -19,90 +20,147 @@ function cell(fieldrowIndex, cellIndex) {
     return row(toScalar(fieldrowIndex,cellIndex)), col(toScalar(fieldrowIndex,cellIndex))
 }
 
-class Grid {
+let data = {}
+
+function getData() {
+    return $.ajax({
+        method: "GET",
+        url: "/current",
+        dataType: "json",
+        success: function (response) {
+            data = response;
+        }
+    });
+}
+
+function updateGame(game) {
+    getData().then(() => {
+        //checkWin();
+        updateGameBoard();
+        refreshOnClickEvents();
+    })
+}
+
+
+class Gameboard {
     constructor(size){
         this.size = size;
-        this.cellvalue = [];
-        this.cellgiven = [];
-        this.cellhighlighted = [];
-        this.cellshowCandidates = [];
+        this.state = [];
+        this.color = [];
+        this.prow = [];
+        this.pcol = [];
     }
 
     fill(json) {
         for (let scalar=0; scalar <this.size*this.size;scalar++) {
-            this.cellvalue[scalar]=(json[toScalar(row(scalar),col(scalar))].cell.value);
-            this.cellgiven[scalar]=(json[toScalar(row(scalar),col(scalar))].cell.given);
-            this.cellhighlighted[scalar]=(json[toScalar(row(scalar),col(scalar))].cell.highlighted);
-            this.cellshowCandidates[scalar]=(json[toScalar(row(scalar),col(scalar))].cell.showCandidates);
+            this.state[scalar]=(json[scalar].state);
+            this.color[scalar]=(json[toScalar(row(scalar),col(scalar))].field.piece.color);
+            this.prow[scalar]=(json[toScalar(row(scalar),col(scalar))].field.piece.prow);
+            this.pcol[scalar]=(json[toScalar(row(scalar),col(scalar))].field.piece.pcol);
         }
     }
 }
 
-let grid = new Grid(9)
+let gameboard = new Gameboard(size)
+// document.getElementById("scalar{i}").bgcolor="{color}";
+// function mit % um jedes zweite feld als rot oder als schwarz zu haben
 
-function updateGrid(grid) {
-    for (let scalar=0; scalar <grid.size*grid.size;scalar++) {
-        if (grid.cellvalue[scalar] != 0) {
-            $("#scalar"+scalar).html(grid.cellvalue[scalar]);
-        }
-        if (grid.cellgiven[scalar] == true) {
-            $("#scalar"+scalar).addClass("given");
-        }
-        if (grid.cellhighlighted[scalar] == true) {
-            $("#scalar"+scalar).addClass("highlighted");
-        }
-
-    }
-}
-
-function showCandidates(scalar) {
-    let html =""
-    for (let candidateIndex=1; candidateIndex <= size;candidateIndex++) {
-        html = html + " <div class='candidatecell' onclick='setCell("+scalar+","+candidateIndex+")'> " +candidateIndex + "</div>"
-        if (candidateIndex % blocksize == blocksize) html = html + "<div class='clear'></div>"
-    }
-    $("#scalar"+scalar).html(html)
-}
-
-function setCell(scalar, value) {
-    console.log("Setting cell " + scalar + " to " + value);
-    grid.cellvalue[scalar] = value;
-    $("#scalar"+scalar).html(" "+grid.cellvalue[scalar]);
-    setCellOnServer(row(scalar), col(scalar), value)
-    $("#scalar"+scalar).off("click");
-
-}
-
-function registerClickListener() {
-    for (let scalar=0; scalar <grid.size*grid.size;scalar++) {
-        if (grid.cellvalue[scalar] == 0) {
-            $("#scalar"+scalar).click(function() {showCandidates(scalar)});
+function setScalarCol(gameboard) {
+    for (let scalar=0; scalar <gameboard.size*gameboard.size; scalar++) {
+        if (scalar % 2 === 0) {
+            document.getElementById("scalar"+scalar).bgcolor="black";
+        } else {
+            document.getElementById("scalar"+scalar).bgcolor="red";
         }
     }
 }
 
-function setCellOnServer(row, col, value) {
-    $.get("/set/"+row+"/"+col+"/"+value, function(data) {
-        console.log("Set cell on Server");
-    });
-}
 
-function loadJson() {
-    $.ajax({
-        method: "GET",
-        url: "/json",
-        dataType: "json",
+function updateGameboard(gameboard) {
+    for (let scalar=0; scalar <gameboard.size*gameboard.size; scalar++) {
+        if (gameboard.state[scalar] === "normal") {
+            //$("#scalar"+scalar).html("o");
+            $("#scalar"+scalar).attr("src", "/assets/images/white.png");
+        } else if (gameboard.state[scalar] === "queen") {
+            //$("#scalar"+scalar).html("q");
+            $("#scalar"+scalar).attr("src", "/assets/images/white_queen.png");
 
-        success: function (result) {
-            grid = new Grid(result.grid.size);
-            grid.fill(result.grid.cells);
-            updateGrid(grid);
-            registerClickListener();
         }
-    });
+        if (gameboard.color[scalar] === "black") {
+            $("#scalar"+scalar).attr("src", "/assets/images/black.png");
+        } else if (gameboard.color[scalar] === "white") {
+            $("#scalar"+scalar).attr("src", "/assets/images/black_queen.png");
+        }
+    }
 }
 
-$( document ).ready(function() {
-    console.log( "Document is ready, filling grid" );
-    loadJson();
-});
+
+/**
+function test(row, col, clicked) {
+    // erster click -> mit move dest als string
+    if (clicked === "") {
+        document.getElementById("message-field").innerHTML = "clicked here: " + row + ", " + col;
+        //
+        clicked = row + "-" + col;
+
+    } else {
+        document.getElementById("message-field").innerHTML = "placed here: " + row + ", " + col;
+    @clicked=clicked
+    }
+}**/
+
+// function refreshOnClickEvents() {
+//     $('#field_black').click(function () {
+//         should_call_move_from_ctr()
+//     })
+//     $('#field_red').click(function () {
+//         should_call_move_from_ctr()
+//     });
+//
+
+
+
+// // state = o oder q
+// function setField(scalar, state) {
+//     console.log("Setting cell " + scalar + " to " + state);
+//     gameboard.state[scalar] = state;
+//     $("#scalar"+scalar).html(" "+gameboard.state[scalar]);
+//     setFieldOnServer(row(scalar), col(scalar), state);
+//     $("#scalar"+scalar).off("click");
+//
+// }
+//
+//
+// function registerClickListener() {
+//     for (let scalar=0; scalar < gameboard.size*gameboard.size;scalar++) {
+//         if (gameboard.state[scalar] == 0) {
+//             $("#fieldrow"+scalar).click(function() {showCandidates(scalar)});
+//         }
+//     }
+// }
+//
+// function setFieldOnServer(row, col, state) {
+//     $.get("/set/"+row+"/"+col+"/"+state, function(data) {
+//         console.log("Set field on Server");
+//     });
+// }
+//
+// function loadJson() {
+//     $.ajax({
+//         method: "GET",
+//         url: "/json",
+//         dataType: "json",
+//
+//         success: function (result) {
+//             gameboard = new Gameboard(result.gameboard.size);
+//             gameboard.fill(result.gameboard.fields);
+//             updateGameboard(gameboard);
+//             registerClickListener();
+//         }
+//     });
+// }
+//
+// $( document ).ready(function() {
+//     console.log( "Document is ready, filling gameboard" );
+//     loadJson();
+// });

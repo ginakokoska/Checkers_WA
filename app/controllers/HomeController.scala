@@ -24,6 +24,7 @@ class HomeController @Inject()(val controllerComponents: ControllerComponents) e
    * will be called when the application receives a `GET` request with
    * a path of `/`.
    */
+
   val gameController = Checkers.controller
   var message: String = ""
 
@@ -60,7 +61,6 @@ class HomeController @Inject()(val controllerComponents: ControllerComponents) e
 
   def move(start:String, dest:String)= Action {
 
-
     try {
 
       if (gameController.movePossible(start, dest).getBool) {
@@ -96,6 +96,7 @@ class HomeController @Inject()(val controllerComponents: ControllerComponents) e
   }
 
 
+
   implicit val fieldWrites: Writes[FieldInterface] = new Writes[FieldInterface] {
     def writes(field: FieldInterface) = Json.obj(
       "pos" -> field.getPos,
@@ -109,12 +110,15 @@ class HomeController @Inject()(val controllerComponents: ControllerComponents) e
         "state" -> t.state,
         "prow" -> t.row,
         "pcol" -> t.col,
-        "color" -> t.getColor
+        "color" -> t.getColor,
       )
       case None => JsNull
     }
   }
 
+  // gamestate fehlt in json file
+  // toJson erreichbar
+  // Json ist dict, why handle it like arry ? check on boger toJson
   implicit val gameBoardWrites: Writes[GameBoard] = new Writes[GameBoard] {
     def writes(gameBoard: GameBoard): JsValue = Json.toJson(
       "gameBoard" -> Json.obj(
@@ -134,7 +138,4 @@ class HomeController @Inject()(val controllerComponents: ControllerComponents) e
       )
     )
   }
-
-
-
 }

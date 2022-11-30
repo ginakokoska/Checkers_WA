@@ -33,6 +33,14 @@ function getData() {
     });
 }
 
+function updateGame(game) {
+    getData().then(() => {
+        //checkWin();
+        updateGameBoard();
+        refreshOnClickEvents();
+    })
+}
+
 
 class Gameboard {
     constructor(size){
@@ -54,68 +62,104 @@ class Gameboard {
 }
 
 let gameboard = new Gameboard(size)
+// document.getElementById("scalar{i}").bgcolor="{color}";
+// function mit % um jedes zweite feld als rot oder als schwarz zu haben
+
+function setScalarCol(gameboard) {
+    for (let scalar=0; scalar <gameboard.size*gameboard.size; scalar++) {
+        if (scalar % 2 === 0) {
+            document.getElementById("scalar"+scalar).bgcolor="black";
+        } else {
+            document.getElementById("scalar"+scalar).bgcolor="red";
+        }
+    }
+}
+
 
 function updateGameboard(gameboard) {
     for (let scalar=0; scalar <gameboard.size*gameboard.size; scalar++) {
-        if (gameboard.state[scalar] == "normal" {
+        if (gameboard.state[scalar] === "normal") {
             //$("#scalar"+scalar).html("o");
-            $("#scalar"+scalar).attr("src", "/assets/images/game/white.png");
-        } else if (gameboard.state[scalar] == "queen" {
+            $("#scalar"+scalar).attr("src", "/assets/images/white.png");
+        } else if (gameboard.state[scalar] === "queen") {
             //$("#scalar"+scalar).html("q");
             $("#scalar"+scalar).attr("src", "/assets/images/game/white_queen.png");
 
         }
-
-        if (gameboard.field.piece.color[scalar] == "black") {
-            $("#scalar"+scalar).attr("src", "/assets/images/game/black.png");
-        } else if (gameboard.field.piece.color[scalar] == "white" {
-            $("#scalar"+scalar).attr("src", "/assets/images/game/black_queen.png");
+        if (gameboard.color[scalar] === "black") {
+            $("#scalar"+scalar).attr("src", "/assets/images/black.png");
+        } else if (gameboard.color[scalar] === "white") {
+            $("#scalar"+scalar).attr("src", "/assets/images/black_queen.png");
         }
     }
 }
 
-// state = o oder q
-function setField(scalar, state) {
-    console.log("Setting cell " + scalar + " to " + state);
-    gameboard.state[scalar] = state;
-    $("#scalar"+scalar).html(" "+gameboard.state[scalar]);
-    setFieldOnServer(row(scalar), col(scalar), state);
-    $("#scalar"+scalar).off("click");
+/**
+function test(row, col, clicked) {
+    // erster click -> mit move dest als string
+    if (clicked === "") {
+        document.getElementById("message-field").innerHTML = "clicked here: " + row + ", " + col;
+        //
+        clicked = row + "-" + col;
 
-}
-
-
-
-function registerClickListener() {
-    for (let scalar=0; scalar < gameboard.size*gameboard.size;scalar++) {
-        if (gameboard.state[scalar] == 0) {
-            $("#fieldrow"+scalar).click(function() {showCandidates(scalar)});
-        }
+    } else {
+        document.getElementById("message-field").innerHTML = "placed here: " + row + ", " + col;
+    @clicked=clicked
     }
-}
+}**/
 
-function setFieldOnServer(row, col, state) {
-    $.get("/set/"+row+"/"+col+"/"+state, function(data) {
-        console.log("Set field on Server");
-    });
-}
+// function refreshOnClickEvents() {
+//     $('#field_black').click(function () {
+//         should_call_move_from_ctr()
+//     })
+//     $('#field_red').click(function () {
+//         should_call_move_from_ctr()
+//     });
+//
 
-function loadJson() {
-    $.ajax({
-        method: "GET",
-        url: "/json",
-        dataType: "json",
 
-        success: function (result) {
-            gameboard = new Gameboard(result.gameboard.size);
-            gameboard.fill(result.gameboard.fields);
-            updateGameboard(gameboard);
-            registerClickListener();
-        }
-    });
-}
 
-$( document ).ready(function() {
-    console.log( "Document is ready, filling gameboard" );
-    loadJson();
-});
+// // state = o oder q
+// function setField(scalar, state) {
+//     console.log("Setting cell " + scalar + " to " + state);
+//     gameboard.state[scalar] = state;
+//     $("#scalar"+scalar).html(" "+gameboard.state[scalar]);
+//     setFieldOnServer(row(scalar), col(scalar), state);
+//     $("#scalar"+scalar).off("click");
+//
+// }
+//
+//
+// function registerClickListener() {
+//     for (let scalar=0; scalar < gameboard.size*gameboard.size;scalar++) {
+//         if (gameboard.state[scalar] == 0) {
+//             $("#fieldrow"+scalar).click(function() {showCandidates(scalar)});
+//         }
+//     }
+// }
+//
+// function setFieldOnServer(row, col, state) {
+//     $.get("/set/"+row+"/"+col+"/"+state, function(data) {
+//         console.log("Set field on Server");
+//     });
+// }
+//
+// function loadJson() {
+//     $.ajax({
+//         method: "GET",
+//         url: "/json",
+//         dataType: "json",
+//
+//         success: function (result) {
+//             gameboard = new Gameboard(result.gameboard.size);
+//             gameboard.fill(result.gameboard.fields);
+//             updateGameboard(gameboard);
+//             registerClickListener();
+//         }
+//     });
+// }
+//
+// $( document ).ready(function() {
+//     console.log( "Document is ready, filling gameboard" );
+//     loadJson();
+// });

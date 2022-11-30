@@ -1,6 +1,6 @@
 // @GENERATOR:play-routes-compiler
 // @SOURCE:/Users/ginakokoska/IdeaProjects/HTWG/AIN5/Webapplikation/checkers_wa/conf/routes
-// @DATE:Mon Nov 21 12:23:42 CET 2022
+// @DATE:Wed Nov 30 16:06:30 CET 2022
 
 package router
 
@@ -45,6 +45,7 @@ class Routes(
     ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """instructions""", """controllers.HomeController.instructions()"""),
     ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """test""", """controllers.HomeController.test()"""),
     ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """move/""" + "$" + """start<[^/]+>/""" + "$" + """dest<[^/]+>""", """controllers.HomeController.move(start:String, dest:String)"""),
+    ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """toJson""", """controllers.HomeController.toJson"""),
     ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """assets/""" + "$" + """file<.+>""", """controllers.Assets.versioned(path:String = "/public", file:Asset)"""),
     Nil
   ).foldLeft(List.empty[(String,String,String)]) { (s,e) => e.asInstanceOf[Any] match {
@@ -161,11 +162,29 @@ class Routes(
     )
   )
 
+  // @LINE:13
+  private[this] lazy val controllers_HomeController_toJson6_route = Route("GET",
+    PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("toJson")))
+  )
+  private[this] lazy val controllers_HomeController_toJson6_invoker = createInvoker(
+    HomeController_1.toJson,
+    play.api.routing.HandlerDef(this.getClass.getClassLoader,
+      "router",
+      "controllers.HomeController",
+      "toJson",
+      Nil,
+      "GET",
+      this.prefix + """toJson""",
+      """""",
+      Seq()
+    )
+  )
+
   // @LINE:18
-  private[this] lazy val controllers_Assets_versioned6_route = Route("GET",
+  private[this] lazy val controllers_Assets_versioned7_route = Route("GET",
     PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("assets/"), DynamicPart("file", """.+""",false)))
   )
-  private[this] lazy val controllers_Assets_versioned6_invoker = createInvoker(
+  private[this] lazy val controllers_Assets_versioned7_invoker = createInvoker(
     Assets_0.versioned(fakeValue[String], fakeValue[Asset]),
     play.api.routing.HandlerDef(this.getClass.getClassLoader,
       "router",
@@ -218,10 +237,16 @@ class Routes(
         controllers_HomeController_move5_invoker.call(HomeController_1.move(start, dest))
       }
   
+    // @LINE:13
+    case controllers_HomeController_toJson6_route(params@_) =>
+      call { 
+        controllers_HomeController_toJson6_invoker.call(HomeController_1.toJson)
+      }
+  
     // @LINE:18
-    case controllers_Assets_versioned6_route(params@_) =>
+    case controllers_Assets_versioned7_route(params@_) =>
       call(Param[String]("path", Right("/public")), params.fromPath[Asset]("file", None)) { (path, file) =>
-        controllers_Assets_versioned6_invoker.call(Assets_0.versioned(path, file))
+        controllers_Assets_versioned7_invoker.call(Assets_0.versioned(path, file))
       }
   }
 }
