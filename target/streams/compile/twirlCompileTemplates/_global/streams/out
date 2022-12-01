@@ -1,3 +1,3 @@
-[0m[[0m[31merror[0m] [0m[0m[Error] /Users/ginakokoska/IdeaProjects/HTWG/AIN5/Webapplikation/checkers_wa/app/views/checkers_game.scala.html:124[0m
-[0m[[0m[31merror[0m] [0m[0m</script>: Expected ending '}'[0m
+[0m[[0m[31merror[0m] [0m[0m[Error] /Users/ginakokoska/IdeaProjects/HTWG/AIN5/Webapplikation/checkers_wa/app/views/checkers_game.scala.html:131[0m
+[0m[[0m[31merror[0m] [0m[0m</body>: Expected '}' but found 'EOF'[0m
 [0m[[0m[31merror[0m] [0m[0m(Compile / [31mtwirlCompileTemplates[0m) Twirl compilation failed[0m

@@ -2,10 +2,11 @@
 // for Ajax
 $(document).ready(function() {
         getData().then(() => {
-            //checkWin();
+            testPrint();
+            checkWin();
             setScalarCol();
             updateGameboard();
-            refreshOnClickEvents();
+            //refreshOnClickEvents();
         })
     }
 )
@@ -15,39 +16,40 @@ function processCommand(cmd, data) {
     post("POST", "/command", {"cmd": cmd, "data": data}).then(() => {
         getData().then(() => {
             checkWin();
-            updateInfoPanel();
-            updateInputPanel();
-            updateGameBoard();
-            refreshOnClickEvents()
+            setScalarCol();
+            updateGameboard();
+            //refreshOnClickEvents();
         })
     })
 }
 
+/*idee yannick*/
+// pop up message here ?
+function newBoard(num) {
+    processCommand("newGrid", num)
+}
+
+// how to implement that current page is 8 or 10
+// where the fuck is the popup message ??
+function resetGame() {
+    if (confirm("Are you sure you want to continue? Starting a new game means that current progress will be lost!")) {
+        if (data.size === 8) {
+            processCommand("newGrid", 8)
+        } else {
+            processCommand("newGrid", 10)
+        }
+    }
+}
 
 
-//
-// let size = 9
-// // zahl zwischen 0 & size^2 - 1
-//
-// function toScalar(fieldrow, field) {
-//     return fieldrow*size + field;
-// }
-//
-// // stimmt
-// function row(scalar) {
-//     return Math.floor(scalar / size);
-// }
-//
-// // stimmt
-// function col(scalar) {
-//     return scalar % size;
-// }
-//
-// function cell(fieldrowIndex, cellIndex) {
-//     return row(toScalar(fieldrowIndex,cellIndex)), col(toScalar(fieldrowIndex,cellIndex))
-// }
+function testPrint() {
+    console.log("test")
+}
 
-let data = {}
+
+
+//let data = {}
+let data = {"game":{"gameState":"WHITE_TURN","gameBoard":{"size":8,"fields":[{"row":0,"col":0,"field":{"pos":"A1","piece":{"state":"normal","prow":0,"pcol":0,"color":"black"}}},{"row":0,"col":1,"field":{"pos":"B1","piece":null}},{"row":0,"col":2,"field":{"pos":"C1","piece":{"state":"normal","prow":0,"pcol":2,"color":"black"}}},{"row":0,"col":3,"field":{"pos":"D1","piece":null}},{"row":0,"col":4,"field":{"pos":"E1","piece":{"state":"normal","prow":0,"pcol":4,"color":"black"}}},{"row":0,"col":5,"field":{"pos":"F1","piece":null}},{"row":0,"col":6,"field":{"pos":"G1","piece":{"state":"normal","prow":0,"pcol":6,"color":"black"}}},{"row":0,"col":7,"field":{"pos":"H1","piece":null}},{"row":1,"col":0,"field":{"pos":"A2","piece":null}},{"row":1,"col":1,"field":{"pos":"B2","piece":{"state":"normal","prow":1,"pcol":1,"color":"black"}}},{"row":1,"col":2,"field":{"pos":"C2","piece":null}},{"row":1,"col":3,"field":{"pos":"D2","piece":{"state":"normal","prow":1,"pcol":3,"color":"black"}}},{"row":1,"col":4,"field":{"pos":"E2","piece":null}},{"row":1,"col":5,"field":{"pos":"F2","piece":{"state":"normal","prow":1,"pcol":5,"color":"black"}}},{"row":1,"col":6,"field":{"pos":"G2","piece":null}},{"row":1,"col":7,"field":{"pos":"H2","piece":{"state":"normal","prow":1,"pcol":7,"color":"black"}}},{"row":2,"col":0,"field":{"pos":"A3","piece":{"state":"normal","prow":2,"pcol":0,"color":"black"}}},{"row":2,"col":1,"field":{"pos":"B3","piece":null}},{"row":2,"col":2,"field":{"pos":"C3","piece":{"state":"normal","prow":2,"pcol":2,"color":"black"}}},{"row":2,"col":3,"field":{"pos":"D3","piece":null}},{"row":2,"col":4,"field":{"pos":"E3","piece":{"state":"normal","prow":2,"pcol":4,"color":"black"}}},{"row":2,"col":5,"field":{"pos":"F3","piece":null}},{"row":2,"col":6,"field":{"pos":"G3","piece":{"state":"normal","prow":2,"pcol":6,"color":"black"}}},{"row":2,"col":7,"field":{"pos":"H3","piece":null}},{"row":3,"col":0,"field":{"pos":"A4","piece":null}},{"row":3,"col":1,"field":{"pos":"B4","piece":null}},{"row":3,"col":2,"field":{"pos":"C4","piece":null}},{"row":3,"col":3,"field":{"pos":"D4","piece":null}},{"row":3,"col":4,"field":{"pos":"E4","piece":null}},{"row":3,"col":5,"field":{"pos":"F4","piece":null}},{"row":3,"col":6,"field":{"pos":"G4","piece":null}},{"row":3,"col":7,"field":{"pos":"H4","piece":null}},{"row":4,"col":0,"field":{"pos":"A5","piece":null}},{"row":4,"col":1,"field":{"pos":"B5","piece":null}},{"row":4,"col":2,"field":{"pos":"C5","piece":null}},{"row":4,"col":3,"field":{"pos":"D5","piece":null}},{"row":4,"col":4,"field":{"pos":"E5","piece":null}},{"row":4,"col":5,"field":{"pos":"F5","piece":null}},{"row":4,"col":6,"field":{"pos":"G5","piece":null}},{"row":4,"col":7,"field":{"pos":"H5","piece":null}},{"row":5,"col":0,"field":{"pos":"A6","piece":null}},{"row":5,"col":1,"field":{"pos":"B6","piece":{"state":"normal","prow":5,"pcol":1,"color":"white"}}},{"row":5,"col":2,"field":{"pos":"C6","piece":null}},{"row":5,"col":3,"field":{"pos":"D6","piece":{"state":"normal","prow":5,"pcol":3,"color":"white"}}},{"row":5,"col":4,"field":{"pos":"E6","piece":null}},{"row":5,"col":5,"field":{"pos":"F6","piece":{"state":"normal","prow":5,"pcol":5,"color":"white"}}},{"row":5,"col":6,"field":{"pos":"G6","piece":null}},{"row":5,"col":7,"field":{"pos":"H6","piece":{"state":"normal","prow":5,"pcol":7,"color":"white"}}},{"row":6,"col":0,"field":{"pos":"A7","piece":{"state":"normal","prow":6,"pcol":0,"color":"white"}}},{"row":6,"col":1,"field":{"pos":"B7","piece":null}},{"row":6,"col":2,"field":{"pos":"C7","piece":{"state":"normal","prow":6,"pcol":2,"color":"white"}}},{"row":6,"col":3,"field":{"pos":"D7","piece":null}},{"row":6,"col":4,"field":{"pos":"E7","piece":{"state":"normal","prow":6,"pcol":4,"color":"white"}}},{"row":6,"col":5,"field":{"pos":"F7","piece":null}},{"row":6,"col":6,"field":{"pos":"G7","piece":{"state":"normal","prow":6,"pcol":6,"color":"white"}}},{"row":6,"col":7,"field":{"pos":"H7","piece":null}},{"row":7,"col":0,"field":{"pos":"A8","piece":null}},{"row":7,"col":1,"field":{"pos":"B8","piece":{"state":"normal","prow":7,"pcol":1,"color":"white"}}},{"row":7,"col":2,"field":{"pos":"C8","piece":null}},{"row":7,"col":3,"field":{"pos":"D8","piece":{"state":"normal","prow":7,"pcol":3,"color":"white"}}},{"row":7,"col":4,"field":{"pos":"E8","piece":null}},{"row":7,"col":5,"field":{"pos":"F8","piece":{"state":"normal","prow":7,"pcol":5,"color":"white"}}},{"row":7,"col":6,"field":{"pos":"G8","piece":null}},{"row":7,"col":7,"field":{"pos":"H8","piece":{"state":"normal","prow":7,"pcol":7,"color":"white"}}}]}}}
 
 function getData() {
     return $.ajax({
@@ -60,46 +62,54 @@ function getData() {
     });
 }
 
-function updateGame(game) {
-    getData().then(() => {
-        //checkWin();
-        updateGameBoard();
-        refreshOnClickEvents();
-    })
+function post(method, url, data) {
+    return $.ajax({
+        method: method,
+        url: url,
+        data: JSON.stringify(data),
+        dataType: "json",
+        contentType: "application/json",
+
+        success: function (response) {
+            data = response;
+        },
+        error: function (response) {
+            console.log("Error")
+            console.error(response);
+        }
+    });
+}
+
+function checkWin() {
+    let gamestate = data.game.gameState
+    if (gamestate in ["BLACK_WON", "WHITE_WON"]) {
+        let winner = (gamestate === "WHITE_WON" ? "White" : "Black")
+        $('#testAudio').get(0).pause();
+        let audio = $('#winAudio').get(0);
+        audio.loop = true;
+        audio.play();
+        swal({
+            icon: "info",
+            text: winner + " has won the game.",
+            title: "Title"
+        })
+    }
 }
 
 
-// class Gameboard {
-//     constructor(size){
-//         this.size = size;
-//         this.state = [];
-//         this.color = [];
-//         this.prow = [];
-//         this.pcol = [];
-//     }
-//
-//     fill(json) {
-//         for (let scalar=0; scalar <this.size*this.size;scalar++) {
-//             this.state[scalar]=(json[scalar].state);
-//             this.color[scalar]=(json[toScalar(row(scalar),col(scalar))].color);
-//             this.prow[scalar]=(json[toScalar(row(scalar),col(scalar))].prow);
-//             this.pcol[scalar]=(json[toScalar(row(scalar),col(scalar))].field.piece.pcol);
-//         }
-//     }
-// }
-
-
 let size = 8
-let gameboard = new Gameboard(size)
+>//let gameboard = new Gameboard(size)
 
 // document.getElementById("scalar{i}").bgcolor="{color}";
 // function mit % um jedes zweite feld als rot oder als schwarz zu haben
 function setScalarCol() {
     for (let scalar=0; scalar < data.gameBoard.size*data.gameBoard.size; scalar++) {
         if (scalar % 2 === 0) {
-            document.getElementById("scalar" + scalar).bgcolor="black";
+            // das ist bullshit und geht nicht background-color geht nicht
+            document.getElementById("field" + scalar).style.background-color="#000000";
+            console.log("in set Scalar")
         } else {
-            document.getElementById("scalar" + scalar).bgcol;
+            document.getElementById("field" + scalar).style.background-color="#641403";
         }
     }
 }
@@ -112,11 +122,11 @@ function setScalarCol() {
 
 function updateGameboard() {
     for (let scalar=0; scalar < data.gameBoard.size*data.gameBoard.size; scalar++) {
-        let row = data.game.gameboard.fields[scalar].row
-        let col = data.game.gameboard.fields[scalar].col
+        let row = data.game.gameBoard.fields[scalar].row
+        let col = data.game.gameBoard.fields[scalar].col
         let fieldID = "scalar" + scalar
-        let color = data.game.gameboard.fields[scalar].field.piece.color
-        let state = data.game.gameboard.fields[scalar].field.piece.state
+        let color = data.game.gameBoard.fields[scalar].field.piece.color
+        let state = data.game.gameBoard.fields[scalar].field.piece.state
 
         if (state === "normal") {
             //$("#scalar"+scalar).html("o");
@@ -134,93 +144,9 @@ function updateGameboard() {
     }
 }
 
-// function updateGameboard(gameboard) {
-//     for (let scalar=0; scalar <data.gameBoard.size*data.gameBoard.size; scalar++) {
-//         if (gameboard.state[scalar] === "normal") {
-//             //$("#scalar"+scalar).html("o");
-//             $("#scalar"+scalar).attr("src", "/assets/images/white.png");
-//         } else if (gameboard.state[scalar] === "queen") {
-//             //$("#scalar"+scalar).html("q");
-//             $("#scalar"+scalar).attr("src", "/assets/images/white_queen.png");
-//
-//         }
-//         if (gameboard.color[scalar] === "black") {
-//             $("#scalar"+scalar).attr("src", "/assets/images/black.png");
-//         } else if (gameboard.color[scalar] === "white") {
-//             $("#scalar"+scalar).attr("src", "/assets/images/black_queen.png");
-//         }
-//     }
-// }
 
 
 
 
-/**
-function test(row, col, clicked) {
-    // erster click -> mit move dest als string
-    if (clicked === "") {
-        document.getElementById("message-field").innerHTML = "clicked here: " + row + ", " + col;
-        //
-        clicked = row + "-" + col;
-
-    } else {
-        document.getElementById("message-field").innerHTML = "placed here: " + row + ", " + col;
-    @clicked=clicked
-    }
-}**/
-
-// function refreshOnClickEvents() {
-//     $('#field_black').click(function () {
-//         should_call_move_from_ctr()
-//     })
-//     $('#field_red').click(function () {
-//         should_call_move_from_ctr()
-//     });
-//
 
 
-
-// // state = o oder q
-// function setField(scalar, state) {
-//     console.log("Setting cell " + scalar + " to " + state);
-//     gameboard.state[scalar] = state;
-//     $("#scalar"+scalar).html(" "+gameboard.state[scalar]);
-//     setFieldOnServer(row(scalar), col(scalar), state);
-//     $("#scalar"+scalar).off("click");
-//
-// }
-//
-//
-// function registerClickListener() {
-//     for (let scalar=0; scalar < data.gameBoard.size*data.gameBoard.size;scalar++) {
-//         if (gameboard.state[scalar] == 0) {
-//             $("#fieldrow"+scalar).click(function() {showCandidates(scalar)});
-//         }
-//     }
-// }
-//
-// function setFieldOnServer(row, col, state) {
-//     $.get("/set/"+row+"/"+col+"/"+state, function(data) {
-//         console.log("Set field on Server");
-//     });
-// }
-//
-// function loadJson() {
-//     $.ajax({
-//         method: "GET",
-//         url: "/json",
-//         dataType: "json",
-//
-//         success: function (result) {
-//             gameboard = new Gameboard(result.data.gameBoard.size);
-//             gameboard.fill(result.gameboard.fields);
-//             updateGameboard(gameboard);
-//             registerClickListener();
-//         }
-//     });
-// }
-//
-// $( document ).ready(function() {
-//     console.log( "Document is ready, filling gameboard" );
-//     loadJson();
-// });
