@@ -14,11 +14,10 @@ $(document).ready(function() {
 function processCommand(cmd, data) {
     post("POST", "/command", {"cmd": cmd, "data": data}).then(() => {
         getData().then(() => {
-            checkWin();
-            updateInfoPanel();
-            updateInputPanel();
-            updateGameBoard();
-            refreshOnClickEvents()
+            //checkWin();
+            setScalarCol();
+            updateGameboard();
+            refreshOnClickEvents();
         })
     })
 }
@@ -67,6 +66,29 @@ function updateGame(game) {
         refreshOnClickEvents();
     })
 }
+
+
+function checkWin() {
+    let gamestate = data.gameState
+    if (gamestate === "BLACK_WON") {
+        $('#testAudio').get(0).pause();
+        let audio = $('#winAudio').get(0);
+        let winner = (gamestate === "BLACK_WON" ? "")
+        audio.loop = true;
+        audio.play();
+        swal({
+            icon: "info",
+            text: "White has won the game.",
+            title: "Title"
+        })
+            .then(() => {
+                audio.pause()
+                $('#testAudio').get(0).play()
+                processCommand("reset", "")
+            });
+    }
+}
+
 
 
 // class Gameboard {
