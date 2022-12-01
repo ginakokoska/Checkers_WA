@@ -106,6 +106,62 @@ class HomeController @Inject()(val controllerComponents: ControllerComponents) e
     )
   }
 
+
+  def processCommand(cmd: String, data: String): String = {
+    if (cmd.equals("\"move\"")) {
+      //gameController.move()
+    } else if (cmd.equals("\"rollDice\"")) {
+      //rollDice
+    } else if (cmd.equals("\"selectFig\"")) {
+      //val result = selectFigure(data.replace("\"", "").toInt)
+      //return result
+    } else if (cmd.equals("\"figMove\"")) {
+      //move(data.replace("\"", ""))
+    } else if (cmd.equals("\"skip\"")) {
+      //skip
+    } else if (cmd.equals("\"addPlayer\"")) {
+      //addplayer(data.replace("\"", ""))
+    } else if (cmd.equals("\"reset\"")) {
+      //resetGame
+    } else if (cmd.equals("\"save\"")) {
+      //saveGame
+    } else if (cmd.equals("\"load\"")) {
+      //loadGame
+    } else if (cmd.equals("\"undo\"")) {
+      //undoGame
+    } else if (cmd.equals("\"redo\"")) {
+      //redoGame
+    }
+    "Ok"
+  }
+
+  def processRequest = Action {
+    implicit request => {
+      val req = request.body.asJson
+      val result = processCommand(req.get("cmd").toString(), req.get("data").toString())
+      if (result.contains("Error")) {
+        BadRequest(result)
+      } else {
+        Ok(Json.obj(
+          "game" -> GameBoard()
+        ))
+      }
+    }
+  }
+
+  def allRoutes = {
+    """
+      GET  /
+      GET  / new8Grid
+      GET  / new10Grid
+      GET  / instructions
+      GET  / test
+      GET  / status
+      POST / command
+      GET  / errors / notfound
+      """
+  }
+
   implicit val fieldWrites: Writes[FieldInterface] = new Writes[FieldInterface] {
     def writes(field: FieldInterface) = Json.obj(
       "pos" -> field.getPos,
@@ -124,10 +180,6 @@ class HomeController @Inject()(val controllerComponents: ControllerComponents) e
       case None => JsNull
     }
   }
-
-
-
-
 
   // Json ist dict, why handle it like arry ? check on boger toJson
   case class GameBoard()
@@ -151,4 +203,6 @@ class HomeController @Inject()(val controllerComponents: ControllerComponents) e
       )
     )
   }
+
+
 }
