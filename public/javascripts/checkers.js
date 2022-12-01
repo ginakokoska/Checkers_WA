@@ -22,6 +22,25 @@ function processCommand(cmd, data) {
     })
 }
 
+/*idee yannick*/
+// pop up message here ?
+function newBoard(num) {
+    processCommand("newGrid", num)
+}
+
+// how to implement that current page is 8 or 10
+// where the fuck is the popup message ??
+function resetGame() {
+    if (confirm("Are you sure you want to continue? Starting a new game means that current progress will be lost!")) {
+        if (data.size === 8) {
+            processCommand("newGrid", 8)
+        } else {
+            processCommand("newGrid", 10)
+        }
+    }
+}
+
+
 
 
 //
@@ -59,26 +78,35 @@ function getData() {
     });
 }
 
-function updateGame(game) {
-    getData().then(() => {
-        //checkWin();
-        updateGameBoard();
-        refreshOnClickEvents();
-    })
+function post(method, url, data) {
+    return $.ajax({
+        method: method,
+        url: url,
+        data: JSON.stringify(data),
+        dataType: "json",
+        contentType: "application/json",
+
+        success: function (response) {
+            data = response;
+        },
+        error: function (response) {
+            console.log("Error")
+            console.error(response);
+        }
+    });
 }
 
-
 function checkWin() {
-    let gamestate = data.gameState
-    if (gamestate === "BLACK_WON") {
+    let gamestate = data.game.gameState
+    if (gamestate in ["BLACK_WON", "WHITE_WON"]) {
+        let winner = (gamestate === "WHITE_WON" ? "White" : "Black")
         $('#testAudio').get(0).pause();
         let audio = $('#winAudio').get(0);
-        let winner = (gamestate === "BLACK_WON" ? "")
         audio.loop = true;
         audio.play();
         swal({
             icon: "info",
-            text: "White has won the game.",
+            text: winner + " has won the game.",
             title: "Title"
         })
             .then(() => {
@@ -90,27 +118,6 @@ function checkWin() {
 }
 
 
-
-// class Gameboard {
-//     constructor(size){
-//         this.size = size;
-//         this.state = [];
-//         this.color = [];
-//         this.prow = [];
-//         this.pcol = [];
-//     }
-//
-//     fill(json) {
-//         for (let scalar=0; scalar <this.size*this.size;scalar++) {
-//             this.state[scalar]=(json[scalar].state);
-//             this.color[scalar]=(json[toScalar(row(scalar),col(scalar))].color);
-//             this.prow[scalar]=(json[toScalar(row(scalar),col(scalar))].prow);
-//             this.pcol[scalar]=(json[toScalar(row(scalar),col(scalar))].field.piece.pcol);
-//         }
-//     }
-// }
-
-
 let size = 8
 let gameboard = new Gameboard(size)
 
@@ -119,7 +126,9 @@ let gameboard = new Gameboard(size)
 function setScalarCol() {
     for (let scalar=0; scalar < data.gameBoard.size*data.gameBoard.size; scalar++) {
         if (scalar % 2 === 0) {
-            document.getElementById("scalar" + scalar).bgcolor="black";
+            // das ist bullshit und geht nicht background-color geht nicht
+            document.getElementById("field" + scalar).style.background-color="#000000";
+            console.log("in set Scalar")
         } else {
             document.getElementById("scalar" + scalar).bgcol;
         }
@@ -156,93 +165,8 @@ function updateGameboard() {
     }
 }
 
-// function updateGameboard(gameboard) {
-//     for (let scalar=0; scalar <data.gameBoard.size*data.gameBoard.size; scalar++) {
-//         if (gameboard.state[scalar] === "normal") {
-//             //$("#scalar"+scalar).html("o");
-//             $("#scalar"+scalar).attr("src", "/assets/images/white.png");
-//         } else if (gameboard.state[scalar] === "queen") {
-//             //$("#scalar"+scalar).html("q");
-//             $("#scalar"+scalar).attr("src", "/assets/images/white_queen.png");
-//
-//         }
-//         if (gameboard.color[scalar] === "black") {
-//             $("#scalar"+scalar).attr("src", "/assets/images/black.png");
-//         } else if (gameboard.color[scalar] === "white") {
-//             $("#scalar"+scalar).attr("src", "/assets/images/black_queen.png");
-//         }
-//     }
-// }
 
 
 
 
-/**
-function test(row, col, clicked) {
-    // erster click -> mit move dest als string
-    if (clicked === "") {
-        document.getElementById("message-field").innerHTML = "clicked here: " + row + ", " + col;
-        //
-        clicked = row + "-" + col;
 
-    } else {
-        document.getElementById("message-field").innerHTML = "placed here: " + row + ", " + col;
-    @clicked=clicked
-    }
-}**/
-
-// function refreshOnClickEvents() {
-//     $('#field_black').click(function () {
-//         should_call_move_from_ctr()
-//     })
-//     $('#field_red').click(function () {
-//         should_call_move_from_ctr()
-//     });
-//
-
-
-
-// // state = o oder q
-// function setField(scalar, state) {
-//     console.log("Setting cell " + scalar + " to " + state);
-//     gameboard.state[scalar] = state;
-//     $("#scalar"+scalar).html(" "+gameboard.state[scalar]);
-//     setFieldOnServer(row(scalar), col(scalar), state);
-//     $("#scalar"+scalar).off("click");
-//
-// }
-//
-//
-// function registerClickListener() {
-//     for (let scalar=0; scalar < data.gameBoard.size*data.gameBoard.size;scalar++) {
-//         if (gameboard.state[scalar] == 0) {
-//             $("#fieldrow"+scalar).click(function() {showCandidates(scalar)});
-//         }
-//     }
-// }
-//
-// function setFieldOnServer(row, col, state) {
-//     $.get("/set/"+row+"/"+col+"/"+state, function(data) {
-//         console.log("Set field on Server");
-//     });
-// }
-//
-// function loadJson() {
-//     $.ajax({
-//         method: "GET",
-//         url: "/json",
-//         dataType: "json",
-//
-//         success: function (result) {
-//             gameboard = new Gameboard(result.data.gameBoard.size);
-//             gameboard.fill(result.gameboard.fields);
-//             updateGameboard(gameboard);
-//             registerClickListener();
-//         }
-//     });
-// }
-//
-// $( document ).ready(function() {
-//     console.log( "Document is ready, filling gameboard" );
-//     loadJson();
-// });

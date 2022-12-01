@@ -22,25 +22,28 @@ object checkers_game extends _root_.play.twirl.api.BaseScalaTemplate[play.twirl.
     _display_ {
       {
 
-def /*3.2*/size/*3.6*/ = {{controller.gameBoardSize}};
+def /*3.2*/size/*3.6*/ = {{controller.gameBoardSize}};def /*4.2*/color/*4.7*/ = {{"#000000"}};
 Seq[Any](format.raw/*2.1*/("""
 """),format.raw/*3.35*/("""
+"""),format.raw/*4.21*/("""
 
-"""),format.raw/*5.1*/("""<html lang="en">
+"""),format.raw/*6.1*/("""<html lang="en">
 <head>
   <title>Checkers Game</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" type="image/x-icon" href='"""),_display_(/*10.47*/routes/*10.53*/.Assets.versioned("images/icon.png")),format.raw/*10.89*/("""'>
+  <link rel="icon" type="image/x-icon" href='"""),_display_(/*11.47*/routes/*11.53*/.Assets.versioned("images/icon.png")),format.raw/*11.89*/("""'>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap&#64;5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
-  <link rel="stylesheet" href='"""),_display_(/*13.33*/routes/*13.39*/.Assets.versioned("stylesheets/say.css")),format.raw/*13.79*/("""'>
-  <link rel="javascript" href='"""),_display_(/*14.33*/routes/*14.39*/.Assets.versioned("javascripts/checkers.js")),format.raw/*14.83*/("""'>
+  <link rel="stylesheet" href='"""),_display_(/*14.33*/routes/*14.39*/.Assets.versioned("stylesheets/say.css")),format.raw/*14.79*/("""'>
+  <link rel="javascript" href='"""),_display_(/*15.33*/routes/*15.39*/.Assets.versioned("javascripts/checkers.js")),format.raw/*15.83*/("""'>
 </head>
 
 <body>
   <script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap&#64;5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+  <script src="sweetalert2.all.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2&#64;11"></script>
   <nav class="navbar navbar-dark bg-dark fixed-top">
   <div class="container-fluid">
     <a class="navbar-brand" href="http://localhost:9000/"> <i class="fa-solid fa-chess"></i> Checkers</a>
@@ -65,8 +68,8 @@ Seq[Any](format.raw/*2.1*/("""
               <i class="fa-solid fa-chess-board"></i> Boardsize
             </a>
             <ul class="dropdown-menu dropdown-menu-dark">
-              <li><a class="dropdown-item "  onclick="openGrid(8)"> <i class="fa-solid fa-chess-queen"></i> 8x8</a></li>
-              <li><a class="dropdown-item "  onclick="openGrid(10)"> <i class="fa-regular  fa-chess-queen"></i> 10x10</a></li>
+              <li><a class="dropdown-item "  onclick="newBoard(8)"> <i class="fa-solid fa-chess-queen"></i> 8x8</a></li>
+              <li><a class="dropdown-item "  onclick="newBoard(10)"> <i class="fa-regular  fa-chess-queen"></i> 10x10</a></li>
               <li>
                 <hr class="dropdown-divider">
               </li>
@@ -80,17 +83,20 @@ Seq[Any](format.raw/*2.1*/("""
 </nav>
 
 
-
-<div class="gamecontainer">
+  """),format.raw/*62.119*/("""
+"""),format.raw/*63.1*/("""<div class="gamecontainer">
   <div class="game">
-  """),_display_(/*62.4*/for(row <- 0 until size) yield /*62.28*/ {_display_(Seq[Any](format.raw/*62.30*/("""
-    """),format.raw/*63.5*/("""<div class="fieldrow"> <!--Maybe think of a different name, might not make sense?-->
-      """),_display_(/*64.8*/for(col <- 0 until size) yield /*64.32*/ {_display_(Seq[Any](format.raw/*64.34*/("""
-
-        """),format.raw/*66.9*/("""<img class="field" id="scalar"""),_display_(/*66.39*/{row*size+col}),format.raw/*66.53*/("""" src="/assets/images/white_queen.png" style="background: #00ACED"/>
-      """)))}),format.raw/*67.8*/("""
-  """)))}),format.raw/*68.4*/("""
-    """),format.raw/*69.5*/("""</div>
+  """),_display_(/*65.4*/for(row <- 0 until size) yield /*65.28*/ {_display_(Seq[Any](format.raw/*65.30*/("""
+    """),format.raw/*66.5*/("""<div class="fieldrow"> <!--Maybe think of a different name, might not make sense?-->
+      """),_display_(/*67.8*/for(col <- 0 until size) yield /*67.32*/ {_display_(Seq[Any](format.raw/*67.34*/("""
+        """),format.raw/*68.74*/("""
+        """),format.raw/*69.9*/("""<div class="field" id="field"""),_display_(/*69.38*/{row*size+col}),format.raw/*69.52*/("""" style="background-color: #00ACED">
+            <img class="img" id="scalar"""),_display_(/*70.41*/{row*size+col}),format.raw/*70.55*/("""" src="/assets/images/black_queen.png" alt=""/>
+        </div>
+      """)))}),format.raw/*72.8*/("""
+    """)))}),format.raw/*73.6*/("""
+"""),format.raw/*74.69*/("""
+    """),format.raw/*75.5*/("""</div>
   </div>
 </div>
 
@@ -99,38 +105,38 @@ Seq[Any](format.raw/*2.1*/("""
 
 
 
-"""),format.raw/*78.32*/("""
-"""),format.raw/*79.25*/("""
-"""),format.raw/*80.36*/("""
-"""),format.raw/*81.93*/("""
-"""),format.raw/*82.38*/("""
-"""),format.raw/*83.36*/("""
-"""),format.raw/*84.46*/("""
-"""),format.raw/*85.58*/("""
-"""),format.raw/*86.87*/("""
-"""),format.raw/*87.54*/("""
-"""),format.raw/*88.63*/("""
-"""),format.raw/*89.30*/("""
-"""),format.raw/*90.29*/("""
-"""),format.raw/*91.54*/("""
-"""),format.raw/*92.63*/("""
-"""),format.raw/*93.30*/("""
-"""),format.raw/*94.22*/("""
-"""),format.raw/*95.27*/("""
-"""),format.raw/*96.66*/("""
-"""),format.raw/*97.29*/("""
-"""),format.raw/*98.28*/("""
-"""),format.raw/*99.20*/("""
-"""),format.raw/*100.24*/("""
-"""),format.raw/*101.19*/("""
-"""),format.raw/*102.104*/("""
-"""),format.raw/*103.12*/("""
-"""),format.raw/*104.12*/("""
-"""),format.raw/*105.15*/("""
-"""),format.raw/*106.59*/("""
-"""),format.raw/*107.10*/("""
-"""),format.raw/*108.13*/("""
-"""),format.raw/*109.11*/("""
+"""),format.raw/*84.32*/("""
+"""),format.raw/*85.25*/("""
+"""),format.raw/*86.36*/("""
+"""),format.raw/*87.93*/("""
+"""),format.raw/*88.38*/("""
+"""),format.raw/*89.36*/("""
+"""),format.raw/*90.46*/("""
+"""),format.raw/*91.58*/("""
+"""),format.raw/*92.87*/("""
+"""),format.raw/*93.54*/("""
+"""),format.raw/*94.63*/("""
+"""),format.raw/*95.30*/("""
+"""),format.raw/*96.29*/("""
+"""),format.raw/*97.54*/("""
+"""),format.raw/*98.63*/("""
+"""),format.raw/*99.30*/("""
+"""),format.raw/*100.22*/("""
+"""),format.raw/*101.27*/("""
+"""),format.raw/*102.66*/("""
+"""),format.raw/*103.29*/("""
+"""),format.raw/*104.28*/("""
+"""),format.raw/*105.20*/("""
+"""),format.raw/*106.24*/("""
+"""),format.raw/*107.19*/("""
+"""),format.raw/*108.104*/("""
+"""),format.raw/*109.12*/("""
+"""),format.raw/*110.12*/("""
+"""),format.raw/*111.15*/("""
+"""),format.raw/*112.59*/("""
+"""),format.raw/*113.10*/("""
+"""),format.raw/*114.13*/("""
+"""),format.raw/*115.11*/("""
 
 
 
@@ -138,12 +144,12 @@ Seq[Any](format.raw/*2.1*/("""
 
 
 
-"""),format.raw/*117.1*/("""<div class="form-group">
+"""),format.raw/*123.1*/("""<div class="form-group">
   <label for="text-input"> </label>
   <input type="text" class="form-control" id="text-input" placeholder="Enter your move like 'XX YY'" onfocus="this.placeholder = ''" input-focus-border-color="#99999" >
   <div style="padding:20px"></div>>
   <button onclick="move()" type="button" class="btn bouncy">Enter</button>
-    <p id="message-field">"""),_display_(/*122.28*/{message}),format.raw/*122.37*/(""" """),format.raw/*122.38*/("""</p>
+    <p id="message-field">"""),_display_(/*128.28*/{message}),format.raw/*128.37*/(""" """),format.raw/*128.38*/("""</p>
 </div>
 
 
@@ -153,23 +159,24 @@ Seq[Any](format.raw/*2.1*/("""
 
 
 <script>
-  function openGrid(nmbr) """),format.raw/*132.27*/("""{"""),format.raw/*132.28*/("""
-    """),format.raw/*133.5*/("""if (confirm("Are you sure you want to continue? Starting a new game means that current progress will be lost!")) """),format.raw/*133.118*/("""{"""),format.raw/*133.119*/("""
-      """),format.raw/*134.7*/("""window.location.href="http://localhost:9000/new"+nmbr+"Grid";
-    """),format.raw/*135.5*/("""}"""),format.raw/*135.6*/("""
-  """),format.raw/*136.3*/("""}"""),format.raw/*136.4*/("""
-  """),format.raw/*137.3*/("""function move() """),format.raw/*137.19*/("""{"""),format.raw/*137.20*/("""
-    """),format.raw/*138.5*/("""let x = document.getElementById("text-input").value;
-    if (x === "") """),format.raw/*139.19*/("""{"""),format.raw/*139.20*/("""
-      """),format.raw/*140.7*/("""alert("Input can't be empty");
-      return;
-    """),format.raw/*142.5*/("""}"""),format.raw/*142.6*/("""
-    """),format.raw/*143.5*/("""let start = x.split(" ")[0];
-    let dest = x.split(" ")[1];
-    location.href = "http://localhost:9000/move/" + start + "/" + dest;
-  """),format.raw/*146.3*/("""}"""),format.raw/*146.4*/("""
+        """),format.raw/*138.47*/("""
+      """),format.raw/*139.7*/("""function openGrid(nmbr) """),format.raw/*139.31*/("""{"""),format.raw/*139.32*/("""
+        """),format.raw/*140.9*/("""if (confirm("Are you sure you want to continue? Starting a new game means that current progress will be lost!")) """),format.raw/*140.122*/("""{"""),format.raw/*140.123*/("""
+          """),format.raw/*141.11*/("""window.location.href="http://localhost:9000/new"+nmbr+"Grid";
+        """),format.raw/*142.9*/("""}"""),format.raw/*142.10*/("""
+      """),format.raw/*143.7*/("""}"""),format.raw/*143.8*/("""
+      """),format.raw/*144.7*/("""function move() """),format.raw/*144.23*/("""{"""),format.raw/*144.24*/("""
+        """),format.raw/*145.9*/("""let x = document.getElementById("text-input").value;
+        if (x === "") """),format.raw/*146.23*/("""{"""),format.raw/*146.24*/("""
+          """),format.raw/*147.11*/("""alert("Input can't be empty");
+          return;
+        """),format.raw/*149.9*/("""}"""),format.raw/*149.10*/("""
+        """),format.raw/*150.9*/("""let start = x.split(" ")[0];
+        let dest = x.split(" ")[1];
+        location.href = "http://localhost:9000/move/" + start + "/" + dest;
+      """),format.raw/*153.7*/("""}"""),format.raw/*153.8*/("""
 
-"""),format.raw/*148.1*/("""</script>"""))
+"""),format.raw/*155.1*/("""</script>"""))
       }
     }
   }
@@ -185,11 +192,11 @@ Seq[Any](format.raw/*2.1*/("""
 
               /*
                   -- GENERATED --
-                  DATE: 2022-11-30T21:52:24.844
+                  DATE: 2022-12-02T00:02:21.783
                   SOURCE: /Users/ginakokoska/IdeaProjects/HTWG/AIN5/Webapplikation/checkers_wa/app/views/checkers_game.scala.html
-                  HASH: 0ede7eb27c83ee5957be7f62baec79a229f0f66e
-                  MATRIX: 797->1|963->92|974->96|1033->90|1061->125|1089->127|1313->324|1328->330|1385->366|1771->725|1786->731|1847->771|1909->806|1924->812|1989->856|4594->3435|4634->3459|4674->3461|4706->3466|4824->3558|4864->3582|4904->3584|4941->3594|4998->3624|5033->3638|5139->3714|5173->3718|5205->3723|5262->3783|5291->3808|5320->3844|5349->3937|5378->3975|5407->4011|5436->4057|5465->4115|5494->4202|5523->4256|5552->4319|5581->4349|5610->4378|5639->4432|5668->4495|5697->4525|5726->4547|5755->4574|5784->4640|5813->4669|5842->4697|5871->4717|5901->4741|5931->4760|5962->4864|5992->4876|6022->4888|6052->4903|6082->4962|6112->4972|6142->4985|6172->4996|6208->5004|6604->5372|6635->5381|6665->5382|6755->5443|6785->5444|6818->5449|6961->5562|6992->5563|7027->5570|7121->5636|7150->5637|7181->5640|7210->5641|7241->5644|7286->5660|7316->5661|7349->5666|7449->5737|7479->5738|7514->5745|7591->5794|7620->5795|7653->5800|7816->5935|7845->5936|7875->5938
-                  LINES: 21->1|25->3|25->3|26->2|27->3|29->5|34->10|34->10|34->10|37->13|37->13|37->13|38->14|38->14|38->14|86->62|86->62|86->62|87->63|88->64|88->64|88->64|90->66|90->66|90->66|91->67|92->68|93->69|102->78|103->79|104->80|105->81|106->82|107->83|108->84|109->85|110->86|111->87|112->88|113->89|114->90|115->91|116->92|117->93|118->94|119->95|120->96|121->97|122->98|123->99|124->100|125->101|126->102|127->103|128->104|129->105|130->106|131->107|132->108|133->109|141->117|146->122|146->122|146->122|156->132|156->132|157->133|157->133|157->133|158->134|159->135|159->135|160->136|160->136|161->137|161->137|161->137|162->138|163->139|163->139|164->140|166->142|166->142|167->143|170->146|170->146|172->148
+                  HASH: d270d5115edddc6c3d5f49507f262be5719eef59
+                  MATRIX: 797->1|963->92|974->96|1017->127|1029->132|1073->90|1101->125|1129->146|1157->148|1381->345|1396->351|1453->387|1839->746|1854->752|1915->792|1977->827|1992->833|2057->877|4731->3638|4759->3639|4837->3691|4877->3715|4917->3717|4949->3722|5067->3814|5107->3838|5147->3840|5184->3914|5220->3923|5276->3952|5311->3966|5415->4043|5450->4057|5550->4127|5586->4133|5615->4202|5647->4207|5704->4267|5733->4292|5762->4328|5791->4421|5820->4459|5849->4495|5878->4541|5907->4599|5936->4686|5965->4740|5994->4803|6023->4833|6052->4862|6081->4916|6110->4979|6139->5009|6169->5031|6199->5058|6229->5124|6259->5153|6289->5181|6319->5201|6349->5225|6379->5244|6410->5348|6440->5360|6470->5372|6500->5387|6530->5446|6560->5456|6590->5469|6620->5480|6656->5488|7052->5856|7083->5865|7113->5866|7185->5947|7220->5954|7273->5978|7303->5979|7340->5988|7483->6101|7514->6102|7554->6113|7652->6183|7682->6184|7717->6191|7746->6192|7781->6199|7826->6215|7856->6216|7893->6225|7997->6300|8027->6301|8067->6312|8152->6369|8182->6370|8219->6379|8394->6526|8423->6527|8453->6529
+                  LINES: 21->1|25->3|25->3|25->4|25->4|26->2|27->3|28->4|30->6|35->11|35->11|35->11|38->14|38->14|38->14|39->15|39->15|39->15|86->62|87->63|89->65|89->65|89->65|90->66|91->67|91->67|91->67|92->68|93->69|93->69|93->69|94->70|94->70|96->72|97->73|98->74|99->75|108->84|109->85|110->86|111->87|112->88|113->89|114->90|115->91|116->92|117->93|118->94|119->95|120->96|121->97|122->98|123->99|124->100|125->101|126->102|127->103|128->104|129->105|130->106|131->107|132->108|133->109|134->110|135->111|136->112|137->113|138->114|139->115|147->123|152->128|152->128|152->128|162->138|163->139|163->139|163->139|164->140|164->140|164->140|165->141|166->142|166->142|167->143|167->143|168->144|168->144|168->144|169->145|170->146|170->146|171->147|173->149|173->149|174->150|177->153|177->153|179->155
                   -- GENERATED --
               */
           
