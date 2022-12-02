@@ -32,20 +32,17 @@ Seq[Any](format.raw/*2.1*/("""
   <title>Checkers Game</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" type="image/x-icon" href='"""),_display_(/*11.47*/routes/*11.53*/.Assets.versioned("images/icon.png")),format.raw/*11.89*/("""'>
+  <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap&#64;5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
-  <link rel="stylesheet" href='"""),_display_(/*14.33*/routes/*14.39*/.Assets.versioned("stylesheets/say.css")),format.raw/*14.79*/("""'>
-  <script src='"""),_display_(/*15.17*/routes/*15.23*/.Assets.versioned("javascripts/checkers.js")),format.raw/*15.67*/("""' type="text/javascript"></script>
+  <link rel="icon" type="image/x-icon" href='"""),_display_(/*14.47*/routes/*14.53*/.Assets.versioned("images/icon.png")),format.raw/*14.89*/("""'>
+  <link rel="stylesheet" href='"""),_display_(/*15.33*/routes/*15.39*/.Assets.versioned("stylesheets/say.css")),format.raw/*15.79*/("""'>
   <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-"""),format.raw/*17.158*/("""
-  """),format.raw/*18.3*/("""<link src="https://cdn.jsdelivr.net/npm/bootstrap&#64;5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"> </link>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-"""),format.raw/*20.113*/("""
-  """),format.raw/*21.3*/("""<script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+  <script src='"""),_display_(/*17.17*/routes/*17.23*/.Assets.versioned("javascripts/checkers.js")),format.raw/*17.67*/("""' type="text/javascript"></script>
 </head>
 
 <body>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap&#64;5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
   <nav class="navbar navbar-dark bg-dark fixed-top">
   <div class="container-fluid">
     <a class="navbar-brand" href="http://localhost:9000/"> <i class="fa-solid fa-chess"></i> Checkers</a>
@@ -85,20 +82,20 @@ Seq[Any](format.raw/*2.1*/("""
 </nav>
 
 
-  """),format.raw/*64.119*/("""
-"""),format.raw/*65.1*/("""<div class="gamecontainer">
+  """),format.raw/*61.119*/("""
+"""),format.raw/*62.1*/("""<div class="gamecontainer">
   <div class="game">
-  """),_display_(/*67.4*/for(row <- 0 until size) yield /*67.28*/ {_display_(Seq[Any](format.raw/*67.30*/("""
-    """),format.raw/*68.5*/("""<div class="fieldrow"> <!--Maybe think of a different name, might not make sense?-->
-      """),_display_(/*69.8*/for(col <- 0 until size) yield /*69.32*/ {_display_(Seq[Any](format.raw/*69.34*/("""
-        """),format.raw/*70.74*/("""
-        """),format.raw/*71.9*/("""<div class="field" id="field"""),_display_(/*71.38*/{row*size+col}),format.raw/*71.52*/("""">
-            <img class="img" id="scalar"""),_display_(/*72.41*/{row*size+col}),format.raw/*72.55*/("""" src="/assets/images/white_queen.png" alt=""/>
+  """),_display_(/*64.4*/for(row <- 0 until size) yield /*64.28*/ {_display_(Seq[Any](format.raw/*64.30*/("""
+    """),format.raw/*65.5*/("""<div class="fieldrow"> <!--Maybe think of a different name, might not make sense?-->
+      """),_display_(/*66.8*/for(col <- 0 until size) yield /*66.32*/ {_display_(Seq[Any](format.raw/*66.34*/("""
+        """),format.raw/*67.74*/("""
+        """),format.raw/*68.9*/("""<div class="field" id="field"""),_display_(/*68.38*/{row*size+col}),format.raw/*68.52*/("""">
+            <img class="img" id="scalar"""),_display_(/*69.41*/{row*size+col}),format.raw/*69.55*/("""" alt=""/>
         </div>
-      """)))}),format.raw/*74.8*/("""
-    """)))}),format.raw/*75.6*/("""
-"""),format.raw/*76.69*/("""
-    """),format.raw/*77.5*/("""</div>
+      """)))}),format.raw/*71.8*/("""
+    """)))}),format.raw/*72.6*/("""
+"""),format.raw/*73.69*/("""
+    """),format.raw/*74.5*/("""</div>
   </div>
 </div>
 
@@ -107,38 +104,38 @@ Seq[Any](format.raw/*2.1*/("""
 
 
 
-"""),format.raw/*86.32*/("""
-"""),format.raw/*87.25*/("""
+"""),format.raw/*83.32*/("""
+"""),format.raw/*84.25*/("""
+"""),format.raw/*85.36*/("""
+"""),format.raw/*86.93*/("""
+"""),format.raw/*87.38*/("""
 """),format.raw/*88.36*/("""
-"""),format.raw/*89.93*/("""
-"""),format.raw/*90.38*/("""
-"""),format.raw/*91.36*/("""
-"""),format.raw/*92.46*/("""
-"""),format.raw/*93.58*/("""
-"""),format.raw/*94.87*/("""
-"""),format.raw/*95.54*/("""
-"""),format.raw/*96.63*/("""
-"""),format.raw/*97.30*/("""
-"""),format.raw/*98.29*/("""
-"""),format.raw/*99.54*/("""
-"""),format.raw/*100.63*/("""
-"""),format.raw/*101.30*/("""
-"""),format.raw/*102.22*/("""
-"""),format.raw/*103.27*/("""
-"""),format.raw/*104.66*/("""
-"""),format.raw/*105.29*/("""
-"""),format.raw/*106.28*/("""
-"""),format.raw/*107.20*/("""
-"""),format.raw/*108.24*/("""
-"""),format.raw/*109.19*/("""
-"""),format.raw/*110.104*/("""
-"""),format.raw/*111.12*/("""
-"""),format.raw/*112.12*/("""
-"""),format.raw/*113.15*/("""
-"""),format.raw/*114.59*/("""
-"""),format.raw/*115.10*/("""
-"""),format.raw/*116.13*/("""
-"""),format.raw/*117.11*/("""
+"""),format.raw/*89.46*/("""
+"""),format.raw/*90.58*/("""
+"""),format.raw/*91.87*/("""
+"""),format.raw/*92.54*/("""
+"""),format.raw/*93.63*/("""
+"""),format.raw/*94.30*/("""
+"""),format.raw/*95.29*/("""
+"""),format.raw/*96.54*/("""
+"""),format.raw/*97.63*/("""
+"""),format.raw/*98.30*/("""
+"""),format.raw/*99.22*/("""
+"""),format.raw/*100.27*/("""
+"""),format.raw/*101.66*/("""
+"""),format.raw/*102.29*/("""
+"""),format.raw/*103.28*/("""
+"""),format.raw/*104.20*/("""
+"""),format.raw/*105.24*/("""
+"""),format.raw/*106.19*/("""
+"""),format.raw/*107.104*/("""
+"""),format.raw/*108.12*/("""
+"""),format.raw/*109.12*/("""
+"""),format.raw/*110.15*/("""
+"""),format.raw/*111.59*/("""
+"""),format.raw/*112.10*/("""
+"""),format.raw/*113.13*/("""
+"""),format.raw/*114.11*/("""
 
 
 
@@ -146,12 +143,12 @@ Seq[Any](format.raw/*2.1*/("""
 
 
 
-"""),format.raw/*125.1*/("""<div class="form-group">
+"""),format.raw/*122.1*/("""<div class="form-group">
   <label for="text-input"> </label>
   <input type="text" class="form-control" id="text-input" placeholder="Enter your move like 'XX YY'" onfocus="this.placeholder = ''" input-focus-border-color="#99999" >
   <div style="padding:20px"></div>>
   <button onclick="move()" type="button" class="btn bouncy">Enter</button>
-    <p id="message-field">"""),_display_(/*130.28*/{message}),format.raw/*130.37*/(""" """),format.raw/*130.38*/("""</p>
+    <p id="message-field">"""),_display_(/*127.28*/{message}),format.raw/*127.37*/(""" """),format.raw/*127.38*/("""</p>
 </div>
 
 
@@ -161,27 +158,27 @@ Seq[Any](format.raw/*2.1*/("""
 
 
 <script>
-        """),format.raw/*140.47*/("""
-      """),format.raw/*141.7*/("""// function openGrid(nmbr) """),format.raw/*141.34*/("""{"""),format.raw/*141.35*/("""
-      """),format.raw/*142.7*/("""//   if (confirm("Are you sure you want to continue? Starting a new game means that current progress will be lost!")) """),format.raw/*142.125*/("""{"""),format.raw/*142.126*/("""
-      """),format.raw/*143.7*/("""//     window.location.href="http://localhost:9000/new"+nmbr+"Grid";
-      //   """),format.raw/*144.12*/("""}"""),format.raw/*144.13*/("""
-      """),format.raw/*145.7*/("""// """),format.raw/*145.10*/("""}"""),format.raw/*145.11*/("""
+        """),format.raw/*137.47*/("""
+      """),format.raw/*138.7*/("""// function openGrid(nmbr) """),format.raw/*138.34*/("""{"""),format.raw/*138.35*/("""
+      """),format.raw/*139.7*/("""//   if (confirm("Are you sure you want to continue? Starting a new game means that current progress will be lost!")) """),format.raw/*139.125*/("""{"""),format.raw/*139.126*/("""
+      """),format.raw/*140.7*/("""//     window.location.href="http://localhost:9000/new"+nmbr+"Grid";
+      //   """),format.raw/*141.12*/("""}"""),format.raw/*141.13*/("""
+      """),format.raw/*142.7*/("""// """),format.raw/*142.10*/("""}"""),format.raw/*142.11*/("""
 
 
 
-      """),format.raw/*149.7*/("""function move() """),format.raw/*149.23*/("""{"""),format.raw/*149.24*/("""
-        """),format.raw/*150.9*/("""let x = document.getElementById("text-input").value;
-        if (x === "") """),format.raw/*151.23*/("""{"""),format.raw/*151.24*/("""
-          """),format.raw/*152.11*/("""alert("Input can't be empty");
+      """),format.raw/*146.7*/("""function move() """),format.raw/*146.23*/("""{"""),format.raw/*146.24*/("""
+        """),format.raw/*147.9*/("""let x = document.getElementById("text-input").value;
+        if (x === "") """),format.raw/*148.23*/("""{"""),format.raw/*148.24*/("""
+          """),format.raw/*149.11*/("""alert("Input can't be empty");
           return;
-        """),format.raw/*154.9*/("""}"""),format.raw/*154.10*/("""
-        """),format.raw/*155.9*/("""let start = x.split(" ")[0];
+        """),format.raw/*151.9*/("""}"""),format.raw/*151.10*/("""
+        """),format.raw/*152.9*/("""let start = x.split(" ")[0];
         let dest = x.split(" ")[1];
         location.href = "http://localhost:9000/move/" + start + "/" + dest;
-      """),format.raw/*158.7*/("""}"""),format.raw/*158.8*/("""
+      """),format.raw/*155.7*/("""}"""),format.raw/*155.8*/("""
 
-"""),format.raw/*160.1*/("""</script>"""))
+"""),format.raw/*157.1*/("""</script>"""))
       }
     }
   }
@@ -197,11 +194,11 @@ Seq[Any](format.raw/*2.1*/("""
 
               /*
                   -- GENERATED --
-                  DATE: 2022-12-02T20:56:49.964
+                  DATE: 2022-12-02T22:04:47.801
                   SOURCE: /Users/ginakokoska/IdeaProjects/HTWG/AIN5/Webapplikation/checkers_wa/app/views/checkers_game.scala.html
-                  HASH: dc86df124494be32005ed51d1bc41175ecacda6f
-                  MATRIX: 797->1|963->92|974->96|1017->127|1029->132|1073->90|1101->125|1129->146|1157->148|1381->345|1396->351|1453->387|1839->746|1854->752|1915->792|1961->811|1976->817|2041->861|2183->1131|2213->1134|2543->1547|2573->1550|4914->3978|4942->3979|5020->4031|5060->4055|5100->4057|5132->4062|5250->4154|5290->4178|5330->4180|5367->4254|5403->4263|5459->4292|5494->4306|5564->4349|5599->4363|5699->4433|5735->4439|5764->4508|5796->4513|5853->4573|5882->4598|5911->4634|5940->4727|5969->4765|5998->4801|6027->4847|6056->4905|6085->4992|6114->5046|6143->5109|6172->5139|6201->5168|6230->5222|6260->5285|6290->5315|6320->5337|6350->5364|6380->5430|6410->5459|6440->5487|6470->5507|6500->5531|6530->5550|6561->5654|6591->5666|6621->5678|6651->5693|6681->5752|6711->5762|6741->5775|6771->5786|6807->5794|7203->6162|7234->6171|7264->6172|7336->6253|7371->6260|7427->6287|7457->6288|7492->6295|7640->6413|7671->6414|7706->6421|7815->6501|7845->6502|7880->6509|7912->6512|7942->6513|7980->6523|8025->6539|8055->6540|8092->6549|8196->6624|8226->6625|8266->6636|8351->6693|8381->6694|8418->6703|8593->6850|8622->6851|8652->6853
-                  LINES: 21->1|25->3|25->3|25->4|25->4|26->2|27->3|28->4|30->6|35->11|35->11|35->11|38->14|38->14|38->14|39->15|39->15|39->15|41->17|42->18|44->20|45->21|88->64|89->65|91->67|91->67|91->67|92->68|93->69|93->69|93->69|94->70|95->71|95->71|95->71|96->72|96->72|98->74|99->75|100->76|101->77|110->86|111->87|112->88|113->89|114->90|115->91|116->92|117->93|118->94|119->95|120->96|121->97|122->98|123->99|124->100|125->101|126->102|127->103|128->104|129->105|130->106|131->107|132->108|133->109|134->110|135->111|136->112|137->113|138->114|139->115|140->116|141->117|149->125|154->130|154->130|154->130|164->140|165->141|165->141|165->141|166->142|166->142|166->142|167->143|168->144|168->144|169->145|169->145|169->145|173->149|173->149|173->149|174->150|175->151|175->151|176->152|178->154|178->154|179->155|182->158|182->158|184->160
+                  HASH: fb69979eb0b1baf2367012ecd33bc6ff3851b3ea
+                  MATRIX: 797->1|963->92|974->96|1017->127|1029->132|1073->90|1101->125|1129->146|1157->148|1863->827|1878->833|1935->869|1997->904|2012->910|2073->950|2197->1047|2212->1053|2277->1097|4712->3619|4740->3620|4818->3672|4858->3696|4898->3698|4930->3703|5048->3795|5088->3819|5128->3821|5165->3895|5201->3904|5257->3933|5292->3947|5362->3990|5397->4004|5460->4037|5496->4043|5525->4112|5557->4117|5614->4177|5643->4202|5672->4238|5701->4331|5730->4369|5759->4405|5788->4451|5817->4509|5846->4596|5875->4650|5904->4713|5933->4743|5962->4772|5991->4826|6020->4889|6049->4919|6078->4941|6108->4968|6138->5034|6168->5063|6198->5091|6228->5111|6258->5135|6288->5154|6319->5258|6349->5270|6379->5282|6409->5297|6439->5356|6469->5366|6499->5379|6529->5390|6565->5398|6961->5766|6992->5775|7022->5776|7094->5857|7129->5864|7185->5891|7215->5892|7250->5899|7398->6017|7429->6018|7464->6025|7573->6105|7603->6106|7638->6113|7670->6116|7700->6117|7738->6127|7783->6143|7813->6144|7850->6153|7954->6228|7984->6229|8024->6240|8109->6297|8139->6298|8176->6307|8351->6454|8380->6455|8410->6457
+                  LINES: 21->1|25->3|25->3|25->4|25->4|26->2|27->3|28->4|30->6|38->14|38->14|38->14|39->15|39->15|39->15|41->17|41->17|41->17|85->61|86->62|88->64|88->64|88->64|89->65|90->66|90->66|90->66|91->67|92->68|92->68|92->68|93->69|93->69|95->71|96->72|97->73|98->74|107->83|108->84|109->85|110->86|111->87|112->88|113->89|114->90|115->91|116->92|117->93|118->94|119->95|120->96|121->97|122->98|123->99|124->100|125->101|126->102|127->103|128->104|129->105|130->106|131->107|132->108|133->109|134->110|135->111|136->112|137->113|138->114|146->122|151->127|151->127|151->127|161->137|162->138|162->138|162->138|163->139|163->139|163->139|164->140|165->141|165->141|166->142|166->142|166->142|170->146|170->146|170->146|171->147|172->148|172->148|173->149|175->151|175->151|176->152|179->155|179->155|181->157
                   -- GENERATED --
               */
           

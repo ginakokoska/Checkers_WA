@@ -1,5 +1,6 @@
-[0m[[0m[31merror[0m] [0m[0m/Users/ginakokoska/IdeaProjects/HTWG/AIN5/Webapplikation/checkers_wa/target/scala-2.13/routes/main/router/Routes.scala:170:22: value status is not a member of controllers.HomeController[0m
-[0m[[0m[31merror[0m] [0m[0mdid you mean Status?[0m
-[0m[[0m[31merror[0m] [0m[0m    HomeController_1.status,[0m
-[0m[[0m[31merror[0m] [0m[0m                     ^[0m
+[0m[[0m[31merror[0m] [0m[0m/Users/ginakokoska/IdeaProjects/HTWG/AIN5/Webapplikation/checkers_wa/app/controllers/HomeController.scala:68:36: type mismatch;[0m
+[0m[[0m[31merror[0m] [0m[0m found   : String[0m
+[0m[[0m[31merror[0m] [0m[0m required: Int[0m
+[0m[[0m[31merror[0m] [0m[0m    gameController.createGameBoard(size)[0m
+[0m[[0m[31merror[0m] [0m[0m                                   ^[0m
 [0m[[0m[31merror[0m] [0m[0mone error found[0m

@@ -1,6 +1,6 @@
 // @GENERATOR:play-routes-compiler
 // @SOURCE:/Users/ginakokoska/IdeaProjects/HTWG/AIN5/Webapplikation/checkers_wa/conf/routes
-// @DATE:Fri Dec 02 20:38:07 CET 2022
+// @DATE:Fri Dec 02 22:31:12 CET 2022
 
 import play.api.routing.JavaScriptReverseRoute
 
@@ -17,6 +17,16 @@ package controllers.javascript {
       if (_prefix.endsWith("/")) "" else "/"
     }
 
+  
+    // @LINE:15
+    def processRequest: JavaScriptReverseRoute = JavaScriptReverseRoute(
+      "controllers.HomeController.processRequest",
+      """
+        function() {
+          return _wA({method:"POST", url:"""" + _prefix + { _defaultPrefix } + """" + "command"})
+        }
+      """
+    )
   
     // @LINE:9
     def new10Grid: JavaScriptReverseRoute = JavaScriptReverseRoute(
@@ -90,7 +100,7 @@ package controllers.javascript {
   
   }
 
-  // @LINE:18
+  // @LINE:20
   class ReverseAssets(_prefix: => String) {
 
     def _defaultPrefix: String = {
@@ -98,7 +108,7 @@ package controllers.javascript {
     }
 
   
-    // @LINE:18
+    // @LINE:20
     def versioned: JavaScriptReverseRoute = JavaScriptReverseRoute(
       "controllers.Assets.versioned",
       """

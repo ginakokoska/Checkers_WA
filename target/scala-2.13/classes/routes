@@ -11,6 +11,8 @@ GET     /instructions               controllers.HomeController.instructions()
 GET     /test                       controllers.HomeController.test()
 GET     /move/:start/:dest          controllers.HomeController.move(start:String,dest:String)
 GET     /current                    controllers.HomeController.current
++nocsrf
+POST    /command                    controllers.HomeController.processRequest
 
 #controllers.Default.notFound
 
