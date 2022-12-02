@@ -14,29 +14,29 @@ $(document).ready(function() {
 // for webserver ??
 function processCommand(cmd, data) {
     post("POST", "/command", {"cmd": cmd, "data": data}).then(() => {
-        getData().then(() => {
-            checkWin();
-            setScalarCol();
-            updateGameboard();
-            //refreshOnClickEvents();
-        })
+        // getData().then(() => {
+        //     checkWin();
+        //     setScalarCol();
+        //     updateGameboard();
+        //     //refreshOnClickEvents();
+        // })
     })
 }
 
 /*idee yannick*/
 // pop up message here ?
 function newBoard(num) {
-    processCommand("size", num)
+    processCommand("newBoard", num)
 }
 
 // how to implement that current page is 8 or 10
 // where the fuck is the popup message ??
 function resetGame() {
     if (confirm("Are you sure you want to continue? Starting a new game means that current progress will be lost!")) {
-        if (data.size === 8) {
-            processCommand("newGrid", 8)
+        if (data.game.gameBoard.size === 8) {
+            processCommand("newBoard", "8")
         } else {
-            processCommand("newGrid", 10)
+            processCommand("newBoard", "10")
         }
     }
 }
@@ -70,6 +70,7 @@ function post(method, url, data) {
         contentType: "application/json",
 
         success: function (response) {
+            console.log("Success")
             data = response;
         },
         error: function (response) {
@@ -103,10 +104,11 @@ let size = 8
 
 
 function setScalarCol() {
-    for (let scalar=0; scalar < data.gameBoard.size*data.gameBoard.size; scalar++) {
-        if (scalar % 2 === 0) {
-            // das ist bullshit und geht nicht background-color geht nicht
-            //document.getElementById("field" + scalar).style.background-color=""#641403";
+    for (let scalar=0; scalar < data.game.gameBoard.size*data.game.gameBoard.size; scalar++) {
+        //val x = (scalar+data.game.gameBoard.size)
+        let col = scalar % data.game.gameBoard.size;
+        let row = Math.floor(scalar / data.game.gameBoard.size);
+        if ((row+col+data.game.gameBoard.size)%2 === 0) {
             $('#' + "field" + scalar).attr("style", "background-color: #641403");
             console.log("in set Scalar")
         } else {
@@ -122,26 +124,24 @@ function setScalarCol() {
 // [{"row":0,"col":0,"field":{"pos":"A1","piece":{"state":"normal","prow":0,"pcol":0,"color":"black"}}},
 
 function updateGameboard() {
-    for (let scalar=0; scalar < data.gameBoard.size*data.gameBoard.size; scalar++) {
+    for (let scalar=0; scalar < data.game.gameBoard.size*data.game.gameBoard.size; scalar++) {
         let row = data.game.gameBoard.fields[scalar].row
         let col = data.game.gameBoard.fields[scalar].col
         let fieldID = "scalar" + scalar
         let color = data.game.gameBoard.fields[scalar].field.piece.color
         let state = data.game.gameBoard.fields[scalar].field.piece.state
 
-        if (state === "normal") {
-            //$("#scalar"+scalar).html("o");
-            $('#' + fieldID).attr("src", "/assets/images/white.png");
-        } else if (state === "queen") {
-            //$("#scalar"+scalar).html("q");
-            $('#' + fieldID).attr("src", "/assets/images/white_queen.png");
+        if (state !== "") {
+            switch (state) {
+                case "normal":
+                    $('#' + fieldID).attr("src", "/assets/images/" + color + ".png");
+                    break;
+                case "queen":
+                    $('#' + fieldID).attr("src", "/assets/images/" + color + "_queen.png");
+                    break;
+            }
+        }
 
-        }
-        if (color === "black") {
-            $('#' + fieldID).attr("src", "/assets/images/black.png");
-        } else if (color === "white") {
-            $('#' + fieldID).attr("src", "/assets/images/black_queen.png");
-        }
     }
 }
 

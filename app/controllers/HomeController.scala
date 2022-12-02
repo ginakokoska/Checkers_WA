@@ -63,6 +63,12 @@ class HomeController @Inject()(val controllerComponents: ControllerComponents) e
     Ok(views.html.checkers_game(gameController, message))
   }
 
+  def newBoard(size:String): Action[AnyContent] = Action {
+    message = ""
+    gameController.createGameBoard(Integer.parseInt(size))
+    Ok(views.html.checkers_game(gameController, message))
+  }
+
   def move(start:String, dest:String)= Action {
 
     try {
@@ -108,8 +114,8 @@ class HomeController @Inject()(val controllerComponents: ControllerComponents) e
 
 
   def processCommand(cmd: String, data: String): String = {
-    if (cmd.equals("\"move\"")) {
-      //gameController.move()
+    if (cmd.equals("\"newBoard\"")) {
+      newBoard(data)
     } else if (cmd.equals("\"rollDice\"")) {
       //rollDice
     } else if (cmd.equals("\"selectFig\"")) {
@@ -177,7 +183,12 @@ class HomeController @Inject()(val controllerComponents: ControllerComponents) e
         "pcol" -> t.col,
         "color" -> t.getColor,
       )
-      case None => JsNull
+      case None => Json.obj(
+        "state" -> "",
+        "prow" -> "",
+        "pcol" -> "",
+        "color" -> "",
+      )
     }
   }
 
