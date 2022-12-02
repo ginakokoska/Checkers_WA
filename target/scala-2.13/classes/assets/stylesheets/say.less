@@ -4,19 +4,17 @@
 @darkred: #641403;
 @darkgrey:#333;
 @lightgrey: #ccc;
+@midgrey: #555;
 
 
 .gamecontainer {
-
+    padding-top: 4%;
+    margin: 1em;
     display:flex;
     font-size: 40px;
     font-family: "Rockwell";
     font-weight: 500;
     color:black;
-      text-align: center;
-      align-self: center;
-      align-items: center;
-
 }
 
 .game {
@@ -26,12 +24,31 @@
     border-color: black;
     background-color: black;
     padding: 0.05em;
-      text-align: center;
-      align-self: center;
-      align-items: center;
-      margin-left: auto;
-        margin-right: auto;
+    margin:auto;
+    width: auto;
+}
 
+.field {
+    display: inline-block;
+    float:left;
+    border-style: outset;
+    border-width: 0em;
+    background-color: @darkred;
+    border-color: #000000;
+    width: 1.2em;
+    height: 1.2em;
+    margin: 0.1em;
+    text-align: center;
+}
+
+@media (max-width: 992px) {
+    #information-panel {
+        font-size: 2.5vw
+    }
+
+    .img {
+
+    }
 }
 
 .field_black {
@@ -95,7 +112,7 @@
     font-size: 40px;
     font-family: "Rockwell";
     font-weight: 500;
-    color: @lightgrey;
+    color:@lightgrey;
 }
 
 .field_row {
@@ -123,6 +140,7 @@
     height:  9.6em;
     margin: 0.1em;
     text-align: center;
+
 }
 
 .game_gitter {
@@ -136,97 +154,178 @@
     width: auto;
 }
 
-
-.item-top {
-    grid-column: 1;
-    grid-row: 1 / 3;
-    grid-gap: 0;
-          gap: 0;
-    margin-top: 0px;
-      margin-bottom: 0px;
-      align-items: center;
+.container {
+    display: grid;
+    grid-template-columns: [first] auto [line2] auto [line3] auto [line4] auto [line5] auto [line6] auto [line7] auto [end] auto ;
+    grid-template-rows: [first] auto [row2] auto [row3] auto [row4] auto [row5] auto [row6] auto [row7] auto [end] auto ;
+    background-color: #2196F3;
+    padding: 10px;
 }
 
-.item-game {
-    grid-column: 2;
-    grid-row: 2;
-    grid-gap: 0;
-      gap: 0;
-      margin-top: 0px;
-        margin-bottom: 0px;
-
-}
-
-.grid-container{
-  display: grid;
-  grid-template-columns: 1fr 600px 1fr;
-  grid-gap: 0;
-    gap: 0;
-    margin-top: 0px;
-      margin-bottom: 0px;
-      align-items: center;
-}
-
-.box-inner{
+.item {
+  background-color: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(0, 0, 0, 0.8);
+  padding: 20px;
+  font-size: 30px;
   text-align: center;
-  align-self: center;
-  grid-gap: 0;
-    gap: 0;
-    margin-top: 0px;
-      margin-bottom: 0px;
-      align-items: center;
 }
 
-.wrapper-inner{
-
-  display: grid;
-  grid-gap: 0;
-  gap: 0;
-  margin-top: 0px;
-    margin-bottom: 0px;
-    align-items: center;
+.item-a {
+    grid-area: 1 / 1 / 1 / 1;
+    text-align: center;
 }
 
-.bottom {
 
-width: 456px;
-
-  background-color: #7d694c;
-  grid-row: 3;
-  grid-column: 2;
-  margin-top: 0px;
-  margin-bottom: 0px;
-  margin-left: auto;
-  margin-right: auto;
-  grid-gap: 0;
-    gap: 0;
+.item-b {
+    grid-area: 2 / 2 / 1 / 1;
+    text-align: center;
 }
 
-.left {
-width: 25px;
-  background-color: #7d694c;
-  grid-row: 2;
-  grid-column: 1;
-  margin-top: 0px;
-  margin-bottom: 0px;
-  margin-left: auto;
-  margin-right: 0px;
-  grid-gap: 0;
-  gap: 0;
-  text-align: right;
-  align-self: right;
-  align-items: right;
+.item-c {
+    grid-area: 3 / 3 / 1 / 1;
+    text-align: center;
 }
 
-.l-wrapper-inner{
-  display: grid;
-  grid-gap: 0;
-  gap: 0;
-  margin-top: 0px;
-    margin-bottom: 0px;
-    margin-right: 0px;
-    margin-left: auto;
-    text-align: right;
-              align-self: right;
-              align-items: right;
+.item-d {
+    grid-area: 4 / 4 / 1 / 1;
+    text-align: center;
 }
+
+.item-e {
+    grid-area: 5 / 5 / 1 / 1;
+    text-align: center;
+}
+
+.item-f {
+    grid-area: 6 / 6 / 1 / 1;
+    text-align: center;
+}
+
+.item-g {
+    grid-area: 7 / 7 / 1 / 1;
+    text-align: center;
+}
+
+.item-h {
+    grid-area: 8 / 8 / 1 / 1;
+    text-align: center;
+}
+.item-au {
+    grid-area: 1 / 1 / 8 / 8;
+    text-align: center;
+}
+
+.item-bu {
+    grid-area: 2 / 2 / 8 / 8;
+    text-align: center;
+}
+
+.item-bu {
+    grid-area: 2 / 2 / 8 / 8;
+    text-align: center;
+}
+
+.item-cu {
+    grid-area: 3 / 3 / 8 / 8;
+    text-align: center;
+}
+
+.item-du {
+    grid-area: 4 / 4 / 8 / 8;
+    text-align: center;
+}
+
+.item-eu {
+    grid-area: 5 / 5 / 8 / 8;
+    text-align: center;
+}
+
+.item-fu {
+    grid-area: 6 / 6 / 8 / 8;
+    text-align: center;
+}
+
+.item-gu {
+    grid-area: 7 / 7 / 8 / 8;
+    text-align: center;
+}
+
+.item-hu {
+    grid-area: 8 / 8 / 8 / 8;
+    text-align: center;
+}
+
+
+.item-c {
+    text-align: center;
+}
+
+.myFont {
+  font-size: 16px;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.form-group {
+  .myFont;
+  box-shadow: @darkred;
+  text-align: center;
+  color: @darkred;
+}
+
+
+.btn {
+    text-align: center;
+    display:inline-block;
+    border:0.1em solid @darkred;
+    margin:0 0.3em 0.3em 0;
+    border-radius:0.12em;
+    text-decoration:none;
+    .myFont;
+    font-weight:400;
+    color:@midgrey;
+    transition: all 0.2s;
+}
+
+btn:hover{
+    color: @darkred;
+    background-color:@lightgrey;
+}
+
+
+
+.form-control {
+    text-align: center;
+    .myFont;
+    font-style: italic;
+    letter-spacing: 0.2em;
+    input-focus-border-color: @darkred;
+    input-focus-border-color: tint-color(@darkred, 50%);
+}
+
+@media all and (max-width:30em){
+    btn{
+    display:block;
+    margin:0.4em auto;
+    }
+}
+
+.bouncy{
+    animation:bouncy 5s infinite linear;
+    position:relative;
+}
+@keyframes bouncy {
+    0%{top:0em}
+    40%{top:0em}
+    43%{top:-0.9em}
+    46%{top:0em}
+    48%{top:-0.4em}
+    50%{top:0em}
+    100%{top:0em;}
+}
+
+
+
+
+
+
+
