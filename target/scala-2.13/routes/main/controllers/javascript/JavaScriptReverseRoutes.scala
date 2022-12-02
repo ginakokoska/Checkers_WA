@@ -1,6 +1,6 @@
 // @GENERATOR:play-routes-compiler
 // @SOURCE:/Users/ginakokoska/IdeaProjects/HTWG/AIN5/Webapplikation/checkers_wa/conf/routes
-// @DATE:Wed Nov 30 19:19:00 CET 2022
+// @DATE:Fri Dec 02 20:38:07 CET 2022
 
 import play.api.routing.JavaScriptReverseRoute
 
@@ -58,22 +58,22 @@ package controllers.javascript {
       """
     )
   
+    // @LINE:13
+    def current: JavaScriptReverseRoute = JavaScriptReverseRoute(
+      "controllers.HomeController.current",
+      """
+        function() {
+          return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "current"})
+        }
+      """
+    )
+  
     // @LINE:7
     def home: JavaScriptReverseRoute = JavaScriptReverseRoute(
       "controllers.HomeController.home",
       """
         function() {
           return _wA({method:"GET", url:"""" + _prefix + """"})
-        }
-      """
-    )
-  
-    // @LINE:13
-    def status: JavaScriptReverseRoute = JavaScriptReverseRoute(
-      "controllers.HomeController.status",
-      """
-        function() {
-          return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "status"})
         }
       """
     )

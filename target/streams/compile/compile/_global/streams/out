@@ -1,36 +1,5 @@
-[0m[[0m[31merror[0m] [0m[0m/Users/ginakokoska/IdeaProjects/HTWG/AIN5/Webapplikation/checkers_wa/app/controllers/HomeController.scala:112:26: not enough arguments for method move: (start: String, dest: String): Unit.[0m
-[0m[[0m[31merror[0m] [0m[0mUnspecified value parameters start, dest.[0m
-[0m[[0m[31merror[0m] [0m[0m      gameController.move()[0m
-[0m[[0m[31merror[0m] [0m[0m                         ^[0m
-[0m[[0m[31merror[0m] [0m[0m/Users/ginakokoska/IdeaProjects/HTWG/AIN5/Webapplikation/checkers_wa/app/controllers/HomeController.scala:114:7: not found: value rollDice[0m
-[0m[[0m[31merror[0m] [0m[0m      rollDice[0m
-[0m[[0m[31merror[0m] [0m[0m      ^[0m
-[0m[[0m[31merror[0m] [0m[0m/Users/ginakokoska/IdeaProjects/HTWG/AIN5/Webapplikation/checkers_wa/app/controllers/HomeController.scala:116:20: not found: value selectFigure[0m
-[0m[[0m[31merror[0m] [0m[0m      val result = selectFigure(data.replace("\"", "").toInt)[0m
-[0m[[0m[31merror[0m] [0m[0m                   ^[0m
-[0m[[0m[31merror[0m] [0m[0m/Users/ginakokoska/IdeaProjects/HTWG/AIN5/Webapplikation/checkers_wa/app/controllers/HomeController.scala:119:11: not enough arguments for method move: (start: String, dest: String): play.api.mvc.Action[play.api.mvc.AnyContent].[0m
-[0m[[0m[31merror[0m] [0m[0mUnspecified value parameter dest.[0m
-[0m[[0m[31merror[0m] [0m[0m      move(data.replace("\"", ""))[0m
-[0m[[0m[31merror[0m] [0m[0m          ^[0m
-[0m[[0m[31merror[0m] [0m[0m/Users/ginakokoska/IdeaProjects/HTWG/AIN5/Webapplikation/checkers_wa/app/controllers/HomeController.scala:121:7: not found: value skip[0m
-[0m[[0m[31merror[0m] [0m[0m      skip[0m
-[0m[[0m[31merror[0m] [0m[0m      ^[0m
-[0m[[0m[31merror[0m] [0m[0m/Users/ginakokoska/IdeaProjects/HTWG/AIN5/Webapplikation/checkers_wa/app/controllers/HomeController.scala:123:7: not found: value addplayer[0m
-[0m[[0m[31merror[0m] [0m[0m      addplayer(data.replace("\"", ""))[0m
-[0m[[0m[31merror[0m] [0m[0m      ^[0m
-[0m[[0m[31merror[0m] [0m[0m/Users/ginakokoska/IdeaProjects/HTWG/AIN5/Webapplikation/checkers_wa/app/controllers/HomeController.scala:125:7: not found: value resetGame[0m
-[0m[[0m[31merror[0m] [0m[0m      resetGame[0m
-[0m[[0m[31merror[0m] [0m[0m      ^[0m
-[0m[[0m[31merror[0m] [0m[0m/Users/ginakokoska/IdeaProjects/HTWG/AIN5/Webapplikation/checkers_wa/app/controllers/HomeController.scala:127:7: not found: value saveGame[0m
-[0m[[0m[31merror[0m] [0m[0m      saveGame[0m
-[0m[[0m[31merror[0m] [0m[0m      ^[0m
-[0m[[0m[31merror[0m] [0m[0m/Users/ginakokoska/IdeaProjects/HTWG/AIN5/Webapplikation/checkers_wa/app/controllers/HomeController.scala:129:7: not found: value loadGame[0m
-[0m[[0m[31merror[0m] [0m[0m      loadGame[0m
-[0m[[0m[31merror[0m] [0m[0m      ^[0m
-[0m[[0m[31merror[0m] [0m[0m/Users/ginakokoska/IdeaProjects/HTWG/AIN5/Webapplikation/checkers_wa/app/controllers/HomeController.scala:131:7: not found: value undoGame[0m
-[0m[[0m[31merror[0m] [0m[0m      undoGame[0m
-[0m[[0m[31merror[0m] [0m[0m      ^[0m
-[0m[[0m[31merror[0m] [0m[0m/Users/ginakokoska/IdeaProjects/HTWG/AIN5/Webapplikation/checkers_wa/app/controllers/HomeController.scala:133:7: not found: value redoGame[0m
-[0m[[0m[31merror[0m] [0m[0m      redoGame[0m
-[0m[[0m[31merror[0m] [0m[0m      ^[0m
-[0m[[0m[31merror[0m] [0m[0m11 errors found[0m
+[0m[[0m[31merror[0m] [0m[0m/Users/ginakokoska/IdeaProjects/HTWG/AIN5/Webapplikation/checkers_wa/target/scala-2.13/routes/main/router/Routes.scala:170:22: value status is not a member of controllers.HomeController[0m
+[0m[[0m[31merror[0m] [0m[0mdid you mean Status?[0m
+[0m[[0m[31merror[0m] [0m[0m    HomeController_1.status,[0m
+[0m[[0m[31merror[0m] [0m[0m                     ^[0m
+[0m[[0m[31merror[0m] [0m[0mone error found[0m

@@ -1,6 +1,6 @@
 // @GENERATOR:play-routes-compiler
 // @SOURCE:/Users/ginakokoska/IdeaProjects/HTWG/AIN5/Webapplikation/checkers_wa/conf/routes
-// @DATE:Wed Nov 30 19:19:00 CET 2022
+// @DATE:Fri Dec 02 20:38:07 CET 2022
 
 import play.api.mvc.Call
 
@@ -41,16 +41,16 @@ package controllers {
       Call("GET", _prefix + { _defaultPrefix } + "test")
     }
   
+    // @LINE:13
+    def current(): Call = {
+      
+      Call("GET", _prefix + { _defaultPrefix } + "current")
+    }
+  
     // @LINE:7
     def home(): Call = {
       
       Call("GET", _prefix)
-    }
-  
-    // @LINE:13
-    def status(): Call = {
-      
-      Call("GET", _prefix + { _defaultPrefix } + "status")
     }
   
     // @LINE:8

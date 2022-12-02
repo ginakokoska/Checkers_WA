@@ -26,7 +26,7 @@ function processCommand(cmd, data) {
 /*idee yannick*/
 // pop up message here ?
 function newBoard(num) {
-    processCommand("newGrid", num)
+    processCommand("size", num)
 }
 
 // how to implement that current page is 8 or 10
@@ -106,10 +106,11 @@ function setScalarCol() {
     for (let scalar=0; scalar < data.gameBoard.size*data.gameBoard.size; scalar++) {
         if (scalar % 2 === 0) {
             // das ist bullshit und geht nicht background-color geht nicht
-            document.getElementById("field" + scalar).style.background-color="#000000";
+            //document.getElementById("field" + scalar).style.background-color=""#641403";
+            $('#' + "field" + scalar).attr("style", "background-color: #641403");
             console.log("in set Scalar")
         } else {
-            document.getElementById("field" + scalar).style.background-color="#641403";
+            $('#' + "field" + scalar).attr("style", "background-color: #000000");
         }
     }
 }
