@@ -68,8 +68,8 @@
     <div class="fieldrow"> <!--Maybe think of a different name, might not make sense?-->
       @for(col <- 0 until size) {
         @* @if((row*size+col) % 2 == 0) @color= @{"#641403"} @val c=col*@
-        <div class="field" id="field@{row*size+col}" style="background-color: #00ACED">
-            <img class="img" id="scalar@{row*size+col}" src="/assets/images/black_queen.png" alt=""/>
+        <div class="field" id="field@{row*size+col}">
+            <img class="img" id="scalar@{row*size+col}" src="/assets/images/white_queen.png" alt=""/>
         </div>
       }
     }
@@ -138,11 +138,14 @@
 
 <script>
         @*confirm jetzt in checkers js reset*@
-      function openGrid(nmbr) {
-        if (confirm("Are you sure you want to continue? Starting a new game means that current progress will be lost!")) {
-          window.location.href="http://localhost:9000/new"+nmbr+"Grid";
-        }
-      }
+      // function openGrid(nmbr) {
+      //   if (confirm("Are you sure you want to continue? Starting a new game means that current progress will be lost!")) {
+      //     window.location.href="http://localhost:9000/new"+nmbr+"Grid";
+      //   }
+      // }
+
+
+
       function move() {
         let x = document.getElementById("text-input").value;
         if (x === "") {

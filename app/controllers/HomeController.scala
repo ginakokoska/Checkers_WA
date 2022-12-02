@@ -99,7 +99,7 @@ class HomeController @Inject()(val controllerComponents: ControllerComponents) e
     Ok(gameController.toJson)
   }
 
-  def status = Action {
+  def current = Action {
     Ok(Json.obj(
       "game" -> GameBoard()
       )
