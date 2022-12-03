@@ -74,6 +74,35 @@ class HomeController @Inject()(val controllerComponents: ControllerComponents)(i
     //Ok(views.html.checkers_game(gameController, message))
   }
 
+//  def JsMove(start: String, dest: String): Unit = Action {
+//
+//    try {
+//
+//      if (gameController.movePossible(start, dest).getBool) {
+//        val row = Integer.parseInt(dest.tail) - 1
+//        val col = dest.charAt(0).toInt - 65
+//        var rem = false
+//        var which = ""
+//        if (gameController.movePossible(start, dest).getRem.nonEmpty && gameController.gameState.toString.charAt(0).toString.toLowerCase == gameController.getPiece(Integer.parseInt(start.tail) - 1, start.charAt(0).toInt - 65).get.getColor.charAt(0).toString) rem = true;
+//        which = gameController.movePossible(start, dest).getRem
+//        if (gameController.movePossible(start, dest).getQ && gameController.gameState.toString.charAt(0).toString.toLowerCase == gameController.getPiece(Integer.parseInt(start.tail) - 1, start.charAt(1).toInt - 65).get.getColor.charAt(0).toString) {
+//          gameController.move(start, dest)
+//          gameController.set(row, col, Piece("queen", row, col, gameController.getPiece(row, col).get.getColor))
+//          if (rem) gameController.remove(Integer.parseInt(which.tail) - 1, which.charAt(0).toInt - 65)
+//        } else message = "";
+//        gameController.move(start, dest)
+//      } else message = "Move not possible"
+//
+//    } catch {
+//      case e: Exception => message = "Invalid input"; Ok(views.html.checkers_game(gameController, message))
+//    }
+//
+//    gameController.gameBoard
+//
+//    //gameController.move(start, dest)
+//
+//  }
+
   def move(start:String, dest:String): Action[AnyContent] = Action {
 
     try {

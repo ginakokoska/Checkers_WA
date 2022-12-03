@@ -1,4 +1,11 @@
-[0m[[0m[33mwarn[0m] [0m[0mC:\Users\Yannick\IdeaProjects\Checkers_WA\app\controllers\HomeController.scala:71:29: procedure syntax is deprecated: instead, add `: Unit =` to explicitly declare `newBoard`'s return type[0m
-[0m[[0m[33mwarn[0m] [0m[0m  def newBoard(size:String) {[0m
-[0m[[0m[33mwarn[0m] [0m[0m                            ^[0m
-[0m[[0m[33mwarn[0m] [0m[0mone warning found[0m
+[0m[[0m[33mwarn[0m] [0m[0mC:\Users\Yannick\IdeaProjects\Checkers_WA\target\scala-2.13\routes\main\router\Routes.scala:64:22: Auto-application to `()` is deprecated. Supply the empty argument list `()` explicitly to invoke method home,[0m
+[0m[[0m[33mwarn[0m] [0m[0mor remove the empty argument list from its definition (Java-defined methods are exempt).[0m
+[0m[[0m[33mwarn[0m] [0m[0mIn Scala 3, an unapplied method like this will be eta-expanded into a function.[0m
+[0m[[0m[33mwarn[0m] [0m[0m    HomeController_1.home,[0m
+[0m[[0m[33mwarn[0m] [0m[0m                     ^[0m
+[0m[[0m[33mwarn[0m] [0m[0mC:\Users\Yannick\IdeaProjects\Checkers_WA\target\scala-2.13\routes\main\router\Routes.scala:245:72: Auto-application to `()` is deprecated. Supply the empty argument list `()` explicitly to invoke method home,[0m
+[0m[[0m[33mwarn[0m] [0m[0mor remove the empty argument list from its definition (Java-defined methods are exempt).[0m
+[0m[[0m[33mwarn[0m] [0m[0mIn Scala 3, an unapplied method like this will be eta-expanded into a function.[0m
+[0m[[0m[33mwarn[0m] [0m[0m        controllers_HomeController_home0_invoker.call(HomeController_1.home)[0m
+[0m[[0m[33mwarn[0m] [0m[0m                                                                       ^[0m
+[0m[[0m[33mwarn[0m] [0m[0mtwo warnings found[0m

@@ -9,7 +9,6 @@ $(document).ready(function() {
 function updateGame() {
     getData().then(() => {
         checkWin();
-        setScalarCol();
         updateGameboard();
         //refreshOnClickEvents();
     })
@@ -17,7 +16,6 @@ function updateGame() {
 
 function updateGameNoAjax() {
     checkWin();
-    setScalarCol();
     updateGameboard();
     //refreshOnClickEvents();
 }
@@ -28,7 +26,6 @@ function processCommand(cmd, returnData) {
     post("POST", "/command", {"cmd": cmd, "data": returnData}).then(() => {
         getData().then(() => {
             checkWin();
-            setScalarCol();
             updateGameboard();
             //refreshOnClickEvents();
         })
@@ -46,6 +43,10 @@ function newBoard(num) {
 
 }
 
+function move(mv) {
+    processCommand("move", mv)
+
+}
 // how to implement that current page is 8 or 10
 // where the fuck is the popup message ??
 function resetGame() {
@@ -115,46 +116,6 @@ function checkWin() {
 let size = 8
 //let gameboard = new Gameboard(size)
 
-// document.getElementById("scalar{i}").bgcolor="{color}";
-// function mit % um jedes zweite feld als rot oder als schwarz zu haben
-
-
-function setScalarCol() {
-    for (let scalar=0; scalar < data.game.gameBoard.size*data.game.gameBoard.size; scalar++) {
-        //val x = (scalar+data.game.gameBoard.size)
-        let col = scalar % data.game.gameBoard.size;
-        let row = Math.floor(scalar / data.game.gameBoard.size);
-        if ((row+col+data.game.gameBoard.size)%2 === 0) {
-            $('#' + "field" + scalar).attr("style", "background-color: #641403");
-        } else {
-            $('#' + "field" + scalar).attr("style", "background-color: #000000");
-        }
-    }
-}
-
-// {"game":
-// {"gameState":
-// "WHITE_TURN","gameBoard":
-// {"size":8,"fields":
-// [{"row":0,"col":0,"field":{"pos":"A1","piece":{"state":"normal","prow":0,"pcol":0,"color":"black"}}},
-
-
-// <div className="gamecontainer id="gamecontainer" ">
-//     <div className="game">
-//         @for(row <- 0 until size) {
-//         <div className="fieldrow"> <!--Maybe think of a different name, might not make sense?-->
-//             @for(col <- 0 until size) {
-//                 <div class="field" id="field@{row*size+col}">
-//                 <img class="img" id="scalar@{row*size+col}" alt=""/>
-//                 </div>
-//             }
-//             }
-//         </div>
-//     </div>
-// </div>
-
-
-//$('#gamecontainer').get(0);
 
 
 function updateGameboard() {
@@ -163,39 +124,67 @@ function updateGameboard() {
     let newGame = $('#gamecontainer');
     newGame.html('');
     let newContent = '';
-    newContent += '<div class="gamecontainer" id="gamecontainer">';
+    //newContent += '<div class="gamecontainer" id="gamecontainer">';
     newContent += '<div class="game">';
     for(let row=0; row < data.game.gameBoard.size; row++) {
         newContent += '<div class="fieldrow">';
-        for(let col=0; row < data.game.gameBoard.size; col++) {
-            newContent += '<div class="field" id="field@{row*size+col}">';
-            newContent += '<img class="img" id="scalar@{row*size+col}" alt=""/>';
-            newContent += '</div>';
-        }
-    }
-    newContent += '</div></div></div>';
-    console.log(newContent)
-    $.parseHTML(newContent).appendTo(newGame);
-
-    for (let scalar=0; scalar < data.game.gameBoard.size*data.game.gameBoard.size; scalar++) {
-        let row = data.game.gameBoard.fields[scalar].row;
-        let col = data.game.gameBoard.fields[scalar].col;
-        let fieldID = "scalar" + scalar;
-        let color = data.game.gameBoard.fields[scalar].field.piece.color;
-        let state = data.game.gameBoard.fields[scalar].field.piece.state;
+        for(let col=0; col < data.game.gameBoard.size; col++) {
 
 
-        if (state !== "") {
+
+            if ((row+col+data.game.gameBoard.size)%2 === 0) {
+                newContent += '<div class="field" style="background-color: #641403">';
+            } else {
+                newContent += '<div class="field" style="background-color: #000000">';
+            }
+
+            let scalar = row*size+col
+            let color = data.game.gameBoard.fields[scalar].field.piece.color;
+            let state = data.game.gameBoard.fields[scalar].field.piece.state;
+
             switch (state) {
                 case "normal":
-                    $('#' + fieldID).attr("src", "/assets/images/" + color + ".png");
+                    newContent += '<img class="img" src="/assets/images/' + color + '.png" alt=""/>';
+                    newContent += '</div>';
                     break;
                 case "queen":
-                    $('#' + fieldID).attr("src", "/assets/images/" + color + "_queen.png");
+                    newContent += '<img class="img" src="/assets/images/' + color + '_queen.png" alt=""/>';
+                    newContent += '</div>';
+                    break;
+                default:
+                    newContent += '<img class="img" alt=""/>';
+                    newContent += '</div>';
                     break;
             }
+
         }
+        newContent += '</div>'
     }
+
+    newContent += '</div></div>';
+    newGame.html(newContent);
+
+
+    /*
+    <div class="form-group">
+      <label for="text-input"> </label>
+      <input type="text" class="form-control" id="text-input" placeholder="Enter your move like 'XX YY'" onfocus="this.placeholder = ''" input-focus-border-color="#99999" >
+      <div style="padding:20px"></div>
+      <button onclick="move()" type="button" class="btn bouncy">Enter</button>
+      <p id="message-field"> </p>
+    </div>
+
+     */
+    /*
+    let newFormGroup;
+    newFormGroup.html('')
+    newFormGroup += '<div class="form-group"/>';
+    newFormGroup += '<input type="text" class="form-control" id="text-input" placeholder="Enter your move like \'XX YY\'" onfocus="this.placeholder = \'\'" input-focus-border-color="#99999" >';
+    newFormGroup += '<div style="padding:20px"></div>';
+    newFormGroup += '<button onclick="move()" type="button" class="btn bouncy">Enter</button>';
+    newFormGroup += '<p id="message-field"> </p>';
+*/
+
 }
 
 

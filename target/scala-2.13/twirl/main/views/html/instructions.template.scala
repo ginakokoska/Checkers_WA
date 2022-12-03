@@ -207,10 +207,10 @@ Seq[Any](format.raw/*1.1*/("""<!doctype html>
 
               /*
                   -- GENERATED --
-                  DATE: 2022-12-03T13:03:54.822
-                  SOURCE: /Users/ginakokoska/IdeaProjects/HTWG/AIN5/Webapplikation/checkers_wa/app/views/instructions.scala.html
-                  HASH: bfc6300010ebaa47d4d9d17dd90c94f4117993e2
-                  MATRIX: 818->0|1073->229|1087->235|1143->271|1535->636|1550->642|1612->683
+                  DATE: 2022-12-03T14:24:57.409
+                  SOURCE: C:/Users/Yannick/IdeaProjects/Checkers_WA/app/views/instructions.scala.html
+                  HASH: 4de0fbb7f65ef07e54d16b5e6b3133edb7fa1a32
+                  MATRIX: 818->0|1079->235|1093->241|1149->277|1544->645|1559->651|1621->692
                   LINES: 26->1|32->7|32->7|32->7|35->10|35->10|35->10
                   -- GENERATED --
               */
