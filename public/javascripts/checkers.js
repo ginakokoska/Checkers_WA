@@ -43,6 +43,7 @@ function processCmdWS(cmd, data) {
 // pop up message here ?
 function newBoard(num) {
     processCommand("newBoard", num)
+
 }
 
 // how to implement that current page is 8 or 10
@@ -140,11 +141,12 @@ function setScalarCol() {
 
 function updateGameboard() {
     for (let scalar=0; scalar < data.game.gameBoard.size*data.game.gameBoard.size; scalar++) {
-        let row = data.game.gameBoard.fields[scalar].row
-        let col = data.game.gameBoard.fields[scalar].col
-        let fieldID = "scalar" + scalar
-        let color = data.game.gameBoard.fields[scalar].field.piece.color
-        let state = data.game.gameBoard.fields[scalar].field.piece.state
+        let row = data.game.gameBoard.fields[scalar].row;
+        let col = data.game.gameBoard.fields[scalar].col;
+        let fieldID = "scalar" + scalar;
+        let color = data.game.gameBoard.fields[scalar].field.piece.color;
+        let state = data.game.gameBoard.fields[scalar].field.piece.state;
+
 
         if (state !== "") {
             switch (state) {
@@ -156,7 +158,6 @@ function updateGameboard() {
                     break;
             }
         }
-
     }
 }
 
@@ -166,7 +167,7 @@ let websocket = new WebSocket("ws://localhost:9000/websocket");
 window.onbeforeunload = function () {
     websocket.onclose = function () {
         // if (playerNum > 0 && playerNum < 5) {
-            processCommand("reset", "")
+            processCommand("reset", "");
         // }
     };
     websocket.close();
