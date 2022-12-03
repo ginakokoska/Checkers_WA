@@ -1,11 +1,7 @@
-[0m[[0m[33mwarn[0m] [0m[0mC:\Users\Yannick\IdeaProjects\Checkers_WA\target\scala-2.13\routes\main\router\Routes.scala:64:22: Auto-application to `()` is deprecated. Supply the empty argument list `()` explicitly to invoke method home,[0m
-[0m[[0m[33mwarn[0m] [0m[0mor remove the empty argument list from its definition (Java-defined methods are exempt).[0m
-[0m[[0m[33mwarn[0m] [0m[0mIn Scala 3, an unapplied method like this will be eta-expanded into a function.[0m
-[0m[[0m[33mwarn[0m] [0m[0m    HomeController_1.home,[0m
-[0m[[0m[33mwarn[0m] [0m[0m                     ^[0m
-[0m[[0m[33mwarn[0m] [0m[0mC:\Users\Yannick\IdeaProjects\Checkers_WA\target\scala-2.13\routes\main\router\Routes.scala:245:72: Auto-application to `()` is deprecated. Supply the empty argument list `()` explicitly to invoke method home,[0m
-[0m[[0m[33mwarn[0m] [0m[0mor remove the empty argument list from its definition (Java-defined methods are exempt).[0m
-[0m[[0m[33mwarn[0m] [0m[0mIn Scala 3, an unapplied method like this will be eta-expanded into a function.[0m
-[0m[[0m[33mwarn[0m] [0m[0m        controllers_HomeController_home0_invoker.call(HomeController_1.home)[0m
-[0m[[0m[33mwarn[0m] [0m[0m                                                                       ^[0m
-[0m[[0m[33mwarn[0m] [0m[0mtwo warnings found[0m
+[0m[[0m[31merror[0m] [0m[0mC:\Users\Yannick\IdeaProjects\Checkers_WA\app\controllers\HomeController.scala:79:32: method split of type Array[String] does not take type parameters.[0m
+[0m[[0m[31merror[0m] [0m[0m      val start = mv.split(" ")[0].toString[0m
+[0m[[0m[31merror[0m] [0m[0m                               ^[0m
+[0m[[0m[31merror[0m] [0m[0mC:\Users\Yannick\IdeaProjects\Checkers_WA\app\controllers\HomeController.scala:80:31: method split of type Array[String] does not take type parameters.[0m
+[0m[[0m[31merror[0m] [0m[0m      val dest = mv.split(" ")[1].toString[0m
+[0m[[0m[31merror[0m] [0m[0m                              ^[0m
+[0m[[0m[31merror[0m] [0m[0mtwo errors found[0m

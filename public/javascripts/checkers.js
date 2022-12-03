@@ -43,8 +43,9 @@ function newBoard(num) {
 
 }
 
-function move(mv) {
-    processCommand("move", mv)
+function jsMove() {
+    let mv = $('#text-input').val();
+    processCommand("jsMove", mv)
 
 }
 // how to implement that current page is 8 or 10

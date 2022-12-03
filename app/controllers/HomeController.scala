@@ -69,44 +69,13 @@ class HomeController @Inject()(val controllerComponents: ControllerComponents)(i
   }
 
   def newBoard(size:String): Unit = {
-    ////print("WOW")
     gameController.createGameBoard(Integer.parseInt(size))
-    //Ok(views.html.checkers_game(gameController, message))
   }
 
-//  def JsMove(start: String, dest: String): Unit = Action {
-//
-//    try {
-//
-//      if (gameController.movePossible(start, dest).getBool) {
-//        val row = Integer.parseInt(dest.tail) - 1
-//        val col = dest.charAt(0).toInt - 65
-//        var rem = false
-//        var which = ""
-//        if (gameController.movePossible(start, dest).getRem.nonEmpty && gameController.gameState.toString.charAt(0).toString.toLowerCase == gameController.getPiece(Integer.parseInt(start.tail) - 1, start.charAt(0).toInt - 65).get.getColor.charAt(0).toString) rem = true;
-//        which = gameController.movePossible(start, dest).getRem
-//        if (gameController.movePossible(start, dest).getQ && gameController.gameState.toString.charAt(0).toString.toLowerCase == gameController.getPiece(Integer.parseInt(start.tail) - 1, start.charAt(1).toInt - 65).get.getColor.charAt(0).toString) {
-//          gameController.move(start, dest)
-//          gameController.set(row, col, Piece("queen", row, col, gameController.getPiece(row, col).get.getColor))
-//          if (rem) gameController.remove(Integer.parseInt(which.tail) - 1, which.charAt(0).toInt - 65)
-//        } else message = "";
-//        gameController.move(start, dest)
-//      } else message = "Move not possible"
-//
-//    } catch {
-//      case e: Exception => message = "Invalid input"; Ok(views.html.checkers_game(gameController, message))
-//    }
-//
-//    gameController.gameBoard
-//
-//    //gameController.move(start, dest)
-//
-//  }
-
-  def move(start:String, dest:String): Action[AnyContent] = Action {
-
+  def jsMove(mv:String): Unit = {
     try {
-
+      val start = mv.split(" ")(0)
+      val dest = mv.split(" ")(1)
       if (gameController.movePossible(start, dest).getBool) {
         val row = Integer.parseInt(dest.tail) - 1
         val col = dest.charAt(0).toInt - 65
@@ -115,21 +84,21 @@ class HomeController @Inject()(val controllerComponents: ControllerComponents)(i
         if (gameController.movePossible(start, dest).getRem.nonEmpty && gameController.gameState.toString.charAt(0).toString.toLowerCase == gameController.getPiece(Integer.parseInt(start.tail) - 1, start.charAt(0).toInt - 65).get.getColor.charAt(0).toString) rem = true;
         which = gameController.movePossible(start, dest).getRem
         if (gameController.movePossible(start, dest).getQ && gameController.gameState.toString.charAt(0).toString.toLowerCase == gameController.getPiece(Integer.parseInt(start.tail) - 1, start.charAt(1).toInt - 65).get.getColor.charAt(0).toString) {
-          print(gameController.getPiece(Integer.parseInt(start.tail) - 1, start.charAt(0).toInt - 65).get.getColor.charAt(0).toString)
           gameController.move(start, dest)
           gameController.set(row, col, Piece("queen", row, col, gameController.getPiece(row, col).get.getColor))
           if (rem) gameController.remove(Integer.parseInt(which.tail) - 1, which.charAt(0).toInt - 65)
-        } else message = ""; gameController.move(start, dest)
-      } else message = "Move not possible"
+        } else gameController.gameBoard.message = "";
+        gameController.move(start, dest)
+      } else gameController.gameBoard.message = "Move not possible"
 
     } catch {
       case e: Exception => message = "Invalid input"; Ok(views.html.checkers_game(gameController, message))
     }
+    gameController.gameBoard
 
-    //gameController.move(start, dest)
-    Ok(views.html.checkers_game(gameController, message))
 
   }
+
 
   def error(any:String) = Action {
     Ok(views.html.error(any))
@@ -150,8 +119,8 @@ class HomeController @Inject()(val controllerComponents: ControllerComponents)(i
   def processCommand(cmd: String, data: String): String = {
     if (cmd.equals("\"newBoard\"")) {
       newBoard(data.replace("\"", ""))
-    } else if (cmd.equals("\"rollDice\"")) {
-      //rollDice
+    } else if (cmd.equals("\"jsMove\"")) {
+      jsMove(data.replace("\"", ""))
     } else if (cmd.equals("\"selectFig\"")) {
       //val result = selectFigure(data.replace("\"", "").toInt)
       //return result
@@ -197,6 +166,7 @@ class HomeController @Inject()(val controllerComponents: ControllerComponents)(i
 
   def socket = WebSocket.accept[String, String] { request =>
     ActorFlow.actorRef { out =>
+      println("Connect received")
       CheckersSocketActor.props(out)
     }
   }

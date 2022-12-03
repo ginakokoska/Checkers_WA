@@ -1,6 +1,6 @@
 // @GENERATOR:play-routes-compiler
 // @SOURCE:C:/Users/Yannick/IdeaProjects/Checkers_WA/conf/routes
-// @DATE:Sat Dec 03 19:03:35 CET 2022
+// @DATE:Sat Dec 03 21:12:08 CET 2022
 
 import play.api.mvc.Call
 
@@ -35,12 +35,6 @@ package controllers {
       Call("GET", _prefix + { _defaultPrefix } + "instructions")
     }
   
-    // @LINE:12
-    def move(start:String, dest:String): Call = {
-      
-      Call("GET", _prefix + { _defaultPrefix } + "move/" + play.core.routing.dynamicString(implicitly[play.api.mvc.PathBindable[String]].unbind("start", start)) + "/" + play.core.routing.dynamicString(implicitly[play.api.mvc.PathBindable[String]].unbind("dest", dest)))
-    }
-  
     // @LINE:14
     def socket(): Call = {
       
@@ -73,14 +67,14 @@ package controllers {
   
   }
 
-  // @LINE:21
+  // @LINE:22
   class ReverseAssets(_prefix: => String) {
     def _defaultPrefix: String = {
       if (_prefix.endsWith("/")) "" else "/"
     }
 
   
-    // @LINE:21
+    // @LINE:22
     def versioned(file:Asset): Call = {
       implicit lazy val _rrc = new play.core.routing.ReverseRouteContext(Map(("path", "/public"))); _rrc
       Call("GET", _prefix + { _defaultPrefix } + "assets/" + implicitly[play.api.mvc.PathBindable[Asset]].unbind("file", file))
