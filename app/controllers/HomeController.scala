@@ -1,11 +1,16 @@
 package controllers
 
+import akka.actor.{Actor, ActorRef, ActorSystem, Props}
+import akka.stream.Materializer
 import checkers.Checkers
 import checkers.Checkers.controller.gameState
 import checkers.controller.controllerComponent.ControllerInterface
 import checkers.controller.controllerComponent.GameState.{BLACK_TURN, GameState, WHITE_TURN}
 import checkers.model.gameBoardComponent.FieldInterface
-import play.api.libs.json.JsObject
+import play.api.libs.json.{JsObject, Writes}
+import play.api.libs.streams.ActorFlow
+
+import scala.swing.Reactor
 //import checkers.controller.controllerComponent.ControllerInterface
 import checkers.model.gameBoardComponent.gameBoardBaseImpl.{Field, GameBoard, Piece}
 
@@ -19,7 +24,7 @@ import play.api.mvc._
  * application's home page.
  */
 @Singleton
-class HomeController @Inject()(val controllerComponents: ControllerComponents) extends BaseController {
+class HomeController @Inject()(val controllerComponents: ControllerComponents)(implicit system: ActorSystem, mat: Materializer) extends BaseController {
 
   /**
    * Create an Action to render an HTML page.
@@ -63,13 +68,13 @@ class HomeController @Inject()(val controllerComponents: ControllerComponents) e
     Ok(views.html.checkers_game(gameController, message))
   }
 
-  def newBoard(size:String): Action[AnyContent] = Action {
-    message = ""
+  def newBoard(size:String): Unit = {
+    ////print("WOW")
     gameController.createGameBoard(Integer.parseInt(size))
-    Ok(views.html.checkers_game(gameController, message))
+    //Ok(views.html.checkers_game(gameController, message))
   }
 
-  def move(start:String, dest:String)= Action {
+  def move(start:String, dest:String): Action[AnyContent] = Action {
 
     try {
 
@@ -115,7 +120,7 @@ class HomeController @Inject()(val controllerComponents: ControllerComponents) e
 
   def processCommand(cmd: String, data: String): String = {
     if (cmd.equals("\"newBoard\"")) {
-      newBoard(data)
+      newBoard(data.replace("\"", ""))
     } else if (cmd.equals("\"rollDice\"")) {
       //rollDice
     } else if (cmd.equals("\"selectFig\"")) {
@@ -141,7 +146,7 @@ class HomeController @Inject()(val controllerComponents: ControllerComponents) e
     "Ok"
   }
 
-  def processRequest = Action {
+  def processRequest: Action[AnyContent] = Action {
     implicit request => {
       val req = request.body.asJson
       val result = processCommand(req.get("cmd").toString(), req.get("data").toString())
@@ -152,6 +157,50 @@ class HomeController @Inject()(val controllerComponents: ControllerComponents) e
           "game" -> GameBoard()
         ))
       }
+    }
+  }
+
+  def controllerToJson(reset: Int = 0) = {
+    Json.obj(
+      "game" -> GameBoard()
+    ).toString
+  }
+
+  def socket = WebSocket.accept[String, String] { request =>
+    ActorFlow.actorRef { out =>
+      CheckersSocketActor.props(out)
+    }
+  }
+
+  object CheckersSocketActor {
+    def props(out: ActorRef) = {
+      Props(new CheckersSocketActor(out))
+    }
+  }
+
+  class CheckersSocketActor(out: ActorRef) extends Actor with Reactor {
+    listenTo(gameController)
+
+    def receive = {
+      case msg: String =>
+        val split_msg = msg.split('|')
+        if (split_msg.length == 2) {
+          val cmd = split_msg(0)
+          val data = split_msg(1)
+          if (processCommand(cmd, data).contains("Error")) {
+            out ! controllerToJson()
+          } else {
+            if (cmd.equals("addPlayer")) {
+              out ! controllerToJson()
+            } else {
+              out ! controllerToJson()
+            }
+          }
+        }
+    }
+
+    reactions += {
+      case event => out ! controllerToJson()
     }
   }
 

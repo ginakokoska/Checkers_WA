@@ -80,6 +80,67 @@
 
 
 
+@*<div class="gamecontainer">*@
+@*  <div class="game">*@
+@*    @for(row <- 0 until size) {*@
+@*    <div class="fieldrow"> <!--Maybe think of a different name, might not make sense?-->*@
+@*      @for(col <- 0 until size) {*@
+@*      @if((row+col) % 2 == 0) {*@
+@*      <span class="field_red" id="field">*@
+@*              @if(controller.field(row, col).isSet) {*@
+@*                @if(controller.field(row, col).getPiece.get.getColor == "black") {*@
+@*                  <span class='@{"piece_black"}'>*@
+@*                    @{controller.field(row, col).toString}*@
+@*                  </span>*@
+@*                } else {*@
+@*                  <span class='@{"piece_white"}'>*@
+@*                    @{controller.field(row, col).toString}*@
+@*                  </span>*@
+@*                }*@
+@*              } else {*@
+@*                <span class='@{"piece_was_never_an_option"}'>*@
+@*                  @{" "}*@
+@*                </span>*@
+@*              }*@
+@*            </span>*@
+@*      } else {*@
+@*      <span class="field_black" id="field"></span> <!-- If the code breaks, just copy from above-->*@
+@*      }*@
+@*      }*@
+@*    </div>*@
+@*    <div class="clear"></div> <!--idk about this...-->*@
+@*    }*@
+@*  </div>*@
+@*</div>*@
+
+
+
+
+
+
+
+<div class="form-group">
+  <label for="text-input"> </label>
+  <input type="text" class="form-control" id="text-input" placeholder="Enter your move like 'XX YY'" onfocus="this.placeholder = ''" input-focus-border-color="#99999" >
+  <div style="padding:20px"></div>>
+  <button onclick="move()" type="button" class="btn bouncy">Enter</button>
+    <p id="message-field">@{message} </p>
+</div>
+
+
+</body>
+
+
+
+
+<script>
+        @*confirm jetzt in checkers js reset*@
+      // function openGrid(nmbr) {
+      //   if (confirm("Are you sure you want to continue? Starting a new game means that current progress will be lost!")) {
+      //     window.location.href="http://localhost:9000/new"+nmbr+"Grid";
+      //   }
+      // }
+
 
 
       function move() {

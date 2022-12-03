@@ -1,26 +1,42 @@
 
 // for Ajax
 $(document).ready(function() {
+        updateGame();
+        connectWebSocket();
+    }
+)
+
+function updateGame() {
+    getData().then(() => {
+        checkWin();
+        setScalarCol();
+        updateGameboard();
+        //refreshOnClickEvents();
+    })
+}
+
+function updateGameNoAjax() {
+    checkWin();
+    setScalarCol();
+    updateGameboard();
+    //refreshOnClickEvents();
+}
+
+
+// for webserver ??
+function processCommand(cmd, returnData) {
+    post("POST", "/command", {"cmd": cmd, "data": returnData}).then(() => {
         getData().then(() => {
-            testPrint();
             checkWin();
             setScalarCol();
             updateGameboard();
             //refreshOnClickEvents();
         })
-    }
-)
-
-// for webserver ??
-function processCommand(cmd, data) {
-    post("POST", "/command", {"cmd": cmd, "data": data}).then(() => {
-        // getData().then(() => {
-        //     checkWin();
-        //     setScalarCol();
-        //     updateGameboard();
-        //     //refreshOnClickEvents();
-        // })
     })
+}
+
+function processCmdWS(cmd, data) {
+    websocket.send(cmd + "|" + data)
 }
 
 /*idee yannick*/
@@ -61,16 +77,16 @@ function getData() {
     });
 }
 
-function post(method, url, data) {
+function post(method, url, returnData) {
     return $.ajax({
         method: method,
         url: url,
-        data: JSON.stringify(data),
+        data: JSON.stringify(returnData),
         dataType: "json",
         contentType: "application/json",
 
         success: function (response) {
-            console.log("Success")
+            console.log(response)
             data = response;
         },
         error: function (response) {
@@ -110,7 +126,6 @@ function setScalarCol() {
         let row = Math.floor(scalar / data.game.gameBoard.size);
         if ((row+col+data.game.gameBoard.size)%2 === 0) {
             $('#' + "field" + scalar).attr("style", "background-color: #641403");
-            console.log("in set Scalar")
         } else {
             $('#' + "field" + scalar).attr("style", "background-color: #000000");
         }
@@ -147,7 +162,43 @@ function updateGameboard() {
 
 
 
+let websocket = new WebSocket("ws://localhost:9000/websocket");
+window.onbeforeunload = function () {
+    websocket.onclose = function () {
+        // if (playerNum > 0 && playerNum < 5) {
+            processCommand("reset", "")
+        // }
+    };
+    websocket.close();
+};
 
+function connectWebSocket() {
 
+    websocket.onopen = function (event) {
+        websocket.send("Trying to connect to Server");
+    }
 
+    websocket.onclose = function () {
+        // if (playerNum > 0 && playerNum < 5) {
+            processCommand("reset", "")
+        // }
+    };
 
+    websocket.onerror = function (error) {
+    };
+
+    websocket.onmessage = function (e) {
+        if (typeof e.data === "string") {
+            data = JSON.parse(e.data)
+            if (data.reset === 1) {
+                playerNum = -1
+                swal({
+                    icon: "warning",
+                    text: "Game has been reset! (Player left or game master chose to)",
+                    title: "Error!"
+                })
+            }
+            updateGameNoAjax()
+        }
+    };
+}

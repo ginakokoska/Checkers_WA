@@ -1,6 +1,4 @@
-[0m[[0m[31merror[0m] [0m[0m/Users/ginakokoska/IdeaProjects/HTWG/AIN5/Webapplikation/checkers_wa/app/controllers/HomeController.scala:68:36: type mismatch;[0m
-[0m[[0m[31merror[0m] [0m[0m found   : String[0m
-[0m[[0m[31merror[0m] [0m[0m required: Int[0m
-[0m[[0m[31merror[0m] [0m[0m    gameController.createGameBoard(size)[0m
-[0m[[0m[31merror[0m] [0m[0m                                   ^[0m
-[0m[[0m[31merror[0m] [0m[0mone error found[0m
+[0m[[0m[33mwarn[0m] [0m[0mC:\Users\Yannick\IdeaProjects\Checkers_WA\app\controllers\HomeController.scala:71:29: procedure syntax is deprecated: instead, add `: Unit =` to explicitly declare `newBoard`'s return type[0m
+[0m[[0m[33mwarn[0m] [0m[0m  def newBoard(size:String) {[0m
+[0m[[0m[33mwarn[0m] [0m[0m                            ^[0m
+[0m[[0m[33mwarn[0m] [0m[0mone warning found[0m
