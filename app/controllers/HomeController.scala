@@ -92,7 +92,8 @@ class HomeController @Inject()(val controllerComponents: ControllerComponents)(i
       } else gameController.gameBoard.message = "Move not possible"
 
     } catch {
-      case e: Exception => message = "Invalid input"; Ok(views.html.checkers_game(gameController, message))
+      case e: Exception => gameController.gameBoard.message = "Invalid Input"
+        gameController.gameBoard
     }
     gameController.gameBoard
 
@@ -240,7 +241,6 @@ class HomeController @Inject()(val controllerComponents: ControllerComponents)(i
     }
   }
 
-  // Json ist dict, why handle it like arry ? check on boger toJson
   case class GameBoard()
   implicit val gameBoardWrites: Writes[GameBoard] = new Writes[GameBoard] {
     def writes(gameBoard: GameBoard): JsObject = Json.obj(
@@ -262,6 +262,5 @@ class HomeController @Inject()(val controllerComponents: ControllerComponents)(i
       )
     )
   }
-
 
 }

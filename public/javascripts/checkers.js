@@ -230,3 +230,92 @@ function connectWebSocket() {
         }
     };
 }
+
+// client side in JS -> var source = new EventSource(statsStream);
+/*
+var socket = new WebSocket(“ws://localhost:9000/socket”);
+socket.onopen = function(){ … }
+socket.onmessage = function(message){ … }
+socket.onerror = function(){ … }
+socket.onclose = function(){ … }
+
+socket.send(data)
+socket.close(data)
+
+wo den actor createn ?
+ object SudokuWebSocketActorFactory {
+    def create(out: ActorRef) = {
+      Props(new SudokuWebSocketActor(out))
+    }
+  }
+
+wir brauchen processRequest um server anfrage zu behandlen
+
+def processRequest = Action {
+implicit request => {
+  val req = request.body.asJson
+  val result = processCommand(req.get("cmd").toString(), req.get("data").toString(), req.get("secretId").toString())
+  // Secret ID Erstellen und zurückschicken
+  if (result.contains("Error")) {
+    BadRequest(result)
+  } else {
+    Ok(Json.obj(
+      "rows" -> Gamefield(),
+      "row_size" -> gameController.gameboard.getStandardXYsize._1,
+      "col_size" -> gameController.gameboard.getStandardXYsize._2,
+      "gameStatusID" -> getStatusID(),
+      "string" -> Strings(),
+      "turn_id" -> currentPlayerNum(),
+      "player_count" -> gameController.game.players.size,
+      "secretId" -> secretArray(gameController.game.players.size - 1))
+    )
+  }
+}
+}
+
+wir müssen request in und out als JSON verpacken
+
+  def controllerToJson(reset:Int = 0) = {
+    (Json.obj(
+      "rows" -> Gamefield(),
+      "row_size" -> gameController.gameboard.getStandardXYsize._1,
+      "col_size" -> gameController.gameboard.getStandardXYsize._2,
+      "gameStatusID" -> getStatusID(),
+      "string" -> Strings(),
+      "turn_id" -> currentPlayerNum(),
+      "player_count" -> gameController.game.players.size,
+      "reset" -> reset,
+      "secretId" -> "")).toString
+  }
+
+--> mit SID _Y secret ID als actual wert
+  def controllerToJsonSID(reset: Int = 0) = {
+    (Json.obj(
+      "rows" -> Gamefield(),
+      "row_size" -> gameController.gameboard.getStandardXYsize._1,
+      "col_size" -> gameController.gameboard.getStandardXYsize._2,
+      "gameStatusID" -> getStatusID(),
+      "string" -> Strings(),
+      "turn_id" -> currentPlayerNum(),
+      "player_count" -> gameController.game.players.size,
+      "reset" -> reset,
+      "secretId" -> secretArray(gameController.game.players.size - 1))).toString
+  }
+
+  --> hier wird die Websocket erstellt
+  def socket = WebSocket.accept[String, String] { request =>
+    ActorFlow.actorRef { out =>
+      CheckersSocketActor.props(out)
+    }
+  }
+
+  --> hier wird der Actor erstellt
+
+  object CheckersSocketActor {
+    def props(out: ActorRef) = {
+      Props(new CheckersSocketActor(out))
+    }
+  }
+
+
+*/
