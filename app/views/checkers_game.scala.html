@@ -67,9 +67,8 @@
             <img class="img" id="scalar@{row*size+col}" alt=""/>
         </div>
       }
-    }
-@*        <img @{"#641403"} src="/assets/images/white_queen.png"/>*@
     </div>
+    }
   </div>
 </div>
 
@@ -77,7 +76,7 @@
 <div class="form-group" id="form-group">
   <label for="text-input"> </label>
   <input type="text" class="form-control" id="text-input" placeholder="Enter your move like 'XX YY'" onfocus="this.placeholder = ''" input-focus-border-color="#99999" >
-  <div style="padding:20px"></div>>
+  <div style="padding:20px"></div>
   <button onclick="move()" type="button" class="btn bouncy">Enter</button>
     <p id="message-field">@{message} </p>
 </div>
@@ -87,17 +86,7 @@
 
 
 
-
 <script>
-        @*confirm jetzt in checkers js reset*@
-      // function openGrid(nmbr) {
-      //   if (confirm("Are you sure you want to continue? Starting a new game means that current progress will be lost!")) {
-      //     window.location.href="http://localhost:9000/new"+nmbr+"Grid";
-      //   }
-      // }
-
-
-
       function move() {
         let x = document.getElementById("text-input").value;
         if (x === "") {
