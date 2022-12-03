@@ -87,7 +87,6 @@ function post(method, url, returnData) {
         contentType: "application/json",
 
         success: function (response) {
-            console.log(response)
             data = response;
         },
         error: function (response) {
@@ -139,7 +138,45 @@ function setScalarCol() {
 // {"size":8,"fields":
 // [{"row":0,"col":0,"field":{"pos":"A1","piece":{"state":"normal","prow":0,"pcol":0,"color":"black"}}},
 
+
+// <div className="gamecontainer id="gamecontainer" ">
+//     <div className="game">
+//         @for(row <- 0 until size) {
+//         <div className="fieldrow"> <!--Maybe think of a different name, might not make sense?-->
+//             @for(col <- 0 until size) {
+//                 <div class="field" id="field@{row*size+col}">
+//                 <img class="img" id="scalar@{row*size+col}" alt=""/>
+//                 </div>
+//             }
+//             }
+//         </div>
+//     </div>
+// </div>
+
+
+//$('#gamecontainer').get(0);
+
+
 function updateGameboard() {
+
+    size = data.game.gameBoard.size;
+    let newGame = $('#gamecontainer');
+    newGame.html('');
+    let newContent = '';
+    newContent += '<div class="gamecontainer" id="gamecontainer">';
+    newContent += '<div class="game">';
+    for(let row=0; row < data.game.gameBoard.size; row++) {
+        newContent += '<div class="fieldrow">';
+        for(let col=0; row < data.game.gameBoard.size; col++) {
+            newContent += '<div class="field" id="field@{row*size+col}">';
+            newContent += '<img class="img" id="scalar@{row*size+col}" alt=""/>';
+            newContent += '</div>';
+        }
+    }
+    newContent += '</div></div></div>';
+    console.log(newContent)
+    $.parseHTML(newContent).appendTo(newGame);
+
     for (let scalar=0; scalar < data.game.gameBoard.size*data.game.gameBoard.size; scalar++) {
         let row = data.game.gameBoard.fields[scalar].row;
         let col = data.game.gameBoard.fields[scalar].col;
@@ -181,7 +218,7 @@ function connectWebSocket() {
 
     websocket.onclose = function () {
         // if (playerNum > 0 && playerNum < 5) {
-            processCommand("reset", "")
+            processCommand("reset", "");
         // }
     };
 
@@ -190,16 +227,16 @@ function connectWebSocket() {
 
     websocket.onmessage = function (e) {
         if (typeof e.data === "string") {
-            data = JSON.parse(e.data)
+            data = JSON.parse(e.data);
             if (data.reset === 1) {
-                playerNum = -1
+                playerNum = -1;
                 swal({
                     icon: "warning",
                     text: "Game has been reset! (Player left or game master chose to)",
                     title: "Error!"
                 })
             }
-            updateGameNoAjax()
+            updateGameNoAjax();
         }
     };
 }
