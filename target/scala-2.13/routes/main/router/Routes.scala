@@ -1,6 +1,6 @@
 // @GENERATOR:play-routes-compiler
 // @SOURCE:C:/Users/Yannick/IdeaProjects/Checkers_WA/conf/routes
-// @DATE:Sat Dec 03 21:12:08 CET 2022
+// @DATE:Sun Dec 04 16:40:43 CET 2022
 
 package router
 
@@ -15,7 +15,7 @@ class Routes(
   override val errorHandler: play.api.http.HttpErrorHandler, 
   // @LINE:7
   HomeController_1: controllers.HomeController,
-  // @LINE:22
+  // @LINE:26
   Assets_0: controllers.Assets,
   val prefix: String
 ) extends GeneratedRouter {
@@ -24,7 +24,7 @@ class Routes(
    def this(errorHandler: play.api.http.HttpErrorHandler,
     // @LINE:7
     HomeController_1: controllers.HomeController,
-    // @LINE:22
+    // @LINE:26
     Assets_0: controllers.Assets
   ) = this(errorHandler, HomeController_1, Assets_0, "/")
 
@@ -44,9 +44,9 @@ class Routes(
     ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """new10Grid""", """controllers.HomeController.new10Grid"""),
     ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """instructions""", """controllers.HomeController.instructions"""),
     ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """test""", """controllers.HomeController.test"""),
+    ("""POST""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """command""", """controllers.HomeController.processRequest"""),
     ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """current""", """controllers.HomeController.current"""),
     ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """websocket""", """controllers.HomeController.socket"""),
-    ("""POST""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """command""", """controllers.HomeController.processRequest"""),
     ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """assets/""" + "$" + """file<.+>""", """controllers.Assets.versioned(path:String = "/public", file:Asset)"""),
     Nil
   ).foldLeft(List.empty[(String,String,String)]) { (s,e) => e.asInstanceOf[Any] match {
@@ -145,47 +145,11 @@ class Routes(
     )
   )
 
-  // @LINE:13
-  private[this] lazy val controllers_HomeController_current5_route = Route("GET",
-    PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("current")))
-  )
-  private[this] lazy val controllers_HomeController_current5_invoker = createInvoker(
-    HomeController_1.current,
-    play.api.routing.HandlerDef(this.getClass.getClassLoader,
-      "router",
-      "controllers.HomeController",
-      "current",
-      Nil,
-      "GET",
-      this.prefix + """current""",
-      """GET     /move/:start/:dest          controllers.HomeController.move(start:String,dest:String)""",
-      Seq()
-    )
-  )
-
-  // @LINE:14
-  private[this] lazy val controllers_HomeController_socket6_route = Route("GET",
-    PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("websocket")))
-  )
-  private[this] lazy val controllers_HomeController_socket6_invoker = createInvoker(
-    HomeController_1.socket,
-    play.api.routing.HandlerDef(this.getClass.getClassLoader,
-      "router",
-      "controllers.HomeController",
-      "socket",
-      Nil,
-      "GET",
-      this.prefix + """websocket""",
-      """""",
-      Seq()
-    )
-  )
-
   // @LINE:16
-  private[this] lazy val controllers_HomeController_processRequest7_route = Route("POST",
+  private[this] lazy val controllers_HomeController_processRequest5_route = Route("POST",
     PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("command")))
   )
-  private[this] lazy val controllers_HomeController_processRequest7_invoker = createInvoker(
+  private[this] lazy val controllers_HomeController_processRequest5_invoker = createInvoker(
     HomeController_1.processRequest,
     play.api.routing.HandlerDef(this.getClass.getClassLoader,
       "router",
@@ -199,7 +163,43 @@ class Routes(
     )
   )
 
-  // @LINE:22
+  // @LINE:17
+  private[this] lazy val controllers_HomeController_current6_route = Route("GET",
+    PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("current")))
+  )
+  private[this] lazy val controllers_HomeController_current6_invoker = createInvoker(
+    HomeController_1.current,
+    play.api.routing.HandlerDef(this.getClass.getClassLoader,
+      "router",
+      "controllers.HomeController",
+      "current",
+      Nil,
+      "GET",
+      this.prefix + """current""",
+      """""",
+      Seq()
+    )
+  )
+
+  // @LINE:18
+  private[this] lazy val controllers_HomeController_socket7_route = Route("GET",
+    PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("websocket")))
+  )
+  private[this] lazy val controllers_HomeController_socket7_invoker = createInvoker(
+    HomeController_1.socket,
+    play.api.routing.HandlerDef(this.getClass.getClassLoader,
+      "router",
+      "controllers.HomeController",
+      "socket",
+      Nil,
+      "GET",
+      this.prefix + """websocket""",
+      """""",
+      Seq()
+    )
+  )
+
+  // @LINE:26
   private[this] lazy val controllers_Assets_versioned8_route = Route("GET",
     PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("assets/"), DynamicPart("file", """.+""",false)))
   )
@@ -250,25 +250,25 @@ class Routes(
         controllers_HomeController_test4_invoker.call(HomeController_1.test)
       }
   
-    // @LINE:13
-    case controllers_HomeController_current5_route(params@_) =>
-      call { 
-        controllers_HomeController_current5_invoker.call(HomeController_1.current)
-      }
-  
-    // @LINE:14
-    case controllers_HomeController_socket6_route(params@_) =>
-      call { 
-        controllers_HomeController_socket6_invoker.call(HomeController_1.socket)
-      }
-  
     // @LINE:16
-    case controllers_HomeController_processRequest7_route(params@_) =>
+    case controllers_HomeController_processRequest5_route(params@_) =>
       call { 
-        controllers_HomeController_processRequest7_invoker.call(HomeController_1.processRequest)
+        controllers_HomeController_processRequest5_invoker.call(HomeController_1.processRequest)
       }
   
-    // @LINE:22
+    // @LINE:17
+    case controllers_HomeController_current6_route(params@_) =>
+      call { 
+        controllers_HomeController_current6_invoker.call(HomeController_1.current)
+      }
+  
+    // @LINE:18
+    case controllers_HomeController_socket7_route(params@_) =>
+      call { 
+        controllers_HomeController_socket7_invoker.call(HomeController_1.socket)
+      }
+  
+    // @LINE:26
     case controllers_Assets_versioned8_route(params@_) =>
       call(Param[String]("path", Right("/public")), params.fromPath[Asset]("file", None)) { (path, file) =>
         controllers_Assets_versioned8_invoker.call(Assets_0.versioned(path, file))

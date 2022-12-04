@@ -39,13 +39,13 @@ function processCmdWS(cmd, data) {
 /*idee yannick*/
 // pop up message here ?
 function newBoard(num) {
-    processCommand("newBoard", num)
+    processCmdWS("newBoard", num)
 
 }
 
 function jsMove() {
     let mv = $('#text-input').val();
-    processCommand("jsMove", mv)
+    processCmdWS("jsMove", mv)
 
 }
 // how to implement that current page is 8 or 10
@@ -53,9 +53,9 @@ function jsMove() {
 function resetGame() {
     if (confirm("Are you sure you want to continue? Starting a new game means that current progress will be lost!")) {
         if (data.game.gameBoard.size === 8) {
-            processCommand("newBoard", "8")
+            processCmdWS("newBoard", "8")
         } else {
-            processCommand("newBoard", "10")
+            processCmdWS("newBoard", "10")
         }
     }
 }
@@ -191,11 +191,9 @@ function updateGameboard() {
 
 
 let websocket = new WebSocket("ws://localhost:9000/websocket");
-window.onbeforeunload = function () {
+window.onbeforeunload = function () { // Für Chrome Bug
     websocket.onclose = function () {
-        // if (playerNum > 0 && playerNum < 5) {
-            processCommand("reset", "");
-        // }
+        processCommand("resetGame", "");
     };
     websocket.close();
 };
@@ -216,10 +214,12 @@ function connectWebSocket() {
     };
 
     websocket.onmessage = function (e) {
+        console.log("onmessage")
         if (typeof e.data === "string") {
+            console.log("inmessage")
             data = JSON.parse(e.data);
-            if (data.reset === 1) {
-                playerNum = -1;
+            console.log(data)
+            if (data.game.gameState === "RESET") { // reset variable
                 swal({
                     icon: "warning",
                     text: "Game has been reset! (Player left or game master chose to)",

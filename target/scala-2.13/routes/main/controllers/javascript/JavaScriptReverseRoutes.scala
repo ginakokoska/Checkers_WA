@@ -1,6 +1,6 @@
 // @GENERATOR:play-routes-compiler
 // @SOURCE:C:/Users/Yannick/IdeaProjects/Checkers_WA/conf/routes
-// @DATE:Sat Dec 03 21:12:08 CET 2022
+// @DATE:Sun Dec 04 16:40:43 CET 2022
 
 import play.api.routing.JavaScriptReverseRoute
 
@@ -48,7 +48,7 @@ package controllers.javascript {
       """
     )
   
-    // @LINE:14
+    // @LINE:18
     def socket: JavaScriptReverseRoute = JavaScriptReverseRoute(
       "controllers.HomeController.socket",
       """
@@ -68,7 +68,7 @@ package controllers.javascript {
       """
     )
   
-    // @LINE:13
+    // @LINE:17
     def current: JavaScriptReverseRoute = JavaScriptReverseRoute(
       "controllers.HomeController.current",
       """
@@ -100,7 +100,7 @@ package controllers.javascript {
   
   }
 
-  // @LINE:22
+  // @LINE:26
   class ReverseAssets(_prefix: => String) {
 
     def _defaultPrefix: String = {
@@ -108,7 +108,7 @@ package controllers.javascript {
     }
 
   
-    // @LINE:22
+    // @LINE:26
     def versioned: JavaScriptReverseRoute = JavaScriptReverseRoute(
       "controllers.Assets.versioned",
       """

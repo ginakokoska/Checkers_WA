@@ -4,8 +4,9 @@ import akka.actor.{Actor, ActorRef, ActorSystem, Props}
 import akka.stream.Materializer
 import checkers.Checkers
 import checkers.Checkers.controller.gameState
-import checkers.controller.controllerComponent.ControllerInterface
+import checkers.controller.controllerComponent.{ControllerInterface, FieldChanged, GBSizeChanged}
 import checkers.controller.controllerComponent.GameState.{BLACK_TURN, GameState, WHITE_TURN}
+import checkers.controller.controllerComponent.controllerBaseImpl.PrintTui
 import checkers.model.gameBoardComponent.FieldInterface
 import play.api.libs.json.{JsObject, Writes}
 import play.api.libs.streams.ActorFlow
@@ -122,87 +123,12 @@ class HomeController @Inject()(val controllerComponents: ControllerComponents)(i
       newBoard(data.replace("\"", ""))
     } else if (cmd.equals("\"jsMove\"")) {
       jsMove(data.replace("\"", ""))
-    } else if (cmd.equals("\"selectFig\"")) {
-      //val result = selectFigure(data.replace("\"", "").toInt)
-      //return result
-    } else if (cmd.equals("\"figMove\"")) {
-      //move(data.replace("\"", ""))
-    } else if (cmd.equals("\"skip\"")) {
-      //skip
-    } else if (cmd.equals("\"addPlayer\"")) {
-      //addplayer(data.replace("\"", ""))
-    } else if (cmd.equals("\"reset\"")) {
-      //resetGame
-    } else if (cmd.equals("\"save\"")) {
-      //saveGame
-    } else if (cmd.equals("\"load\"")) {
-      //loadGame
-    } else if (cmd.equals("\"undo\"")) {
-      //undoGame
-    } else if (cmd.equals("\"redo\"")) {
-      //redoGame
     }
     "Ok"
   }
 
-  def processRequest: Action[AnyContent] = Action {
-    implicit request => {
-      val req = request.body.asJson
-      val result = processCommand(req.get("cmd").toString(), req.get("data").toString())
-      if (result.contains("Error")) {
-        BadRequest(result)
-      } else {
-        Ok(Json.obj(
-          "game" -> GameBoard()
-        ))
-      }
-    }
-  }
 
-  def controllerToJson(reset: Int = 0) = {
-    Json.obj(
-      "game" -> GameBoard()
-    ).toString
-  }
 
-  def socket = WebSocket.accept[String, String] { request =>
-    ActorFlow.actorRef { out =>
-      println("Connect received")
-      CheckersSocketActor.props(out)
-    }
-  }
-
-  object CheckersSocketActor {
-    def props(out: ActorRef) = {
-      Props(new CheckersSocketActor(out))
-    }
-  }
-
-  class CheckersSocketActor(out: ActorRef) extends Actor with Reactor {
-    listenTo(gameController)
-
-    def receive = {
-      case msg: String =>
-        val split_msg = msg.split('|')
-        if (split_msg.length == 2) {
-          val cmd = split_msg(0)
-          val data = split_msg(1)
-          if (processCommand(cmd, data).contains("Error")) {
-            out ! controllerToJson()
-          } else {
-            if (cmd.equals("addPlayer")) {
-              out ! controllerToJson()
-            } else {
-              out ! controllerToJson()
-            }
-          }
-        }
-    }
-
-    reactions += {
-      case event => out ! controllerToJson()
-    }
-  }
 
   def allRoutes = {
     """
@@ -262,5 +188,84 @@ class HomeController @Inject()(val controllerComponents: ControllerComponents)(i
       )
     )
   }
+
+
+
+// -------------------------------------------------------- WEBSOCKETS
+// warum das secret array
+
+  def processRequest: Action[AnyContent] = Action {
+    implicit request => {
+      val req = request.body.asJson
+      val result = processCommand(req.get("cmd").toString(), req.get("data").toString())
+      if (result.contains("Error")) {
+        BadRequest(result)
+      } else {
+        Ok(Json.obj(
+          "game" -> GameBoard()
+        ))
+      }
+    }
+  }
+
+  def controllerToJson(reset: Int = 0) = {
+    Json.obj(
+      "game" -> GameBoard()
+    ).toString
+  }
+
+
+  def socket = WebSocket.accept[String, String] { request =>
+    ActorFlow.actorRef { out =>
+      println("Connect received")
+      CheckersSocketActorFactory.create(out)
+    }
+  }
+
+  object CheckersSocketActorFactory {
+    def create(out: ActorRef) = {
+      Props(new CheckersSocketActorFactory(out))
+    }
+  }
+
+  def wsCommand(cmd: String, data: String): String = {
+    if (cmd.equals("newBoard")) {
+      println("newBoard")
+      newBoard(data)
+
+    } else if (cmd.equals("jsMove")) {
+      println("jsMove")
+      jsMove(data)
+    }
+    "Ok"
+  }
+
+  class CheckersSocketActorFactory(out: ActorRef) extends Actor with Reactor {
+    listenTo(gameController)
+
+    def receive = {
+      case msg: String =>
+        val split_msg = msg.split('|')
+        if (split_msg.length == 2) {
+          val cmd = split_msg(0)
+          val data = split_msg(1)
+          wsCommand(cmd, data)
+          out ! controllerToJson()
+          println("Sent Json to Client " + msg)
+        }
+    }
+
+    reactions += {
+      case event: FieldChanged => out ! controllerToJson()
+      case event: PrintTui => out ! controllerToJson()
+      case event: GBSizeChanged => out ! controllerToJson()
+    }
+
+    def sendJsonToClient = {
+      println("Received event from Controller")
+      out ! (gameController.toJson.toString)
+    }
+  }
+
 
 }

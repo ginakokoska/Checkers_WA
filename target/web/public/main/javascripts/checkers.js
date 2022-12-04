@@ -15,6 +15,7 @@ function updateGame() {
 }
 
 function updateGameNoAjax() {
+    console.log("in ws command")
     checkWin();
     updateGameboard();
     //refreshOnClickEvents();
@@ -39,13 +40,13 @@ function processCmdWS(cmd, data) {
 /*idee yannick*/
 // pop up message here ?
 function newBoard(num) {
-    processCommand("newBoard", num)
+    processCmdWS("newBoard", num)
 
 }
 
 function jsMove() {
     let mv = $('#text-input').val();
-    processCommand("jsMove", mv)
+    processCmdWS("jsMove", mv)
 
 }
 // how to implement that current page is 8 or 10
@@ -53,9 +54,9 @@ function jsMove() {
 function resetGame() {
     if (confirm("Are you sure you want to continue? Starting a new game means that current progress will be lost!")) {
         if (data.game.gameBoard.size === 8) {
-            processCommand("newBoard", "8")
+            processCmdWS("newBoard", "8")
         } else {
-            processCommand("newBoard", "10")
+            processCmdWS("newBoard", "10")
         }
     }
 }
@@ -132,7 +133,6 @@ function updateGameboard() {
         for(let col=0; col < data.game.gameBoard.size; col++) {
 
 
-
             if ((row+col+data.game.gameBoard.size)%2 === 0) {
                 newContent += '<div class="field" style="background-color: #641403">';
             } else {
@@ -165,37 +165,14 @@ function updateGameboard() {
     newContent += '</div></div>';
     newGame.html(newContent);
 
-
-    /*
-    <div class="form-group">
-      <label for="text-input"> </label>
-      <input type="text" class="form-control" id="text-input" placeholder="Enter your move like 'XX YY'" onfocus="this.placeholder = ''" input-focus-border-color="#99999" >
-      <div style="padding:20px"></div>
-      <button onclick="move()" type="button" class="btn bouncy">Enter</button>
-      <p id="message-field"> </p>
-    </div>
-
-     */
-    /*
-    let newFormGroup;
-    newFormGroup.html('')
-    newFormGroup += '<div class="form-group"/>';
-    newFormGroup += '<input type="text" class="form-control" id="text-input" placeholder="Enter your move like \'XX YY\'" onfocus="this.placeholder = \'\'" input-focus-border-color="#99999" >';
-    newFormGroup += '<div style="padding:20px"></div>';
-    newFormGroup += '<button onclick="move()" type="button" class="btn bouncy">Enter</button>';
-    newFormGroup += '<p id="message-field"> </p>';
-*/
-
 }
 
 
 
 let websocket = new WebSocket("ws://localhost:9000/websocket");
-window.onbeforeunload = function () {
+window.onbeforeunload = function () { // Für Chrome Bug
     websocket.onclose = function () {
-        // if (playerNum > 0 && playerNum < 5) {
-            processCommand("reset", "");
-        // }
+        processCommand("resetGame", "");
     };
     websocket.close();
 };
@@ -207,26 +184,27 @@ function connectWebSocket() {
     }
 
     websocket.onclose = function () {
-        // if (playerNum > 0 && playerNum < 5) {
-            processCommand("reset", "");
-        // }
+        processCommand("resetGame", "");
     };
 
     websocket.onerror = function (error) {
     };
 
     websocket.onmessage = function (e) {
+        console.log("onmessage")
         if (typeof e.data === "string") {
+            console.log("inmessage")
             data = JSON.parse(e.data);
-            if (data.reset === 1) {
-                playerNum = -1;
+            console.log(data)
+            if (data.game.gameState === "RESET") { // reset variable
                 swal({
                     icon: "warning",
-                    text: "Game has been reset! (Player left or game master chose to)",
+                    text: "Game has been reset!",
                     title: "Error!"
                 })
             }
             updateGameNoAjax();
         }
     };
+
 }
