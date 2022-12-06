@@ -23,8 +23,7 @@ object checkers_game extends _root_.play.twirl.api.BaseScalaTemplate[play.twirl.
       {
 
 def /*3.2*/size/*3.6*/ = {{controller.gameBoardSize}};def /*4.2*/color/*4.7*/ = {{"#000000"}};
-Seq[Any](format.raw/*1.90*/("""
-
+Seq[Any](format.raw/*2.1*/("""
 """),format.raw/*3.35*/("""
 """),format.raw/*4.21*/("""
 
@@ -34,96 +33,26 @@ Seq[Any](format.raw/*1.90*/("""
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/vue&#64;next"></script>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap&#64;5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
-  <link rel="icon" type="image/x-icon" href='"""),_display_(/*14.47*/routes/*14.53*/.Assets.versioned("images/icon.png")),format.raw/*14.89*/("""'>
-  <link rel="stylesheet" href='"""),_display_(/*15.33*/routes/*15.39*/.Assets.versioned("stylesheets/say.css")),format.raw/*15.79*/("""'>
+  <link rel="icon" type="image/x-icon" href='"""),_display_(/*15.47*/routes/*15.53*/.Assets.versioned("images/icon.png")),format.raw/*15.89*/("""'>
+  <link rel="stylesheet" href='"""),_display_(/*16.33*/routes/*16.39*/.Assets.versioned("stylesheets/say.css")),format.raw/*16.79*/("""'>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap&#64;5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
   <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-  <script src='"""),_display_(/*18.17*/routes/*18.23*/.Assets.versioned("javascripts/checkers.js")),format.raw/*18.67*/("""' type="text/javascript"></script>
+  <script src='"""),_display_(/*19.17*/routes/*19.23*/.Assets.versioned("javascripts/checkers_vue.js")),format.raw/*19.71*/("""' type="text/javascript"></script>
 </head>
 
   <body>
-  <nav class="navbar navbar-dark bg-dark fixed-top">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="http://localhost:9000/"> <i class="fa-solid fa-chess"></i> Checkers</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvasDarkNavbar" aria-labelledby="offcanvasDarkNavbarLabel">
-      <div class="offcanvas-header">
-        <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel">Checkers Menu</h5>
-        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-      </div>
-      <div class="offcanvas-body">
-        <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
-          <li class="nav-item">
-            <a class="nav-link active"  aria-current="page" href="http://localhost:9000/"> <i class="fa-solid fa-igloo"></i> Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="https://github.com/ginakokoska/Checkers_WA"> <i class="fa-brands fa-github-alt"></i> GitHub</a>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              <i class="fa-solid fa-chess-board"></i> Boardsize
-            </a>
-            <ul class="dropdown-menu dropdown-menu-dark">
-              <li><a class="dropdown-item "  onclick="newBoard(8)"> <i class="fa-solid fa-chess-queen"></i> 8x8</a></li>
-              <li><a class="dropdown-item "  onclick="newBoard(10)"> <i class="fa-regular  fa-chess-queen"></i> 10x10</a></li>
-              <li>
-                <hr class="dropdown-divider">
-              </li>
-              <li><a class="dropdown-item" href="http://localhost:9000/instructions"> <i class="fa-solid fa-clipboard-list"></i> User Manual</a></li>
-            </ul>
-          </li>
-        </ul>
-      </div>
+    <div id="checkers">
+      <navbar></navbar>
+      <gamecontainer></gamecontainer>
+      <form-group></form-group>
     </div>
-  </div>
-</nav>
-
-
-<div class="gamecontainer" id="gamecontainer">
-  <div class="game">
-  """),_display_(/*63.4*/for(row <- 0 until size) yield /*63.28*/ {_display_(Seq[Any](format.raw/*63.30*/("""
-    """),format.raw/*64.5*/("""<div class="fieldrow">
-      """),_display_(/*65.8*/for(col <- 0 until size) yield /*65.32*/ {_display_(Seq[Any](format.raw/*65.34*/("""
-        """),format.raw/*66.9*/("""<div class="field" id="field"""),_display_(/*66.38*/{row*size+col}),format.raw/*66.52*/("""">
-            <img class="img" id="scalar"""),_display_(/*67.41*/{row*size+col}),format.raw/*67.55*/("""" alt=""/>
-        </div>
-      """)))}),format.raw/*69.8*/("""
-    """),format.raw/*70.5*/("""</div>
-    """)))}),format.raw/*71.6*/("""
-  """),format.raw/*72.3*/("""</div>
-</div>
-
-
-<div class="form-group" id="form-group">
-  <label for="text-input"> </label>
-  <input type="text" class="form-control" id="text-input" placeholder="Enter your move like 'XX YY'" onfocus="this.placeholder = ''" input-focus-border-color="#99999" >
-  <div style="padding:20px"></div>
-  <button onclick="jsMove()" type="button" class="btn bouncy">Enter</button>
-    <p id="message-field">"""),_display_(/*81.28*/{message}),format.raw/*81.37*/(""" """),format.raw/*81.38*/("""</p> """),format.raw/*81.120*/("""
-"""),format.raw/*82.1*/("""</div>
-
-
 </body>
 
 
-
-<script>
-      function move() """),format.raw/*90.23*/("""{"""),format.raw/*90.24*/("""
-        """),format.raw/*91.9*/("""let x = document.getElementById("text-input").value;
-        if (x === "") """),format.raw/*92.23*/("""{"""),format.raw/*92.24*/("""
-          """),format.raw/*93.11*/("""alert("Input can't be empty");
-          return;
-        """),format.raw/*95.9*/("""}"""),format.raw/*95.10*/("""
-        """),format.raw/*96.9*/("""let start = x.split(" ")[0];
-        let dest = x.split(" ")[1];
-        location.href = "http://localhost:9000/move/" + start + "/" + dest;
-      """),format.raw/*99.7*/("""}"""),format.raw/*99.8*/("""
-
-"""),format.raw/*101.1*/("""</script>"""))
+"""))
       }
     }
   }
@@ -139,11 +68,11 @@ Seq[Any](format.raw/*1.90*/("""
 
               /*
                   -- GENERATED --
-                  DATE: 2022-12-03T21:32:33.890
-                  SOURCE: C:/Users/Yannick/IdeaProjects/Checkers_WA/app/views/checkers_game.scala.html
-                  HASH: 200e63040e2d19f5f867c46147ffd7525cbcdde5
-                  MATRIX: 797->1|963->94|974->98|1017->130|1029->135|1074->89|1105->127|1134->149|1164->153|1878->840|1893->846|1950->882|2013->918|2028->924|2089->964|2431->1279|2446->1285|2511->1329|4844->3636|4884->3660|4924->3662|4957->3668|5014->3699|5054->3723|5094->3725|5131->3735|5187->3764|5222->3778|5293->3822|5328->3836|5393->3871|5426->3877|5469->3890|5500->3894|5937->4304|5967->4313|5996->4314|6030->4396|6059->4398|6146->4457|6175->4458|6212->4468|6316->4544|6345->4545|6385->4557|6471->4616|6500->4617|6537->4627|6714->4777|6742->4778|6774->4782
-                  LINES: 21->1|25->3|25->3|25->4|25->4|26->1|28->3|29->4|31->6|39->14|39->14|39->14|40->15|40->15|40->15|43->18|43->18|43->18|88->63|88->63|88->63|89->64|90->65|90->65|90->65|91->66|91->66|91->66|92->67|92->67|94->69|95->70|96->71|97->72|106->81|106->81|106->81|106->81|107->82|115->90|115->90|116->91|117->92|117->92|118->93|120->95|120->95|121->96|124->99|124->99|126->101
+                  DATE: 2022-12-06T11:11:29.994
+                  SOURCE: /Users/ginakokoska/IdeaProjects/HTWG/AIN5/Webapplikation/checkers-new/app/views/checkers_game.scala.html
+                  HASH: a877e3c8c0c39b7c58eb4b9ff35e2249dbf15330
+                  MATRIX: 797->1|963->92|974->96|1017->127|1029->132|1073->90|1101->125|1129->146|1157->148|1920->884|1935->890|1992->926|2054->961|2069->967|2130->1007|2469->1319|2484->1325|2553->1373
+                  LINES: 21->1|25->3|25->3|25->4|25->4|26->2|27->3|28->4|30->6|39->15|39->15|39->15|40->16|40->16|40->16|43->19|43->19|43->19
                   -- GENERATED --
               */
           

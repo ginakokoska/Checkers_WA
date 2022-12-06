@@ -1,6 +1,6 @@
 // @GENERATOR:play-routes-compiler
-// @SOURCE:C:/Users/Yannick/IdeaProjects/Checkers_WA/conf/routes
-// @DATE:Sun Dec 04 16:40:43 CET 2022
+// @SOURCE:/Users/ginakokoska/IdeaProjects/HTWG/AIN5/Webapplikation/checkers-new/conf/routes
+// @DATE:Tue Dec 06 10:48:15 CET 2022
 
 import play.api.routing.JavaScriptReverseRoute
 
