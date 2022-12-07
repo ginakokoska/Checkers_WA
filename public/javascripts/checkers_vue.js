@@ -10,6 +10,7 @@ const app = Vue.createApp({
         connectWebSocket() {
             this.vueWebsocket.onopen = (event) => {
                 this.vueWebsocket.send("Connect to server");
+                console.log("connecting to server")
             }
 
             this.vueWebsocket.onclose = (event) => {
@@ -69,7 +70,6 @@ const app = Vue.createApp({
 
         },
         updateGameBoard() {
-
             size = data.game.gameBoard.size;
             let newGame = $('#gamecontainer');
             newGame.html('');
@@ -209,7 +209,9 @@ app.component('navbar',  {
 </nav>
     `
 })
+*/
 
+/*
 app.component('gamecontainer', {
     template: ` <div className="gamecontainer" id="gamecontainer">
         <div className="game">
