@@ -41,13 +41,11 @@ function processCmdWS(cmd, data) {
 // pop up message here ?
 function newBoard(num) {
     processCmdWS("newBoard", num)
-
 }
 
 function jsMove() {
     let mv = $('#text-input').val();
     processCmdWS("jsMove", mv)
-
 }
 // how to implement that current page is 8 or 10
 // where the fuck is the popup message ??

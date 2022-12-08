@@ -6,7 +6,9 @@ app.component('full', {
         return {
             vueWebsocket: new WebSocket("ws://" + location.hostname + ":9000/websocket"),
             data: {},
-            game: data.game,
+            game: "",
+            gameBoard: "",
+            size: "",
         }
     },
     methods: {
@@ -36,7 +38,7 @@ app.component('full', {
             };
         },
         processCmdWS(cmd, data) {
-            this.websocketVUE.send(cmd + "|" + data + "|")
+            this.vueWebsocket.send(cmd + "|" + data + "|")
         },
         processCommand(cmd, returnData) {
             this.post("POST", "/command", {"cmd": cmd, "data": returnData}, cmd).then(() => {
@@ -123,20 +125,20 @@ app.component('full', {
             let newContent = '';
             //newContent += '<div class="gamecontainer" id="gamecontainer">';
             newContent += '<div class="game">';
-            for(let row=0; row < data.game.gameBoard.size; row++) {
+            for(let row=0; row < this.data.game.gameBoard.size; row++) {
                 newContent += '<div class="fieldrow">';
-                for(let col=0; col < data.game.gameBoard.size; col++) {
+                for(let col=0; col < this.data.game.gameBoard.size; col++) {
 
 
-                    if ((row+col+data.game.gameBoard.size)%2 === 0) {
+                    if ((row+col+this.data.game.gameBoard.size)%2 === 0) {
                         newContent += '<div class="field" style="background-color: #641403">';
                     } else {
                         newContent += '<div class="field" style="background-color: #000000">';
                     }
 
-                    let scalar = row*size+col
-                    let color = data.game.gameBoard.fields[scalar].field.piece.color;
-                    let state = data.game.gameBoard.fields[scalar].field.piece.state;
+                    let scalar = row*this.size+col
+                    let color = this.data.game.gameBoard.fields[scalar].field.piece.color;
+                    let state = this.data.game.gameBoard.fields[scalar].field.piece.state;
 
                     switch (state) {
                         case "normal":
@@ -193,7 +195,7 @@ app.component('navbar',  {
       <div class="offcanvas-body">
         <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
           <li class="nav-item">
-            <a class="nav-link active"  aria-current="page" :href="homeLink"> <i class="fa-solid fa-igloo"></i> Home</a>
+            <a class="nav-link active" aria-current="page" :href="homeLink"> <i class="fa-solid fa-igloo"></i> Home</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="https://github.com/ginakokoska/Checkers_WA"> <i class="fa-brands fa-github-alt"></i> GitHub</a>
@@ -220,40 +222,57 @@ app.component('navbar',  {
 })
 
 
-/*
+
 app.component('gamecontainer', {
     data() {
         return {
-            homeLink: "/",
-            instructionsLink: "/instructions"
-            8GridLink: "/new8Grid"
-            10GridLink: "/new10Grid"
+            vueWebsocket: new WebSocket("ws://" + location.hostname + ":9000/websocket"),
+            data: {},
+            game: data.game,
+            size: data.game.gameBoard.size,
         }
     },
-    props: ['selected'],
     template: `
-    template: ` <div className="gamecontainer" id="gamecontainer">
-        <div className="game">
-            @for(row <- 0 until size) {
-            <div className="fieldrow">
-                @for(col <- 0 until size) {
-                <div className="field" id="field@{row*size+col}">
-                    <img className="img" id="scalar@{row*size+col}" alt=""/>
+    <div class="gamecontainer" id="gamecontainer">
+        <div class="game">
+             <li v-for="i in size">
+                <div class="fieldrow">
+                    <li v-for="j in size"> 
+                        <div class="field" id="field{{i}}*size+{{j}}">
+                            <img class="img" id="scalar{{i}}*size+{{j}}" alt=""/>
+                        </div>
+                    </li>
                 </div>
-            }
-            </div>
-        }
+             </li>     
         </div>
     </div>
     `
 })
 
+
+// app.component('gamecontainer', {
+//     template: ` <div class="gamecontainer" id="gamecontainer">
+//         <div class="game">
+//             @for(row <- 0 until size) {
+//             <div class="fieldrow">
+//                 @for(col <- 0 until size) {
+//                 <div class="field" id="field@{row*size+col}">
+//                     <img class="img" id="scalar@{row*size+col}" alt=""/>
+//                 </div>
+//             }
+//             </div>
+//         }
+//         </div>
+//     </div>
+//     `
+// })
+
 app.component('form-group', {
-    template: `<div className="form-group" id="form-group">
-        <label htmlFor="text-input"> </label>
-        <input type="text" className="form-control" id="text-input" placeholder="Enter your move like 'XX YY'" onFocus="this.placeholder = ''" input-focus-border-color="#99999">
+    template: `<div class="form-group" id="form-group">
+        <label for="text-input"> </label>
+        <input type="text" class="form-control" id="text-input" placeholder="Enter your move like 'XX YY'" onFocus="this.placeholder = ''" input-focus-border-color="#99999">
             <div style="padding:20px"></div>
-            <button v-on:click="jsMove()" type="button" className="btn bouncy"> Enter</button>
+            <button v-on:click="jsMove()" type="button" class="btn bouncy"> Enter</button>
             <p id="message-field">@{message} </p>
     </div>
     `

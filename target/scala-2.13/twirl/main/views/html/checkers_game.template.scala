@@ -23,7 +23,8 @@ object checkers_game extends _root_.play.twirl.api.BaseScalaTemplate[play.twirl.
       {
 
 def /*3.2*/size/*3.6*/ = {{controller.gameBoardSize}};def /*4.2*/color/*4.7*/ = {{"#000000"}};
-Seq[Any](format.raw/*2.1*/("""
+Seq[Any](format.raw/*1.90*/("""
+
 """),format.raw/*3.35*/("""
 """),format.raw/*4.21*/("""
 
@@ -32,24 +33,29 @@ Seq[Any](format.raw/*2.1*/("""
   <title>Checkers Game</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
-  <script src="https://unpkg.com/vue&#64;next"></script>
+  <link rel="icon" type="image/x-icon" href='"""),_display_(/*11.47*/routes/*11.53*/.Assets.versioned("images/icon.png")),format.raw/*11.89*/("""'>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap&#64;5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+  <link rel="stylesheet" href='"""),_display_(/*13.33*/routes/*13.39*/.Assets.versioned("stylesheets/say.css")),format.raw/*13.79*/("""'>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
-  <link rel="icon" type="image/x-icon" href='"""),_display_(/*15.47*/routes/*15.53*/.Assets.versioned("images/icon.png")),format.raw/*15.89*/("""'>
-  <link rel="stylesheet" href='"""),_display_(/*16.33*/routes/*16.39*/.Assets.versioned("stylesheets/say.css")),format.raw/*16.79*/("""'>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap&#64;5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
   <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-  <script src='"""),_display_(/*19.17*/routes/*19.23*/.Assets.versioned("javascripts/checkers_vue.js")),format.raw/*19.71*/("""' type="text/javascript"></script>
-</head>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap&#64;5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/vue@next"></script>
 
+</head>
   <body>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap&#64;5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+
     <div id="checkers">
       <navbar></navbar>
+      <full></full>
       <gamecontainer></gamecontainer>
       <form-group></form-group>
     </div>
-</body>
+    <script src='"""),_display_(/*30.19*/routes/*30.25*/.Assets.versioned("javascripts/sebi_vue.js")),format.raw/*30.69*/("""' type="text/javascript"></script>
+  </body>
+
+
 
 
 """))
@@ -68,11 +74,11 @@ Seq[Any](format.raw/*2.1*/("""
 
               /*
                   -- GENERATED --
-                  DATE: 2022-12-06T11:11:29.994
-                  SOURCE: /Users/ginakokoska/IdeaProjects/HTWG/AIN5/Webapplikation/checkers-new/app/views/checkers_game.scala.html
-                  HASH: a877e3c8c0c39b7c58eb4b9ff35e2249dbf15330
-                  MATRIX: 797->1|963->92|974->96|1017->127|1029->132|1073->90|1101->125|1129->146|1157->148|1920->884|1935->890|1992->926|2054->961|2069->967|2130->1007|2469->1319|2484->1325|2553->1373
-                  LINES: 21->1|25->3|25->3|25->4|25->4|26->2|27->3|28->4|30->6|39->15|39->15|39->15|40->16|40->16|40->16|43->19|43->19|43->19
+                  DATE: 2022-12-07T19:03:53.618
+                  SOURCE: C:/Users/Yannick/IdeaProjects/Checkers_WA/app/views/checkers_game.scala.html
+                  HASH: 7b161a324be6e29cb13a38cbe5a569135307e21e
+                  MATRIX: 797->1|963->94|974->98|1017->130|1029->135|1074->89|1105->127|1134->149|1164->153|1393->355|1408->361|1465->397|1746->651|1761->657|1822->697|2883->1732|2898->1738|2963->1782
+                  LINES: 21->1|25->3|25->3|25->4|25->4|26->1|28->3|29->4|31->6|36->11|36->11|36->11|38->13|38->13|38->13|55->30|55->30|55->30
                   -- GENERATED --
               */
           
