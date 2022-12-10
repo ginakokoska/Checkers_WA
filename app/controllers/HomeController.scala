@@ -171,6 +171,7 @@ class HomeController @Inject()(val controllerComponents: ControllerComponents)(i
   implicit val gameBoardWrites: Writes[GameBoard] = new Writes[GameBoard] {
     def writes(gameBoard: GameBoard): JsObject = Json.obj(
       "gameState" -> gameState.toString,
+      "message" -> gameController.gameBoard.message,
       "gameBoard" -> Json.obj(
         "size" -> JsNumber(gameController.gameBoardSize),
         "fields" -> Json.toJson(

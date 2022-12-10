@@ -40,19 +40,18 @@ Seq[Any](format.raw/*1.90*/("""
   <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap&#64;5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
   <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
-  <script src="https://unpkg.com/vue@next"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vue@next"></script>
 
 </head>
   <body>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap&#64;5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
-
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
     <div id="checkers">
       <navbar></navbar>
-      <full></full>
       <gamecontainer></gamecontainer>
       <form-group></form-group>
     </div>
-    <script src='"""),_display_(/*30.19*/routes/*30.25*/.Assets.versioned("javascripts/sebi_vue.js")),format.raw/*30.69*/("""' type="text/javascript"></script>
+    <script src='"""),_display_(/*29.19*/routes/*29.25*/.Assets.versioned("javascripts/sebi_vue.js")),format.raw/*29.69*/("""' type="text/javascript"></script>
   </body>
 
 
@@ -74,11 +73,11 @@ Seq[Any](format.raw/*1.90*/("""
 
               /*
                   -- GENERATED --
-                  DATE: 2022-12-07T19:03:53.618
+                  DATE: 2022-12-09T22:15:20.244
                   SOURCE: C:/Users/Yannick/IdeaProjects/Checkers_WA/app/views/checkers_game.scala.html
-                  HASH: 7b161a324be6e29cb13a38cbe5a569135307e21e
-                  MATRIX: 797->1|963->94|974->98|1017->130|1029->135|1074->89|1105->127|1134->149|1164->153|1393->355|1408->361|1465->397|1746->651|1761->657|1822->697|2883->1732|2898->1738|2963->1782
-                  LINES: 21->1|25->3|25->3|25->4|25->4|26->1|28->3|29->4|31->6|36->11|36->11|36->11|38->13|38->13|38->13|55->30|55->30|55->30
+                  HASH: 5815354621cc4bcd5b26dfe05a0d8f12d8f140b2
+                  MATRIX: 797->1|963->94|974->98|1017->130|1029->135|1074->89|1105->127|1134->149|1164->153|1393->355|1408->361|1465->397|1746->651|1761->657|1822->697|3032->1881|3047->1887|3112->1931
+                  LINES: 21->1|25->3|25->3|25->4|25->4|26->1|28->3|29->4|31->6|36->11|36->11|36->11|38->13|38->13|38->13|54->29|54->29|54->29
                   -- GENERATED --
               */
           

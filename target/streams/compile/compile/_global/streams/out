@@ -1,28 +1,7 @@
-[0m[[0m[31merror[0m] [0m[0mC:\Users\Yannick\IdeaProjects\Checkers_WA\app\controllers\HomeController.scala:302:19: not found: type RollDice[0m
-[0m[[0m[31merror[0m] [0m[0m      case event: RollDice => out ! controllerToJson()[0m
-[0m[[0m[31merror[0m] [0m[0m                  ^[0m
-[0m[[0m[31merror[0m] [0m[0mC:\Users\Yannick\IdeaProjects\Checkers_WA\app\controllers\HomeController.scala:303:19: not found: type Moving[0m
-[0m[[0m[31merror[0m] [0m[0m      case event: Moving => out ! controllerToJson()[0m
-[0m[[0m[31merror[0m] [0m[0m                  ^[0m
-[0m[[0m[31merror[0m] [0m[0mC:\Users\Yannick\IdeaProjects\Checkers_WA\app\controllers\HomeController.scala:304:19: not found: type ChooseFig[0m
-[0m[[0m[31merror[0m] [0m[0m      case event: ChooseFig => out ! controllerToJson()[0m
-[0m[[0m[31merror[0m] [0m[0m                  ^[0m
-[0m[[0m[31merror[0m] [0m[0mC:\Users\Yannick\IdeaProjects\Checkers_WA\app\controllers\HomeController.scala:306:19: not found: type StartUp[0m
-[0m[[0m[31merror[0m] [0m[0m      case event: StartUp => out ! controllerToJson()[0m
-[0m[[0m[31merror[0m] [0m[0m                  ^[0m
-[0m[[0m[31merror[0m] [0m[0mC:\Users\Yannick\IdeaProjects\Checkers_WA\app\controllers\HomeController.scala:307:19: not found: type StartGame[0m
-[0m[[0m[31merror[0m] [0m[0m      case event: StartGame => out ! controllerToJson()[0m
-[0m[[0m[31merror[0m] [0m[0m                  ^[0m
-[0m[[0m[31merror[0m] [0m[0mC:\Users\Yannick\IdeaProjects\Checkers_WA\app\controllers\HomeController.scala:308:19: not found: type WonGame[0m
-[0m[[0m[31merror[0m] [0m[0m      case event: WonGame => out ! controllerToJson()[0m
-[0m[[0m[31merror[0m] [0m[0m                  ^[0m
-[0m[[0m[31merror[0m] [0m[0mC:\Users\Yannick\IdeaProjects\Checkers_WA\app\controllers\HomeController.scala:309:19: not found: type GameReset[0m
-[0m[[0m[31merror[0m] [0m[0m      case event: GameReset => out ! controllerToJson(1)[0m
-[0m[[0m[31merror[0m] [0m[0m                  ^[0m
-[0m[[0m[31merror[0m] [0m[0mC:\Users\Yannick\IdeaProjects\Checkers_WA\app\controllers\HomeController.scala:310:19: not found: type GameSaved[0m
-[0m[[0m[31merror[0m] [0m[0m      case event: GameSaved => out ! controllerToJson()[0m
-[0m[[0m[31merror[0m] [0m[0m                  ^[0m
-[0m[[0m[31merror[0m] [0m[0mC:\Users\Yannick\IdeaProjects\Checkers_WA\app\controllers\HomeController.scala:311:19: not found: type GameLoaded[0m
-[0m[[0m[31merror[0m] [0m[0m      case event: GameLoaded => out ! controllerToJson()[0m
-[0m[[0m[31merror[0m] [0m[0m                  ^[0m
-[0m[[0m[31merror[0m] [0m[0m9 errors found[0m
+[0m[[0m[31merror[0m] [0m[0mC:\Users\Yannick\IdeaProjects\Checkers_WA\target\scala-2.13\twirl\main\views\html\test.template.scala:43:105: not found: value latest[0m
+[0m[[0m[31merror[0m] [0m[0m    <link type="text/css" rel="stylesheet" href="https://unpkg.com/bootstrap-vue"""),_display_(/*18.82*/latest),format.raw/*18.88*/("""/dist/bootstrap-vue.min.css"/>[0m
+[0m[[0m[31merror[0m] [0m[0m                                                                                                        ^[0m
+[0m[[0m[31merror[0m] [0m[0mC:\Users\Yannick\IdeaProjects\Checkers_WA\target\scala-2.13\twirl\main\views\html\test.template.scala:53:73: not found: value latest[0m
+[0m[[0m[31merror[0m] [0m[0m    <script src="https://unpkg.com/bootstrap-vue"""),_display_(/*28.50*/latest),format.raw/*28.56*/("""/dist/bootstrap-vue.min.js"></script>[0m
+[0m[[0m[31merror[0m] [0m[0m                                                                        ^[0m
+[0m[[0m[31merror[0m] [0m[0mtwo errors found[0m

@@ -29,7 +29,7 @@ Seq[Any](format.raw/*1.74*/("""
 
 """),format.raw/*5.1*/("""<!DOCTYPE html>
 <html lang="en">
-<head>
+    <head>
     <title>Checkers Testpage</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -39,80 +39,21 @@ Seq[Any](format.raw/*1.74*/("""
     <link rel="stylesheet" href='"""),_display_(/*14.35*/routes/*14.41*/.Assets.versioned("stylesheets/nav.css")),format.raw/*14.81*/("""'>
     <link rel="stylesheet" href='"""),_display_(/*15.35*/routes/*15.41*/.Assets.versioned("stylesheets/main.css")),format.raw/*15.82*/("""'>
     <link rel="stylesheet" href='"""),_display_(/*16.35*/routes/*16.41*/.Assets.versioned("stylesheets/say.css")),format.raw/*16.81*/("""'>
-</head>
-<body>
+    <link type="text/css" rel="stylesheet" href="https://unpkg.com/bootstrap/dist/css/bootstrap.min.css"/>
+    <link type="text/css" rel="stylesheet" href="https://unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue.min.css"/>
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    </head>
+    <body>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap&#64;5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+        <div id="checkers">
+            <gamecontainer></gamecontainer>
+            """),format.raw/*26.110*/("""
+        """),format.raw/*27.9*/("""</div>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap&#64;5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
-<nav class="navbar navbar-dark bg-dark fixed-top">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="http://localhost:9000/"> <i class="fa-solid fa-chess"></i> Checkers</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar" color="#FF69B4">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvasDarkNavbar" aria-labelledby="offcanvasDarkNavbarLabel">
-            <div class="offcanvas-header">
-                <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel">Checkers Menu</h5>
-                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-            </div>
-            <div class="offcanvas-body">
-                <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
-                    <li class="nav-item">
-                        <a class="nav-link"  aria-current="page" href="http://localhost:9000/"> <i class="fa-solid fa-igloo"></i> Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="https://github.com/ginakokoska/Checkers_WA"> <i class="fa-brands fa-github-alt"></i> GitHub</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            <i class="fa-solid fa-chess-board"></i> Boardsize
-                        </a>
-                        <ul class="dropdown-menu dropdown-menu-dark">
-                            <li><a class="dropdown-item" href="http://localhost:9000/new8Grid"> <i class="fa-solid fa-chess-queen"></i> 8x8</a></li>
-                            <li><a class="dropdown-item" href="http://localhost:9000/new10Grid"> <i class="fa-regular fa-chess-queen"></i> 10x10</a></li>
-                            <li>
-                                <hr class="dropdown-divider">
-                            </li>
-                            <li><a class="dropdown-item" href="http://localhost:9000/instructions"> <i class="fa-solid fa-clipboard-list"></i> User Manual</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </div>
-</nav>
+        <script src='"""),_display_(/*29.23*/routes/*29.29*/.Assets.versioned("javascripts/vue2.js")),format.raw/*29.69*/("""' type="text/javascript"></script>
+    </body>
 
-
-<div style="padding:100px">
-    <div class="container">
-        """),_display_(/*62.10*/for(row <- 0 until size) yield /*62.34*/ {_display_(Seq[Any](format.raw/*62.36*/("""
-        """),_display_(/*63.10*/for(row <- 1 until size) yield /*63.34*/ {_display_(Seq[Any](format.raw/*63.36*/("""
-        """),format.raw/*64.9*/("""<div class="item"> x</div>
-        """)))}),format.raw/*65.10*/("""
-        """)))}),format.raw/*66.10*/("""
-        """),format.raw/*67.9*/("""<dic class="item-a"> a </dic>
-        <dic class="item-b"> b </dic>
-        <dic class="item-c"> c </dic>
-        <dic class="item-d"> d </dic>
-        <dic class="item-e"> e </dic>
-        <dic class="item-f"> f </dic>
-        <dic class="item-g"> g </dic>
-        <dic class="item-h"> h </dic>
-
-        <dic class="item-au"> a </dic>
-        <dic class="item-bu"> b </dic>
-        <dic class="item-cu"> c </dic>
-        <dic class="item-du"> d </dic>
-        <dic class="item-eu"> e </dic>
-        <dic class="item-fu"> f </dic>
-        <dic class="item-gu"> g </dic>
-        <dic class="item-hu"> h </dic>
-
-        <dic class="item-1"> 1 </dic>
-
-    </div>
-</div>
-
-</body>
 </html>
 
 
@@ -132,11 +73,11 @@ Seq[Any](format.raw/*1.74*/("""
 
               /*
                   -- GENERATED --
-                  DATE: 2022-12-07T17:14:05.699
+                  DATE: 2022-12-09T20:30:24.335
                   SOURCE: C:/Users/Yannick/IdeaProjects/Checkers_WA/app/views/test.scala.html
-                  HASH: 1217f56a1dd8cfef17803f26daa1de240c92fc7b
-                  MATRIX: 781->1|931->78|942->82|1002->73|1033->111|1063->115|1321->346|1336->352|1393->388|1788->756|1803->762|1864->802|1929->840|1944->846|2006->887|2071->925|2086->931|2147->971|5007->3804|5047->3828|5087->3830|5125->3841|5165->3865|5205->3867|5242->3877|5310->3914|5352->3925|5389->3935
-                  LINES: 21->1|25->3|25->3|26->1|28->3|30->5|36->11|36->11|36->11|39->14|39->14|39->14|40->15|40->15|40->15|41->16|41->16|41->16|87->62|87->62|87->62|88->63|88->63|88->63|89->64|90->65|91->66|92->67
+                  HASH: cd36e88cab7320ba59456430285011ffc7c28a85
+                  MATRIX: 781->1|931->78|942->82|1002->73|1033->111|1063->115|1325->350|1340->356|1397->392|1792->760|1807->766|1868->806|1933->844|1948->850|2010->891|2075->929|2090->935|2151->975|2977->1871|3014->1881|3073->1913|3088->1919|3149->1959
+                  LINES: 21->1|25->3|25->3|26->1|28->3|30->5|36->11|36->11|36->11|39->14|39->14|39->14|40->15|40->15|40->15|41->16|41->16|41->16|51->26|52->27|54->29|54->29|54->29
                   -- GENERATED --
               */
           
