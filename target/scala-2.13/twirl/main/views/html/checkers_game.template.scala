@@ -51,7 +51,7 @@ Seq[Any](format.raw/*1.90*/("""
       <gamecontainer></gamecontainer>
       <form-group></form-group>
     </div>
-    <script src='"""),_display_(/*29.19*/routes/*29.25*/.Assets.versioned("javascripts/sebi_vue.js")),format.raw/*29.69*/("""' type="text/javascript"></script>
+    <script src='"""),_display_(/*29.19*/routes/*29.25*/.Assets.versioned("javascripts/checkers_vue.js")),format.raw/*29.73*/("""' type="text/javascript"></script>
   </body>
 
 
@@ -73,10 +73,10 @@ Seq[Any](format.raw/*1.90*/("""
 
               /*
                   -- GENERATED --
-                  DATE: 2022-12-09T22:15:20.244
+                  DATE: 2022-12-13T04:16:37.408
                   SOURCE: C:/Users/Yannick/IdeaProjects/Checkers_WA/app/views/checkers_game.scala.html
-                  HASH: 5815354621cc4bcd5b26dfe05a0d8f12d8f140b2
-                  MATRIX: 797->1|963->94|974->98|1017->130|1029->135|1074->89|1105->127|1134->149|1164->153|1393->355|1408->361|1465->397|1746->651|1761->657|1822->697|3032->1881|3047->1887|3112->1931
+                  HASH: 2da3d82be01026e927812e26dd565129823ba874
+                  MATRIX: 797->1|963->94|974->98|1017->130|1029->135|1074->89|1105->127|1134->149|1164->153|1393->355|1408->361|1465->397|1746->651|1761->657|1822->697|3032->1881|3047->1887|3116->1935
                   LINES: 21->1|25->3|25->3|25->4|25->4|26->1|28->3|29->4|31->6|36->11|36->11|36->11|38->13|38->13|38->13|54->29|54->29|54->29
                   -- GENERATED --
               */

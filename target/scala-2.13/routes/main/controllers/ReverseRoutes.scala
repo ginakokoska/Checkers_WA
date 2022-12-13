@@ -1,6 +1,6 @@
 // @GENERATOR:play-routes-compiler
 // @SOURCE:C:/Users/Yannick/IdeaProjects/Checkers_WA/conf/routes
-// @DATE:Wed Dec 07 17:14:05 CET 2022
+// @DATE:Tue Dec 13 04:14:47 CET 2022
 
 import play.api.mvc.Call
 
