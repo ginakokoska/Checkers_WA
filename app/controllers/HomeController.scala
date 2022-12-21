@@ -36,6 +36,7 @@ class HomeController @Inject()(val controllerComponents: ControllerComponents)(i
    */
 
   val gameController = Checkers.controller
+  var playerCount = 0
   var message: String = ""
 
   def checkersAsText: String = gameController.gameBoardToString
@@ -77,20 +78,28 @@ class HomeController @Inject()(val controllerComponents: ControllerComponents)(i
     try {
       val start = mv.split(" ")(0)
       val dest = mv.split(" ")(1)
-      if (gameController.movePossible(start, dest).getBool) {
-        val row = Integer.parseInt(dest.tail) - 1
-        val col = dest.charAt(0).toInt - 65
-        var rem = false
-        var which = ""
-        if (gameController.movePossible(start, dest).getRem.nonEmpty && gameController.gameState.toString.charAt(0).toString.toLowerCase == gameController.getPiece(Integer.parseInt(start.tail) - 1, start.charAt(0).toInt - 65).get.getColor.charAt(0).toString) rem = true;
-        which = gameController.movePossible(start, dest).getRem
-        if (gameController.movePossible(start, dest).getQ && gameController.gameState.toString.charAt(0).toString.toLowerCase == gameController.getPiece(Integer.parseInt(start.tail) - 1, start.charAt(1).toInt - 65).get.getColor.charAt(0).toString) {
+      val player_color = mv.split(" ")(2)
+
+
+      if (gameController.gameState.toString.charAt(0) != player_color.charAt(0)) {
+        gameController.gameBoard.message = "It's not your turn"
+      } else {
+
+        if (gameController.movePossible(start, dest).getBool) {
+          val row = Integer.parseInt(dest.tail) - 1
+          val col = dest.charAt(0).toInt - 65
+          var rem = false
+          var which = ""
+
+          if (gameController.movePossible(start, dest).getRem.nonEmpty && gameController.gameState.toString.charAt(0).toString.toLowerCase == gameController.getPiece(Integer.parseInt(start.tail) - 1, start.charAt(0).toInt - 65).get.getColor.charAt(0).toString) rem = true;
+          which = gameController.movePossible(start, dest).getRem
+          if (gameController.movePossible(start, dest).getQ && gameController.gameState.toString.charAt(0).toString.toLowerCase == gameController.getPiece(Integer.parseInt(start.tail) - 1, start.charAt(1).toInt - 65).get.getColor.charAt(0).toString) {
+            gameController.move(start, dest)
+            gameController.set(row, col, Piece("queen", row, col, gameController.getPiece(row, col).get.getColor))
+            if (rem) gameController.remove(Integer.parseInt(which.tail) - 1, which.charAt(0).toInt - 65)
+          } else gameController.gameBoard.message = "";
           gameController.move(start, dest)
-          gameController.set(row, col, Piece("queen", row, col, gameController.getPiece(row, col).get.getColor))
-          if (rem) gameController.remove(Integer.parseInt(which.tail) - 1, which.charAt(0).toInt - 65)
-        } else gameController.gameBoard.message = "";
-        gameController.move(start, dest)
-      } else gameController.gameBoard.message = "Move not possible"
+        } else gameController.gameBoard.message = "Move not possible"}
 
     } catch {
       case e: Exception => gameController.gameBoard.message = "Invalid Input"
@@ -101,6 +110,11 @@ class HomeController @Inject()(val controllerComponents: ControllerComponents)(i
 
   }
 
+  def connectPlayer(): Unit =  {
+    playerCount += 1
+    print(playerCount)
+    gameController.gameBoard
+  }
 
   def error(any:String) = Action {
     Ok(views.html.error(any))
@@ -114,7 +128,7 @@ class HomeController @Inject()(val controllerComponents: ControllerComponents)(i
     Ok(Json.obj(
       "game" -> GameBoard()
       )
-    )
+    ).withHeaders(("Access-Control-Allow-Origin", "http://localhost:8080"))
   }
 
 
@@ -171,6 +185,7 @@ class HomeController @Inject()(val controllerComponents: ControllerComponents)(i
   implicit val gameBoardWrites: Writes[GameBoard] = new Writes[GameBoard] {
     def writes(gameBoard: GameBoard): JsObject = Json.obj(
       "gameState" -> gameState.toString,
+      "playerCount" -> playerCount,
       "message" -> gameController.gameBoard.message,
       "gameBoard" -> Json.obj(
         "size" -> JsNumber(gameController.gameBoardSize),
@@ -237,6 +252,10 @@ class HomeController @Inject()(val controllerComponents: ControllerComponents)(i
     } else if (cmd.equals("jsMove")) {
       println("jsMove")
       jsMove(data)
+
+    } else if (cmd.equals("connectPlayer")) {
+      println("connectPlayer")
+      connectPlayer()
     }
     "Ok"
   }
@@ -246,6 +265,7 @@ class HomeController @Inject()(val controllerComponents: ControllerComponents)(i
 
     def receive = {
       case msg: String =>
+        println("test", msg)
         val split_msg = msg.split('|')
         if (split_msg.length == 2) {
           val cmd = split_msg(0)
@@ -254,6 +274,7 @@ class HomeController @Inject()(val controllerComponents: ControllerComponents)(i
           out ! controllerToJson()
           println("Sent Json to Client " + msg)
         }
+        out ! controllerToJson()
     }
 
     reactions += {
