@@ -48,6 +48,7 @@ const app = Vue.createApp({
             return $.ajax({
                 method: method,
                 url: url,
+                crossDomain: true,
                 data: JSON.stringify(returnData),
                 dataType: "json",
                 contentType: "application/json",
@@ -132,6 +133,7 @@ const app = Vue.createApp({
             return $.ajax({
                 method: "GET",
                 url: "/current",
+                crossDomain: true,
                 dataType: "json",
 
                 success: function (response) {
