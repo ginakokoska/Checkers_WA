@@ -1,0 +1,14 @@
+h5 {
+  font-size: 35px;
+  color: #641403;
+  -webkit-text-stroke: 0.3px #f1f1f1;
+}
+.navbar-nav a:hover,
+.dropdown:hover .dropbtn {
+  background-color: #f1f1f1;
+  color: #641403;
+}
+.navbar-brand {
+  font-size: 35px;
+  -webkit-text-stroke: 0.5px #641403;
+}

@@ -1,0 +1,11 @@
+[debug] > Exec(run, None, None)
+[debug] Evaluating tasks: Compile / run
+[debug] Running task... Cancel: Signal, check cycles: false, forcegc: true
+[debug] Running task... Cancel: Signal, check cycles: false, forcegc: true
+[info] compiling 3 Scala sources to C:\Users\Yannick\IdeaProjects\Checkers_WA\target\scala-2.13\classes ...
+[info] done compiling
+[debug] Running task... Cancel: Signal, check cycles: false, forcegc: true
+[debug] Exporting web-assets:checkers_wa
+[debug] Running task... Cancel: Signal, check cycles: false, forcegc: true
+[success] Total time: 45 s, completed 21.11.2022 12:20:29
+[debug] > Exec(idea-shell, None, None)

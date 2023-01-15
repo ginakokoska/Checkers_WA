@@ -1,0 +1,4 @@
+[0m[[0m[31merror[0m] [0m[0m/Users/ginakokoska/IdeaProjects/HTWG/AIN5/Webapplikation/checkers_wa/app/assets/stylesheets/say.less:279:42: Could not parse call arguments or missing ')'[0m
+[0m[[0m[31merror[0m] [0m[0m    input-focus-border-color: tint-color($component-active-bg, 50%);[0m
+[0m[[0m[31merror[0m] [0m[0m                                         ^[0m
+[0m[[0m[31merror[0m] [0m[0mone error found[0m

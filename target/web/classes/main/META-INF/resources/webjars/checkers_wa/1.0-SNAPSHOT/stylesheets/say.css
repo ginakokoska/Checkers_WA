@@ -1,0 +1,291 @@
+h5 {
+  font-size: 35px;
+  color: #641403;
+  -webkit-text-stroke: 0.3px #f1f1f1;
+}
+.navbar-nav a:hover,
+.dropdown:hover .dropbtn {
+  background-color: #f1f1f1;
+  color: #641403;
+}
+.navbar-brand {
+  font-size: 35px;
+  -webkit-text-stroke: 0.5px #641403;
+}
+.gamecontainer {
+  padding-top: 4%;
+  margin: 1em;
+  display: flex;
+  font-size: 40px;
+  font-family: "Rockwell";
+  font-weight: 500;
+  color: black;
+}
+.game {
+  border-style: solid;
+  border-width: 0.15em;
+  border-spacing: 0px;
+  border-color: #222222;
+  background-color: #222222;
+  margin: auto;
+  width: auto;
+}
+.field {
+  display: inline-block;
+  float: left;
+  background-color: #641403;
+  width: 1.2em;
+  height: 1.2em;
+  text-align: center;
+}
+.field_black {
+  display: inline-block;
+  float: left;
+  border-style: outset;
+  border-width: 0em;
+  background-color: #222;
+  border-color: black;
+  width: 1.2em;
+  height: 1.2em;
+  margin: 0.1em;
+  text-align: center;
+}
+.img {
+  width: 100%;
+  height: 100%;
+}
+.field_red {
+  display: inline-block;
+  float: left;
+  border-style: outset;
+  border-width: 0em;
+  background-color: #641403;
+  border-color: black;
+  width: 1.2em;
+  height: 1.2em;
+  margin: 0.1em;
+  text-align: center;
+}
+.piece_black {
+  width: 100%;
+  height: 100%;
+  color: black;
+  line-height: 55px;
+  padding-left: 0.5px;
+  padding-top: 0.2px;
+  font-size: 60px;
+  -webkit-text-stroke: 0.4px #ccc;
+}
+.piece_white {
+  width: 100%;
+  height: 100%;
+  color: #ccc;
+  line-height: 55px;
+  padding-left: 0.5px;
+  padding-top: 0.2px;
+  font-size: 60px;
+  -webkit-text-stroke: 1.5px #000000;
+}
+.piece_was_never_an_option {
+  width: 100%;
+  height: 100%;
+}
+.abc-navigation {
+  height: 100%;
+  width: 100%;
+  margin: 1em;
+  display: flex;
+  font-size: 40px;
+  font-family: "Rockwell";
+  font-weight: 500;
+  color: #ccc;
+}
+.field_row {
+  display: inline-block;
+  float: left;
+  border-style: outset;
+  border-width: 0em;
+  background-color: #ccc;
+  border-color: black;
+  width: 1.2em;
+  height: 1.2em;
+  margin: 0.1em;
+  text-align: center;
+}
+.field_col {
+  display: inline-block;
+  float: left;
+  border-style: outset;
+  border-width: 0em;
+  background-color: #ccc;
+  border-color: black;
+  width: 9.6em;
+  height: 9.6em;
+  margin: 0.1em;
+  text-align: center;
+}
+.game_gitter {
+  border-style: inset;
+  border-width: 0.05em;
+  border-spacing: 0px;
+  border-color: black;
+  background-color: black;
+  padding: 0.05em;
+  margin: auto;
+  width: auto;
+}
+.container {
+  display: grid;
+  grid-template-columns: [first] auto [line2] auto [line3] auto [line4] auto [line5] auto [line6] auto [line7] auto [end] auto ;
+  grid-template-rows: [first] auto [row2] auto [row3] auto [row4] auto [row5] auto [row6] auto [row7] auto [end] auto ;
+  background-color: #2196F3;
+  padding: 10px;
+}
+.item {
+  background-color: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(0, 0, 0, 0.8);
+  padding: 20px;
+  font-size: 30px;
+  text-align: center;
+}
+.item-a {
+  grid-area: 1;
+  text-align: center;
+}
+.item-b {
+  grid-area: 1;
+  text-align: center;
+}
+.item-c {
+  grid-area: 1;
+  text-align: center;
+}
+.item-d {
+  grid-area: 1;
+  text-align: center;
+}
+.item-e {
+  grid-area: 1;
+  text-align: center;
+}
+.item-f {
+  grid-area: 1;
+  text-align: center;
+}
+.item-g {
+  grid-area: 1;
+  text-align: center;
+}
+.item-h {
+  grid-area: 1;
+  text-align: center;
+}
+.item-au {
+  grid-area: 0.015625;
+  text-align: center;
+}
+.item-bu {
+  grid-area: 0.015625;
+  text-align: center;
+}
+.item-bu {
+  grid-area: 0.015625;
+  text-align: center;
+}
+.item-cu {
+  grid-area: 0.015625;
+  text-align: center;
+}
+.item-du {
+  grid-area: 0.015625;
+  text-align: center;
+}
+.item-eu {
+  grid-area: 0.015625;
+  text-align: center;
+}
+.item-fu {
+  grid-area: 0.015625;
+  text-align: center;
+}
+.item-gu {
+  grid-area: 0.015625;
+  text-align: center;
+}
+.item-hu {
+  grid-area: 0.015625;
+  text-align: center;
+}
+.item-c {
+  text-align: center;
+}
+.myFont {
+  font-size: 16px;
+  font-family: 'Montserrat', sans-serif;
+}
+.form-group {
+  font-size: 16px;
+  font-family: 'Montserrat', sans-serif;
+  box-shadow: #641403;
+  text-align: center;
+  color: #641403;
+}
+.btn {
+  text-align: center;
+  display: inline-block;
+  border: 0.1em solid #641403;
+  margin: 0 0.3em 0.3em 0;
+  border-radius: 0.12em;
+  text-decoration: none;
+  font-size: 16px;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 400;
+  color: #555;
+  transition: all 0.2s;
+}
+btn:hover {
+  color: #641403;
+  background-color: #ccc;
+}
+.form-control {
+  text-align: center;
+  font-size: 16px;
+  font-family: 'Montserrat', sans-serif;
+  font-style: italic;
+  letter-spacing: 0.2em;
+  input-focus-border-color: #641403;
+  input-focus-border-color: tint-color(#641403, 50%);
+}
+@media all and (max-width: 30em) {
+  btn {
+    display: block;
+    margin: 0.4em auto;
+  }
+}
+.bouncy {
+  animation: bouncy 5s infinite linear;
+  position: relative;
+}
+@keyframes bouncy {
+  0% {
+    top: 0em;
+  }
+  40% {
+    top: 0em;
+  }
+  43% {
+    top: -0.9em;
+  }
+  46% {
+    top: 0em;
+  }
+  48% {
+    top: -0.4em;
+  }
+  50% {
+    top: 0em;
+  }
+  100% {
+    top: 0em;
+  }
+}

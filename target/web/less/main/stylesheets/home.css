@@ -1,0 +1,241 @@
+h5 {
+  font-size: 35px;
+  color: #641403;
+  -webkit-text-stroke: 0.3px #f1f1f1;
+}
+.navbar-nav a:hover,
+.dropdown:hover .dropbtn {
+  background-color: #f1f1f1;
+  color: #641403;
+}
+.navbar-brand {
+  font-size: 35px;
+  -webkit-text-stroke: 0.5px #641403;
+}
+.myFont {
+  font-size: 16px;
+  font-family: 'Montserrat', sans-serif;
+}
+.myMargin {
+  margin: 25px 200px 20px 200px;
+}
+.myAlign {
+  text-align: center;
+}
+.myCursor {
+  cursor: pointer;
+}
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+h1 {
+  text-align: center;
+  font-size: 40px;
+  color: #641403;
+  letter-spacing: 0.3em;
+}
+h3 {
+  text-align: center;
+  font-size: 25px;
+  letter-spacing: 0.2em;
+  color: #641403;
+}
+p {
+  font-size: 16px;
+  font-family: 'Montserrat', sans-serif;
+  margin: 25px 200px 20px 200px;
+  text-align: center;
+}
+body {
+  margin: 0;
+  background-color: #f1f1f1;
+  font-size: 16px;
+  font-family: 'Montserrat', sans-serif;
+}
+article {
+  border: 1px solid black;
+  margin: 25px 200px 20px 200px;
+  background: #ccc;
+  position: absolute;
+}
+a {
+  cursor: pointer;
+}
+@keyframes fade {
+  from {
+    opacity: 0.4;
+  }
+  to {
+    opacity: 1;
+  }
+}
+.provider {
+  display: inline-block;
+  width: 64px;
+  height: 64px;
+  border-radius: 4px;
+  outline: none;
+}
+.facebook {
+  background: #3B5998;
+}
+.google {
+  background: #D14836;
+}
+.twitter {
+  background: #00ACED;
+}
+.yahoo {
+  background: #731A8B;
+}
+.xing {
+  background: #006567;
+}
+.vk {
+  background: #567ca4;
+}
+.social-providers,
+.sign-in-now,
+.already-member,
+.not-a-member {
+  text-align: center;
+  margin-top: 20px;
+}
+.user {
+  margin-top: 50px;
+}
+.user .data {
+  margin-top: 10px;
+}
+.form-control {
+  border-radius: 0;
+}
+[class^='ion-'] {
+  font-size: 1.2em;
+}
+.has-feedback .form-control-feedback {
+  top: 0;
+  left: 0;
+  width: 46px;
+  height: 46px;
+  line-height: 46px;
+  color: #555;
+}
+.has-feedback .form-control {
+  padding-left: 42.5px;
+}
+.btn {
+  font-weight: bold;
+  border-radius: 2px;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+}
+.btn-lg {
+  font-size: 18px;
+}
+meter {
+  /* Reset the default appearance */
+  -moz-appearance: none;
+  appearance: none;
+  margin: 0 auto 1em;
+  width: 100%;
+  height: .5em;
+  /* Applicable only to Firefox */
+  background: none;
+  background-color: rgba(0, 0, 0, 0.1);
+}
+meter::-webkit-meter-bar {
+  background: none;
+  background-color: rgba(0, 0, 0, 0.1);
+}
+meter[value="0"]::-webkit-meter-optimum-value,
+meter[value="1"]::-webkit-meter-optimum-value {
+  background: red;
+}
+meter[value="2"]::-webkit-meter-optimum-value {
+  background: orange;
+}
+meter[value="3"]::-webkit-meter-optimum-value {
+  background: yellow;
+}
+meter[value="4"]::-webkit-meter-optimum-value {
+  background: green;
+}
+meter::-webkit-meter-even-less-good-value {
+  background: red;
+}
+meter::-webkit-meter-suboptimum-value {
+  background: orange;
+}
+meter::-webkit-meter-optimum-value {
+  background: green;
+}
+meter[value="1"]::-moz-meter-bar,
+meter[value="1"]::-moz-meter-bar {
+  background: red;
+}
+meter[value="2"]::-moz-meter-bar {
+  background: orange;
+}
+meter[value="3"]::-moz-meter-bar {
+  background: yellow;
+}
+meter[value="4"]::-moz-meter-bar {
+  background: green;
+}
+meter::-webkit-meter-optimum-value {
+  transition: width 0.4s ease-out;
+}
+.carousel {
+  position: relative;
+  max-width: 400px;
+  max-height: 400px;
+}
+.carousel.pointer-event {
+  touch-action: pan-y;
+}
+.carousel-inner {
+  position: relative;
+  overflow: hidden;
+}
+.carousel-inner::after {
+  display: block;
+  clear: both;
+  content: "";
+}
+.carousel-item {
+  position: relative;
+  display: none;
+  float: left;
+  margin-right: -100%;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+.carousel.carousel-fade .item {
+  -webkit-transition: opacity 0.5s ease-in-out;
+  -moz-transition: opacity 0.5s ease-in-out;
+  -ms-transition: opacity 0.5s ease-in-out;
+  -o-transition: opacity 0.5s ease-in-out;
+  transition: opacity 0.5s ease-in-out;
+  opacity: 0;
+}
+.carousel.carousel-fade .active.item {
+  opacity: 1;
+}
+.carousel.carousel-fade .active.left,
+.carousel.carousel-fade .active.right {
+  left: 0;
+  z-index: 2;
+  opacity: 0;
+  filter: alpha(opacity=0);
+}
+.carousel.carousel-fade .next,
+.carousel.carousel-fade .prev {
+  left: 0;
+  z-index: 1;
+}
+.carousel.carousel-fade .carousel-control {
+  z-index: 3;
+}

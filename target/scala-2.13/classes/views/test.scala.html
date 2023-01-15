@@ -1,0 +1,93 @@
+@(controller:checkers.controller.controllerComponent.ControllerInterface)
+
+@size= @{controller.gameBoardSize}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Checkers Testpage</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/x-icon" href='@routes.Assets.versioned("images/icon.png")'>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap&#64;5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+    <link rel="stylesheet" href='@routes.Assets.versioned("stylesheets/nav.css")'>
+    <link rel="stylesheet" href='@routes.Assets.versioned("stylesheets/main.css")'>
+    <link rel="stylesheet" href='@routes.Assets.versioned("stylesheets/say.css")'>
+</head>
+<body>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap&#64;5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+<nav class="navbar navbar-dark bg-dark fixed-top">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="http://localhost:9000/"> <i class="fa-solid fa-chess"></i> Checkers</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar" color="#FF69B4">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvasDarkNavbar" aria-labelledby="offcanvasDarkNavbarLabel">
+            <div class="offcanvas-header">
+                <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel">Checkers Menu</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body">
+                <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                    <li class="nav-item">
+                        <a class="nav-link"  aria-current="page" href="http://localhost:9000/"> <i class="fa-solid fa-igloo"></i> Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://github.com/ginakokoska/Checkers_WA"> <i class="fa-brands fa-github-alt"></i> GitHub</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="fa-solid fa-chess-board"></i> Boardsize
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-dark">
+                            <li><a class="dropdown-item" href="http://localhost:9000/new8Grid"> <i class="fa-solid fa-chess-queen"></i> 8x8</a></li>
+                            <li><a class="dropdown-item" href="http://localhost:9000/new10Grid"> <i class="fa-regular fa-chess-queen"></i> 10x10</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="http://localhost:9000/instructions"> <i class="fa-solid fa-clipboard-list"></i> User Manual</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</nav>
+
+
+<div style="padding:100px">
+    <div class="container">
+        @for(row <- 0 until size) {
+        @for(row <- 1 until size) {
+        <div class="item"> x</div>
+        }
+        }
+        <dic class="item-a"> a </dic>
+        <dic class="item-b"> b </dic>
+        <dic class="item-c"> c </dic>
+        <dic class="item-d"> d </dic>
+        <dic class="item-e"> e </dic>
+        <dic class="item-f"> f </dic>
+        <dic class="item-g"> g </dic>
+        <dic class="item-h"> h </dic>
+
+        <dic class="item-au"> a </dic>
+        <dic class="item-bu"> b </dic>
+        <dic class="item-cu"> c </dic>
+        <dic class="item-du"> d </dic>
+        <dic class="item-eu"> e </dic>
+        <dic class="item-fu"> f </dic>
+        <dic class="item-gu"> g </dic>
+        <dic class="item-hu"> h </dic>
+
+        <dic class="item-1"> 1 </dic>
+
+    </div>
+</div>
+
+</body>
+</html>
+
+

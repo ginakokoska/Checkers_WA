@@ -3,14 +3,25 @@
 # https://www.playframework.com/documentation/latest/ScalaRouting
 # ~~~~
 
+
 # An example controller showing a sample home page
+
 GET     /                           controllers.HomeController.home()
-GET     /index                      controllers.HomeController.index()
-GET     /new8Grid                   controllers.HomeController.new8Grid()
-GET     /new10Grid                  controllers.HomeController.new10Grid()
-GET     /instructions               controllers.HomeController.instructions()
-GET     /test                       controllers.HomeController.test()
-GET     /move/:start/:dest          controllers.HomeController.move(start:String,dest:String)
+GET     /new8Grid                   controllers.HomeController.new8Grid
++nocsrf
+GET     /new10Grid                  controllers.HomeController.new10Grid
+GET     /instructions               controllers.HomeController.instructions
+GET     /test                       controllers.HomeController.test
+#GET     /move/:start/:dest          controllers.HomeController.move(start:String,dest:String)
+
+
++nocsrf
+POST    /command                    controllers.HomeController.processRequest
++nocsrf
+GET     /current                    controllers.HomeController.current
+GET     /websocket                  controllers.HomeController.socket
+
+
 
 
 #controllers.Default.notFound
