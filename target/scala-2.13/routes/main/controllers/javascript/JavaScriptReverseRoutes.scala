@@ -1,16 +1,16 @@
 // @GENERATOR:play-routes-compiler
 // @SOURCE:/Users/ginakokoska/IdeaProjects/HTWG/AIN5/Webapplikation/checkers_wa/conf/routes
-// @DATE:Tue Oct 25 08:58:48 CEST 2022
+// @DATE:Sun Jan 15 20:10:49 CET 2023
 
 import play.api.routing.JavaScriptReverseRoute
 
 
 import _root_.controllers.Assets.Asset
 
-// @LINE:7
+// @LINE:9
 package controllers.javascript {
 
-  // @LINE:7
+  // @LINE:9
   class ReverseHomeController(_prefix: => String) {
 
     def _defaultPrefix: String = {
@@ -18,7 +18,17 @@ package controllers.javascript {
     }
 
   
-    // @LINE:10
+    // @LINE:19
+    def processRequest: JavaScriptReverseRoute = JavaScriptReverseRoute(
+      "controllers.HomeController.processRequest",
+      """
+        function() {
+          return _wA({method:"POST", url:"""" + _prefix + { _defaultPrefix } + """" + "command"})
+        }
+      """
+    )
+  
+    // @LINE:12
     def new10Grid: JavaScriptReverseRoute = JavaScriptReverseRoute(
       "controllers.HomeController.new10Grid",
       """
@@ -28,7 +38,7 @@ package controllers.javascript {
       """
     )
   
-    // @LINE:11
+    // @LINE:13
     def instructions: JavaScriptReverseRoute = JavaScriptReverseRoute(
       "controllers.HomeController.instructions",
       """
@@ -38,17 +48,17 @@ package controllers.javascript {
       """
     )
   
-    // @LINE:13
-    def move: JavaScriptReverseRoute = JavaScriptReverseRoute(
-      "controllers.HomeController.move",
+    // @LINE:22
+    def socket: JavaScriptReverseRoute = JavaScriptReverseRoute(
+      "controllers.HomeController.socket",
       """
-        function(start0,dest1) {
-          return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "move/" + encodeURIComponent((""" + implicitly[play.api.mvc.PathBindable[String]].javascriptUnbind + """)("start", start0)) + "/" + encodeURIComponent((""" + implicitly[play.api.mvc.PathBindable[String]].javascriptUnbind + """)("dest", dest1))})
+        function() {
+          return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "websocket"})
         }
       """
     )
   
-    // @LINE:12
+    // @LINE:14
     def test: JavaScriptReverseRoute = JavaScriptReverseRoute(
       "controllers.HomeController.test",
       """
@@ -58,7 +68,17 @@ package controllers.javascript {
       """
     )
   
-    // @LINE:7
+    // @LINE:21
+    def current: JavaScriptReverseRoute = JavaScriptReverseRoute(
+      "controllers.HomeController.current",
+      """
+        function() {
+          return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "current"})
+        }
+      """
+    )
+  
+    // @LINE:9
     def home: JavaScriptReverseRoute = JavaScriptReverseRoute(
       "controllers.HomeController.home",
       """
@@ -68,17 +88,7 @@ package controllers.javascript {
       """
     )
   
-    // @LINE:8
-    def index: JavaScriptReverseRoute = JavaScriptReverseRoute(
-      "controllers.HomeController.index",
-      """
-        function() {
-          return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "index"})
-        }
-      """
-    )
-  
-    // @LINE:9
+    // @LINE:10
     def new8Grid: JavaScriptReverseRoute = JavaScriptReverseRoute(
       "controllers.HomeController.new8Grid",
       """
@@ -90,7 +100,7 @@ package controllers.javascript {
   
   }
 
-  // @LINE:19
+  // @LINE:30
   class ReverseAssets(_prefix: => String) {
 
     def _defaultPrefix: String = {
@@ -98,7 +108,7 @@ package controllers.javascript {
     }
 
   
-    // @LINE:19
+    // @LINE:30
     def versioned: JavaScriptReverseRoute = JavaScriptReverseRoute(
       "controllers.Assets.versioned",
       """

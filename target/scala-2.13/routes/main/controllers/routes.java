@@ -1,6 +1,6 @@
 // @GENERATOR:play-routes-compiler
 // @SOURCE:/Users/ginakokoska/IdeaProjects/HTWG/AIN5/Webapplikation/checkers_wa/conf/routes
-// @DATE:Tue Oct 25 08:58:48 CEST 2022
+// @DATE:Sun Jan 15 20:10:49 CET 2023
 
 package controllers;
 

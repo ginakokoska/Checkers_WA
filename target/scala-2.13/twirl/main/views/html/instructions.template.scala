@@ -23,44 +23,69 @@ object instructions extends _root_.play.twirl.api.BaseScalaTemplate[play.twirl.a
       {
 
 
-Seq[Any](format.raw/*1.1*/("""<!DOCTYPE html>
-<html>
+Seq[Any](format.raw/*1.1*/("""<!doctype html>
+<html lang="en">
 <head>
     <title>Checkers Instructions</title>
-    <link rel="icon" type="image/x-icon" href='"""),_display_(/*5.49*/routes/*5.55*/.Assets.versioned("images/icon.png")),format.raw/*5.91*/("""'>
-    <link rel="stylesheet" href='"""),_display_(/*6.35*/routes/*6.41*/.Assets.versioned("stylesheets/main.css")),format.raw/*6.82*/("""'>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/x-icon" href='"""),_display_(/*7.49*/routes/*7.55*/.Assets.versioned("images/icon.png")),format.raw/*7.91*/("""'>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap&#64;5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+    <link rel="stylesheet" href='"""),_display_(/*10.35*/routes/*10.41*/.Assets.versioned("stylesheets/main.css")),format.raw/*10.82*/("""'>
 </head>
 <body>
 
-<div class="navbar">
-    <a href="http://localhost:9000/">Home</a>
-    <a href="https://github.com/ginakokoska/Checkers_WA" target="_blank">GitHub</a>
-    <a href="http://localhost:9000/instructions">Instructions</a>
-    <div class="dropdown">
-        <button class="dropbtn">Play
-            <i class="fa fa-caret-down"></i>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap&#64;5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+<nav class="navbar navbar-dark bg-dark fixed-top">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="http://localhost:9000/"> <i class="fa-solid fa-chess"></i> Checkers</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar">
+            <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="dropdown-content">
-            <div class="row">
-                <div class="column">
-                    <h3>Checkers Versions</h3>
-                    <a href="http://localhost:9000/new8Grid">8x8</a>
-                    <a href="http://localhost:9000/new10Grid">10x10</a>
-                </div>
+        <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvasDarkNavbar" aria-labelledby="offcanvasDarkNavbarLabel">
+            <div class="offcanvas-header">
+                <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel">Checkers Menu</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body">
+                <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                    <li class="nav-item">
+                        <a class="nav-link active"  aria-current="page" href="http://localhost:9000/"> <i class="fa-solid fa-igloo"></i> Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://github.com/ginakokoska/Checkers_WA"> <i class="fa-brands fa-github-alt"></i> GitHub</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="fa-solid fa-chess-board"></i> Boardsize
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-dark">
+                            <li><a class="dropdown-item" href="http://localhost:9000/new8Grid" > <i class="fa-solid fa-chess-queen"></i> 8x8</a></li>
+                            <li><a class="dropdown-item" href="http://localhost:9000/new10Grid"> <i class="fa-regular fa-chess-queen"></i> 10x10</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="http://localhost:9000/instructions"> <i class="fa-solid fa-clipboard-list"></i> User Manual</a></li>
+                        </ul>
+                    </li>
+                </ul>
             </div>
         </div>
     </div>
-</div>
+</nav>
 
 
-<div style="padding:15px 15px 2500px;font-size:30px">
+<div data-bs-spy="scroll" data-bs-target="#navbar-example2" data-bs-root-margin="0px 0px -40%" data-bs-smooth-scroll="true" class="scrollspy-example bg-light p-3 rounded-2" tabindex="0">
     <article>
+        <div style="padding:100px">
         <h1>
-            Checkers Instruction
+                CHECKERS INSTRUCTION
         </h1>
+            <p></p>
         <header>
             <h3>
-                OBJECT
+                Object
             </h3>
             <p>
                 The objective is to remove all of your opponent's
@@ -69,7 +94,7 @@ Seq[Any](format.raw/*1.1*/("""<!DOCTYPE html>
         </header>
         <header>
             <h3>
-                GAME SETUP
+                Game Setup
             </h3>
             <p>
                 You will find 8 or 10 checkers already placed on
@@ -78,7 +103,7 @@ Seq[Any](format.raw/*1.1*/("""<!DOCTYPE html>
         </header>
         <header>
             <h3>
-                HOW TO PLAY ?
+                How to play
             </h3>
             <p>
                 Choose a player to go first. On your turn, move
@@ -121,6 +146,7 @@ Seq[Any](format.raw/*1.1*/("""<!DOCTYPE html>
                 If all squares adjacent to your checker are
                 occupied, your checker is blocked and cannot move.
             </li>
+            <p></p>
         </header>
         <header>
             <h3>
@@ -149,7 +175,7 @@ Seq[Any](format.raw/*1.1*/("""<!DOCTYPE html>
         </header>
         <header>
             <h3>
-                HOW TO WIN
+                How to win
             </h3>
             <p>
                 The first player to capture all opposing checkers
@@ -160,18 +186,7 @@ Seq[Any](format.raw/*1.1*/("""<!DOCTYPE html>
 
 </div>
 
-<script>
-// When the user scrolls down 20px from the top of the document, slide down the navbar
-window.onscroll = function() """),format.raw/*140.30*/("""{"""),format.raw/*140.31*/("""scrollFunction()"""),format.raw/*140.47*/("""}"""),format.raw/*140.48*/(""";
 
-function scrollFunction() """),format.raw/*142.27*/("""{"""),format.raw/*142.28*/("""
-  """),format.raw/*143.3*/("""if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) """),format.raw/*143.80*/("""{"""),format.raw/*143.81*/("""
-    """),format.raw/*144.5*/("""document.getElementById("navbar").style.top = "0";
-  """),format.raw/*145.3*/("""}"""),format.raw/*145.4*/(""" """),format.raw/*145.5*/("""else """),format.raw/*145.10*/("""{"""),format.raw/*145.11*/("""
-    """),format.raw/*146.5*/("""document.getElementById("navbar").style.top = "-50px";
-  """),format.raw/*147.3*/("""}"""),format.raw/*147.4*/("""
-"""),format.raw/*148.1*/("""}"""),format.raw/*148.2*/("""
-"""),format.raw/*149.1*/("""</script>
 
 </body>
 </html>
@@ -192,11 +207,11 @@ function scrollFunction() """),format.raw/*142.27*/("""{"""),format.raw/*142.28*
 
               /*
                   -- GENERATED --
-                  DATE: 2022-10-25T08:58:48.594
+                  DATE: 2023-01-15T20:10:51.364
                   SOURCE: /Users/ginakokoska/IdeaProjects/HTWG/AIN5/Webapplikation/checkers_wa/app/views/instructions.scala.html
-                  HASH: 343e7ce4ac3bc893e4fd838bf599fa8d73f1e416
-                  MATRIX: 818->0|963->119|977->125|1033->161|1096->198|1110->204|1171->245|5296->4341|5326->4342|5371->4358|5401->4359|5459->4388|5489->4389|5520->4392|5626->4469|5656->4470|5689->4475|5770->4528|5799->4529|5828->4530|5862->4535|5892->4536|5925->4541|6010->4598|6039->4599|6068->4600|6097->4601|6126->4602
-                  LINES: 26->1|30->5|30->5|30->5|31->6|31->6|31->6|165->140|165->140|165->140|165->140|167->142|167->142|168->143|168->143|168->143|169->144|170->145|170->145|170->145|170->145|170->145|171->146|172->147|172->147|173->148|173->148|174->149
+                  HASH: bfc6300010ebaa47d4d9d17dd90c94f4117993e2
+                  MATRIX: 818->0|1073->229|1087->235|1143->271|1535->636|1550->642|1612->683
+                  LINES: 26->1|32->7|32->7|32->7|35->10|35->10|35->10
                   -- GENERATED --
               */
           
