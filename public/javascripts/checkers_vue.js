@@ -2,7 +2,7 @@ const app = Vue.createApp({
     data() {
         return {
             vueWebsocket: new WebSocket(
-                "wss://heroku:9000/websocket"),
+                "wss://checkers.herokuapp.com/websocket"),
             data: {},
             game: {"gameState": "WHITE_TURN", "gameBoard":{"size": 8, "fields":[]}},
             gameBoard: "",
