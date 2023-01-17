@@ -168,7 +168,7 @@ function updateGameboard() {
 
 
 
-let websocket = new WebSocket("ws://localhost:9000/websocket");
+let websocket = new WebSocket("wss://heroku:9000/websocket");
 window.onbeforeunload = function () { // Für Chrome Bug
     websocket.onclose = function () {
         processCommand("resetGame", "");
