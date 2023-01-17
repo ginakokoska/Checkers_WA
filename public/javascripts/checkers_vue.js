@@ -2,7 +2,7 @@ const app = Vue.createApp({
     data() {
         return {
             vueWebsocket: new WebSocket(
-                "ws://" + location.hostname + ":9000/websocket"),
+                "wss://heroku:9000/websocket"),
             data: {},
             game: {"gameState": "WHITE_TURN", "gameBoard":{"size": 8, "fields":[]}},
             gameBoard: "",
