@@ -1,5 +1,5 @@
 [0m[[0m[0mdebug[0m] [0m[0mCopy resource mappings: [0m
-[0m[[0m[0mdebug[0m] [0m[0m	(/Users/ginakokoska/IdeaProjects/HTWG/AIN5/Webapplikation/checkers_wa/conf/logback.xml,/Users/ginakokoska/IdeaProjects/HTWG/AIN5/Webapplikation/checkers_wa/target/scala-2.13/classes/logback.xml)[0m
-[0m[[0m[0mdebug[0m] [0m[0m	(/Users/ginakokoska/IdeaProjects/HTWG/AIN5/Webapplikation/checkers_wa/conf/messages,/Users/ginakokoska/IdeaProjects/HTWG/AIN5/Webapplikation/checkers_wa/target/scala-2.13/classes/messages)[0m
-[0m[[0m[0mdebug[0m] [0m[0m	(/Users/ginakokoska/IdeaProjects/HTWG/AIN5/Webapplikation/checkers_wa/conf/application.conf,/Users/ginakokoska/IdeaProjects/HTWG/AIN5/Webapplikation/checkers_wa/target/scala-2.13/classes/application.conf)[0m
-[0m[[0m[0mdebug[0m] [0m[0m	(/Users/ginakokoska/IdeaProjects/HTWG/AIN5/Webapplikation/checkers_wa/conf/routes,/Users/ginakokoska/IdeaProjects/HTWG/AIN5/Webapplikation/checkers_wa/target/scala-2.13/classes/routes)[0m
+[0m[[0m[0mdebug[0m] [0m[0m	(C:\Users\petri\Desktop\Checkers_WA\conf\application.conf,C:\Users\petri\Desktop\Checkers_WA\target\scala-2.13\classes\application.conf)[0m
+[0m[[0m[0mdebug[0m] [0m[0m	(C:\Users\petri\Desktop\Checkers_WA\conf\logback.xml,C:\Users\petri\Desktop\Checkers_WA\target\scala-2.13\classes\logback.xml)[0m
+[0m[[0m[0mdebug[0m] [0m[0m	(C:\Users\petri\Desktop\Checkers_WA\conf\messages,C:\Users\petri\Desktop\Checkers_WA\target\scala-2.13\classes\messages)[0m
+[0m[[0m[0mdebug[0m] [0m[0m	(C:\Users\petri\Desktop\Checkers_WA\conf\routes,C:\Users\petri\Desktop\Checkers_WA\target\scala-2.13\classes\routes)[0m

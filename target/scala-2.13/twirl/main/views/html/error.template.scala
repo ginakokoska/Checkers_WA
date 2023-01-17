@@ -23,7 +23,8 @@ object error extends _root_.play.twirl.api.BaseScalaTemplate[play.twirl.api.Html
       {
 
 
-Seq[Any](format.raw/*2.1*/("""
+Seq[Any](format.raw/*1.14*/("""
+
 """),format.raw/*3.1*/("""<html lang="en">
 <head>
     <title>Checkers Testpage</title>
@@ -58,11 +59,11 @@ Error: Page """),_display_(/*16.14*/{any}),format.raw/*16.19*/(""" """),format.r
 
               /*
                   -- GENERATED --
-                  DATE: 2023-01-11T22:09:17.984
-                  SOURCE: /Users/ginakokoska/IdeaProjects/HTWG/AIN5/Webapplikation/checkers_wa/app/views/error.scala.html
-                  HASH: 6d060a91b816dbe2959c067d5ee834827a4c6249
-                  MATRIX: 729->1|835->14|862->15|1097->224|1111->230|1167->266|1559->631|1574->637|1635->677|1699->714|1714->720|1776->761|1835->793|1861->798|1890->799
-                  LINES: 21->1|26->2|27->3|32->8|32->8|32->8|35->11|35->11|35->11|36->12|36->12|36->12|40->16|40->16|40->16
+                  DATE: 2023-01-17T08:21:54.708
+                  SOURCE: C:/Users/petri/Desktop/Checkers_WA/app/views/error.scala.html
+                  HASH: 53dee069f481bda4775c29a384472111d849aa05
+                  MATRIX: 729->1|836->13|866->17|1106->231|1120->237|1176->273|1571->641|1586->647|1647->687|1712->725|1727->731|1789->772|1852->808|1878->813|1907->814
+                  LINES: 21->1|26->1|28->3|33->8|33->8|33->8|36->11|36->11|36->11|37->12|37->12|37->12|41->16|41->16|41->16
                   -- GENERATED --
               */
           
