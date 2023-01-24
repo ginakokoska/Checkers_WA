@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="CheckersInScala">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/lib/CheckersInScala.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
